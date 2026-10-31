@@ -1,0 +1,19 @@
+{
+  "nyt": {
+    "senate": "https://static01.nyt.com/elections-assets/pages/data/2026-11-03/results-senate.json",
+    "house": "https://static01.nyt.com/elections-assets/pages/data/2026-11-03/results-house.json",
+    "governor": "https://static01.nyt.com/elections-assets/pages/data/2026-11-03/results-governor.json"
+  },
+  "polymarket": {
+    "gamma": "https://gamma-api.polymarket.com",
+    "clob": "https://clob.polymarket.com",
+    "site": "https://polymarket.com/event/"
+  },
+  "control_slugs": [
+    "which-party-will-win-the-senate-in-2026",
+    "which-party-will-win-the-house-in-2026",
+    "balance-of-power-2026-midterms",
+    "republican-senate-seats-after-the-2026-midterm-elections-927",
+    "republican-house-seats-after-the-2026-midterm-elections"
+  ]
+}
