@@ -12,8 +12,10 @@ Polymarket es un mercado de apuestas, no una encuesta ni un resultado. Un llamad
 
 Arriba, un botón **Senado | Cámara | Gobernadores** (uno a la vez). En cada vista: el control de esa cámara en números grandes, un mapa de estados y, al tocarlo, la carrera con la probabilidad y el escrutinio.
 
-- **Senado y gobernadores.** El estado se pinta con quien va adelante en Polymarket (color suave si está reñida). Cuando hay votos, con quien va adelante; si el NYT trae un llamado, el color es fuerte. Los estados que no eligen ese cargo en 2026 quedan grises.
-- **Cámara.** El mapa es por estado, según sus distritos reñidos (no un mapa de los 435 distritos). Al tocar un estado se ven esos distritos. Gris = ninguno reñido.
+- **Senado y gobernadores.** Color firme, inclinado o reñido según quién va adelante (Polymarket ahora; votos o llamado cuando existan). El borde punteado es un cambio de partido frente a quien ocupa el cargo. Si el estado no vota ese cargo en 2026, el mapa usa un tramado del partido que lo tiene hoy (delegación dividida en el Senado: azul y rojo). Leyenda: «Dem. sin elección», «Rep. sin elección».
+- **Cámara.** Cada estado va del color de la mayoría de su delegación (proyección de los distritos; si aún no hay votos, la mayoría actual). El borde negro marca distritos reñidos. No hay estados grises: los 50 eligen Cámara.
+
+Quién ocupa el cargo hoy está en `holders.js`, no se inventa: senadores al 26 oct 2026 ([congresscountdown.com](https://www.congresscountdown.com/info/us-senators)); gobernadores y escaños de la Cámara según [The Green Papers](https://www.thegreenpapers.com/G26/composition.phtml) (24 D / 26 R; Cámara 214 D, 1 independiente, 218 R, 2 vacantes). En un distrito sin titular en la boleta no se marca cambio de partido.
 
 En cada carrera, el precio de Polymarket va al lado del escrutinio: porción del voto esperado, votos y, cuando el feed trae un ganador, la marca **Llamado**. Si el feed está en línea pero el conteo sigue en cero, la página dice **Sin votos todavía**. No hay números de relleno.
 

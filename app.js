@@ -32,7 +32,7 @@ const RATING = {
 };
 const RATING_ORDER = ["tossup", "lean-dem", "lean-rep", "likely-dem", "likely-rep", "solid-dem", "solid-rep"];
 const PARTY_ES = {D:"Demócratas", R:"Republicanos", I:"Independiente", O:"Otro"};
-const COL = {D:"#1b3a8a", R:"#c4161c", I:"#1e8a3e", O:"#64748b"};
+const COL = {D:"#0A47C2", R:"#D0122D", I:"#0E8A3D", O:"#5c6778"};
 
 const VIEW_FROM = {senado:"senate", senate:"senate", camara:"house", cámara:"house", house:"house", gob:"gov", gobernadores:"gov", gov:"gov"};
 const S = {
@@ -44,10 +44,9 @@ const S = {
   houseAll: false, q: "",
   prev: {}, userPicked: false
 };
-const SOLID = {D:"#1b3a8a", R:"#c4161c", I:"#1e8a3e", O:"#64748b"};
-const PASTEL = {D:"#b5c4ea", R:"#f4b4b6", I:"#b4e0bf", O:"#d5d8de"};
-const PALE = {D:"#dce4f6", R:"#f8e2e3", I:"#e5f6ea", O:"#eceff3"};
-const GREY = "#cfd5dc";
+const SOLID = {D:"#0A47C2", R:"#D0122D", I:"#0E8A3D", O:"#5c6778"};
+const LEAN = {D:"#3B6FE8", R:"#F03A3A", I:"#1FA85A", O:"#8b95a7"};
+const TOSS = {D:"#8FB4F8", R:"#F7A3A3", I:"#8ED9A8", O:"#c5cad3"};
 const TINY = ["VT","NH","MA","RI","CT","NJ","DE","MD"];
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
@@ -448,8 +447,54 @@ function racesOf(view){
   return S.page.senate || [];
 }
 function tone(party, mode){
-  const table = mode === "solid" ? SOLID : mode === "pale" ? PALE : PASTEL;
-  return table[party] || GREY;
+  const table = mode === "lean" ? LEAN : mode === "toss" ? TOSS : SOLID;
+  return table[party] || "#c5cad3";
+}
+function shadeOf(gap, rating){
+  if (rating === "tossup" || gap < 0.08) return "toss";
+  if ((rating || "").startsWith("lean") || gap < 0.18) return "lean";
+  return "solid";
+}
+function leadingParty(race){
+  const nyt = nytOf(race);
+  if (nyt && nyt.status === "llamado" && nyt.winner_party) return nyt.winner_party;
+  if (nyt && nyt.status !== "sin_votos"){
+    const v = voteLeader(nyt);
+    if (v && v.party && v.party !== "O") return v.party;
+  }
+  const p = pmLeader(race);
+  return p && p.party !== "O" ? p.party : (p ? p.party : null);
+}
+function holderOf(race){
+  if (!race || typeof HOLD === "undefined") return null;
+  if ((race.office === "senate") || (race.key || "").startsWith("senate:")) return HOLD.senateUp[race.state] || null;
+  if ((race.office === "governor") || (race.key || "").startsWith("gov:")) return HOLD.gov[race.state] || null;
+  const nyt = nytOf(race);
+  const inc = nyt && (nyt.candidates || []).find(c => c.incumbent && c.party && c.party !== "O");
+  return inc ? inc.party : null;
+}
+function flipInfo(holder, lead){
+  if (!holder || !lead || holder === "O" || lead === "O") return null;
+  if (holder === lead) return {flip:false, text:"Se mantiene"};
+  return {flip:true, text:`Cambio de partido ${holder}→${lead}`};
+}
+function flipTag(info){
+  if (!info) return "";
+  if (info.flip) return `<span class="flipb">↻ ${esc(info.text)}</span>`;
+  return `<span class="tag t1">${esc(info.text)}</span>`;
+}
+function sideName(p){
+  return p === "D" ? "demócrata" : p === "R" ? "republicano" : p === "I" ? "independiente" : "otro";
+}
+function noElectionFill(parties){
+  const uniq = [...new Set(parties.filter(Boolean))];
+  if (uniq.length === 1) return {fill:`url(#hatch${uniq[0]})`, text:`${uniq[0] === "D" ? "Dem." : uniq[0] === "R" ? "Rep." : "Ind."} sin elección`};
+  return {fill:"url(#splitDR)", text:"Dividida, sin elección"};
+}
+function majorityParty(d, r){
+  if (d > r) return "D";
+  if (r > d) return "R";
+  return null;
 }
 function pmLeader(race){
   const cs = ((race && race.candidates) || []).filter(c => c.price != null);
@@ -465,44 +510,47 @@ function paintState(view, st){
   if (view === "house") return paintHouse(st);
   const race = racesOf(view).find(r => r.state === st);
   const nyt = nytOf(race);
-  if (!race && !nyt) return {fill:GREY, off:true, strong:false, text:"Sin elección en 2026"};
-  if (nyt && nyt.status === "llamado" && nyt.winner_party){
-    return {fill:tone(nyt.winner_party, "solid"), off:false, strong:true, text:"Llamado"};
+  const holder = view === "senate" ? (HOLD.senateUp[st] || null) : HOLD.gov[st];
+  if (!race && !nyt){
+    const held = view === "senate" ? noElectionFill(HOLD.senate[st] || []) : noElectionFill([HOLD.gov[st]]);
+    return {fill:held.fill, off:false, flip:false, comp:false, text:held.text + " en 2026"};
   }
-  if (nyt && nyt.status !== "sin_votos"){
-    const lead = voteLeader(nyt);
-    return {fill:tone(lead && lead.party, "mid"), off:false, strong:false, text:"Va adelante en el escrutinio"};
-  }
-  const lead = pmLeader(race);
-  if (!lead) return {fill:GREY, off:false, strong:false, text:"Sin mercado"};
-  const close = gapOf(race.candidates) < 0.15;
-  return {fill:tone(lead.party, close ? "pale" : "mid"), off:false, strong:false, text: close ? "Reñida" : "Va adelante en Polymarket"};
+  const lead = leadingParty(race);
+  const info = flipInfo(holder, lead);
+  const called = nyt && nyt.status === "llamado";
+  const mode = called ? "solid" : shadeOf(gapOf(race.candidates), nyt && nyt.rating);
+  return {fill:tone(lead, mode), off:false, flip:!!(info && info.flip), comp:false, text: called ? "Llamado" : (mode === "toss" ? "Empate" : "Va adelante")};
 }
-function paintHouse(st){
+function houseProjection(st){
   const races = racesOf("house").filter(r => r.state === st);
-  let d = 0, r = 0, n = 0, called = 0, comp = 0;
+  let d = 0, r = 0, comp = 0;
   for (const race of races){
     const nyt = nytOf(race);
-    if (!passes(race, "comp")) continue;
-    comp++;
-    if (nyt && nyt.status === "llamado") called++;
-    let party = nyt && nyt.status === "llamado" ? nyt.winner_party : null;
-    if (!party && nyt && nyt.status !== "sin_votos") party = (voteLeader(nyt) || {}).party;
-    if (!party) party = (pmLeader(race) || {}).party;
+    if (passes(race, "battle")) comp++;
+    const party = leadingParty(race);
     if (party === "D") d++;
     else if (party === "R") r++;
-    n++;
   }
-  if (!comp) return {fill:GREY, off:true, strong:false, text:"Sin distritos reñidos"};
-  if (d === r) return {fill:"#d5d8de", off:false, strong:false, text:"Distritos reñidos, sin lado claro"};
-  const party = d > r ? "D" : "R";
-  const allCalled = called === n && n > 0;
-  const share = Math.abs(d - r) / n;
-  return {fill:tone(party, allCalled ? "solid" : share >= 0.5 ? "mid" : "pale"), off:false, strong:allCalled, text: allCalled ? "Llamados" : "Va adelante"};
+  const anyVotes = races.some(r => { const n = nytOf(r); return n && n.status && n.status !== "sin_votos"; });
+  return {d, r, comp, anyVotes, n: races.length};
+}
+function paintHouse(st){
+  const cur = HOLD.house[st] || {d:0, r:0, i:0, v:0};
+  const proj = houseProjection(st);
+  const curParty = majorityParty(cur.d, cur.r);
+  const useProj = proj.anyVotes || proj.n > 0;
+  const d = useProj ? proj.d : cur.d;
+  const r = useProj ? proj.r : cur.r;
+  let party = majorityParty(d, r) || curParty;
+  const margin = Math.abs(d - r);
+  const mode = !useProj || margin >= 3 ? "solid" : margin === 0 ? "toss" : "lean";
+  if (!party) return {fill:"url(#splitDR)", off:false, flip:false, comp:proj.comp > 0, text:"Delegación empatada"};
+  const flip = !!(curParty && party && curParty !== party);
+  return {fill:tone(party, mode), off:false, flip, comp:proj.comp > 0, text: flip ? `Mayoría ${party === "D" ? "demócrata" : "republicana"} · cambia` : `Mayoría ${party === "D" ? "demócrata" : "republicana"}`};
 }
 function controlHTML(view){
   if (view === "gov"){
-    return `<section class="card"><h2>Gobernadores <span class="same">2026</span></h2><p class="note">Cada estado del mapa es una gobernación. El color es quien va adelante en Polymarket y, cuando haya votos, quien va adelante o ya fue llamado.</p></section>`;
+    return `<section class="card"><h2>Gobernadores <span class="same">2026</span></h2><p class="note">${esc(flipSummary("gov"))}. El borde punteado marca un cambio de partido frente al gobernador actual.</p></section>`;
   }
   const blockKey = view === "house" ? "house" : "senate";
   const block = S.page.control && S.page.control[blockKey];
@@ -520,20 +568,54 @@ function controlHTML(view){
   return `<section class="card"><h2>Control ${esc(title)} <a class="same" href="${esc(block.url)}" target="_blank" rel="noopener">Polymarket ↗</a></h2>
     <div class="pcards">${cards}</div>
     ${ctrl ? seatBar(ctrl) : `<p class="empty">Conteo de escaños no disponible todavía.</p>`}
-    <p class="note">Volumen ${money(block.volume)} · ${esc(S.oddsVia || "copia")}</p>
+    <p class="note">${esc(flipSummary(view))}. Volumen ${money(block.volume)} · ${esc(S.oddsVia || "copia")}</p>
     ${seatRows.length ? `<details class="extra"><summary>Cuántos escaños republicanos</summary>${outcomesBars(seatRows, seatsKey)}<p class="note">Polymarket · ${money(seats.volume)}</p></details>` : ""}
     </section>`;
 }
+function swatch(bg){ return `<i style="background:${bg}"></i>`; }
 function legendHTML(view){
-  const grey = view === "house" ? "Sin distritos reñidos" : "Sin elección en 2026";
-  return `<div class="legend">
-    <span><i style="background:${SOLID.D}"></i>Dem. llamado</span>
-    <span><i style="background:${PASTEL.D}"></i>Dem. adelante</span>
-    <span><i style="background:${SOLID.R}"></i>Rep. llamado</span>
-    <span><i style="background:${PASTEL.R}"></i>Rep. adelante</span>
-    <span><i style="background:${PALE.D}"></i>Reñido</span>
-    <span><i style="background:${GREY}"></i>${esc(grey)}</span>
-  </div>`;
+  const bits = [
+    `<span>${swatch(SOLID.D)}Dem. firme</span>`,
+    `<span>${swatch(LEAN.D)}Dem. inclina</span>`,
+    `<span>${swatch(TOSS.D)}Dem. reñido</span>`,
+    `<span>${swatch(SOLID.R)}Rep. firme</span>`,
+    `<span>${swatch(LEAN.R)}Rep. inclina</span>`,
+    `<span>${swatch(TOSS.R)}Rep. reñido</span>`,
+    `<span><i style="background:#fff;border:2px dashed #111;box-sizing:border-box"></i>Cambio de partido</span>`
+  ];
+  if (view === "house") bits.push(`<span><i style="background:#fff;border:2px solid #111;box-sizing:border-box"></i>Hay distritos reñidos</span>`);
+  else {
+    bits.push(`<span>${swatch("repeating-linear-gradient(135deg,#9bb6e4 0 3px,#0A47C2 3px 6px)")}Dem. sin elección</span>`);
+    bits.push(`<span>${swatch("repeating-linear-gradient(135deg,#f0b4bc 0 3px,#D0122D 3px 6px)")}Rep. sin elección</span>`);
+    bits.push(`<span>${swatch("linear-gradient(90deg,#0A47C2 50%,#D0122D 50%)")}Dividida, sin elección</span>`);
+  }
+  return `<div class="legend">${bits.join("")}</div>`;
+}
+function flipSummary(view){
+  let rd = 0, dr = 0, hold = 0;
+  if (view === "house"){
+    for (const st of Object.keys(HOLD.house)){
+      const info = paintHouse(st);
+      const cur = majorityParty(HOLD.house[st].d, HOLD.house[st].r);
+      const proj = houseProjection(st);
+      const next = majorityParty(proj.n ? proj.d : HOLD.house[st].d, proj.n ? proj.r : HOLD.house[st].r) || cur;
+      if (!cur || !next) continue;
+      if (cur === next) hold++;
+      else if (cur === "R" && next === "D") rd++;
+      else if (cur === "D" && next === "R") dr++;
+    }
+    return `Cambios de mayoría estatal: R→D ${rd} · D→R ${dr} · se mantiene ${hold}`;
+  }
+  const races = racesOf(view);
+  for (const race of races){
+    const info = flipInfo(holderOf(race), leadingParty(race));
+    if (!info) continue;
+    if (!info.flip) hold++;
+    else if (info.text.includes("R→D")) rd++;
+    else if (info.text.includes("D→R")) dr++;
+  }
+  const what = view === "gov" ? "gobernaciones" : "escaños";
+  return `Cambios: R→D ${rd} · D→R ${dr} · se mantiene ${hold} ${what}`;
 }
 function tinyHTML(view){
   return `<div class="tiny" id="tiny">${TINY.map(st => {
@@ -552,11 +634,22 @@ function detailHTML(view){
     if (!show.length) show = sortRaces(all).slice(0, 3);
     else show = sortRaces(show);
     const info = paintHouse(st);
-    return `<div id="detail"><h3>${esc(name)}</h3><p class="note">${esc(info.text)}. ${esc(note)}</p>${show.map(r => raceCard(r, nytOf(r), (r.district||"")+" · "+placeName(r), r.url)).join("") || `<p class="empty">No hay mercados de estos distritos.</p>`}</div>`;
+    const cur = HOLD.house[st] || {d:0,r:0,i:0,v:0};
+    const proj = houseProjection(st);
+    const total = cur.d + cur.r + cur.i + cur.v || proj.n || 1;
+    const bar = `<div class="seatbar" aria-hidden="true"><i style="width:${cur.d/total*100}%;background:${COL.D}"></i><i style="width:${cur.r/total*100}%;background:${COL.R}"></i><i style="width:${(cur.i+cur.v)/total*100}%;background:#c5cad3"></i></div>`;
+    const flip = info.flip ? `<span class="flipb">↻ Cambio de mayoría</span>` : `<span class="tag t1">Se mantiene la mayoría</span>`;
+    return `<div id="detail"><h3>${esc(name)} ${flip}</h3>${bar}<p class="note">Ahora: ${cur.d} dem. · ${cur.r} rep.${cur.i?` · ${cur.i} ind.`:""}${cur.v?` · ${cur.v} vacante${cur.v>1?"s":""}`:""}. Proyección: ${proj.d} dem. · ${proj.r} rep. ${esc(note)}</p>${show.map(r => raceCard(r, nytOf(r), (r.district||"")+" · "+placeName(r), r.url)).join("") || `<p class="empty">No hay mercados de estos distritos.</p>`}</div>`;
   }
   const race = racesOf(view).find(r => r.state === st);
   const nyt = nytOf(race);
-  if (!race && !nyt) return `<div id="detail"><h3>${esc(name)}</h3><p class="empty">${view==="senate"?"Este estado no elige senador en 2026.":"Este estado no elige gobernador en 2026."}</p></div>`;
+  if (!race && !nyt){
+    if (view === "senate"){
+      const pair = HOLD.senate[st] || [];
+      return `<div id="detail"><h3>${esc(name)}</h3><p class="note">Sin elección en 2026. Senadores actuales: ${pair.map(sideName).join(" y ")}.</p></div>`;
+    }
+    return `<div id="detail"><h3>${esc(name)}</h3><p class="note">Sin elección en 2026. Gobernador actual: ${sideName(HOLD.gov[st])}.</p></div>`;
+  }
   return `<div id="detail">${raceCard(race, nyt, name + (race && race.key.endsWith(":special") ? " · especial" : ""), race && race.url)}</div>`;
 }
 function listHTML(view){
@@ -593,7 +686,7 @@ function listHTML(view){
 }
 function viewHTML(){
   const view = S.view;
-  const mapTitle = view === "house" ? "Estados, según sus distritos reñidos" : view === "gov" ? "Gobernadores" : "Senado por estado";
+  const mapTitle = view === "house" ? "Mayoría de la delegación" : view === "gov" ? "Gobernadores" : "Senado por estado";
   return `${controlHTML(view)}
     <section class="card"><h2>${mapTitle}</h2>
       <div class="mapwrap"><svg id="map" viewBox="0 0 ${USMAP.w} ${USMAP.h}" role="img" aria-label="Mapa de Estados Unidos"></svg></div>
@@ -614,11 +707,18 @@ function drawMap(){
   const svg = document.getElementById("map");
   if (!svg || typeof USMAP === "undefined") return;
   const view = S.view;
-  svg.innerHTML = Object.entries(USMAP.d).map(([st, d]) => {
+  const defs = `<defs>
+    <pattern id="hatchD" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="7" height="7" fill="#9bb6e4"/><line x1="0" y1="0" x2="0" y2="7" stroke="#0A47C2" stroke-width="3"/></pattern>
+    <pattern id="hatchR" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="7" height="7" fill="#f3c2c8"/><line x1="0" y1="0" x2="0" y2="7" stroke="#D0122D" stroke-width="3"/></pattern>
+    <pattern id="hatchI" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="7" height="7" fill="#b7e4c7"/><line x1="0" y1="0" x2="0" y2="7" stroke="#0E8A3D" stroke-width="3"/></pattern>
+    <pattern id="splitDR" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#0A47C2"/><rect x="4" width="4" height="8" fill="#D0122D"/></pattern>
+  </defs>`;
+  svg.innerHTML = defs + Object.entries(USMAP.d).map(([st, d]) => {
     const info = paintState(view, st);
     const sel = S.sel[view] === st ? " sel" : "";
-    const off = info.off ? " off" : "";
-    return `<path class="st${sel}${off}" data-st="${st}" d="${d}" fill="${info.fill}"><title>${esc(ST[st]||st)}. ${esc(info.text)}</title></path>`;
+    const flip = info.flip ? " flip" : "";
+    const comp = info.comp ? " comp" : "";
+    return `<path class="st${sel}${flip}${comp}" data-st="${st}" d="${d}" fill="${info.fill}"><title>${esc(ST[st]||st)}. ${esc(info.text)}</title></path>`;
   }).join("");
 }
 function pickState(st){
@@ -700,7 +800,8 @@ function raceCard(pm, nyt, title, href){
   const rows = buildRows(pm, nyt);
   const link = href ? ` <a class="same" href="${esc(href)}" target="_blank" rel="noopener">↗</a>` : "";
   const rt = nyt && nyt.rating && RATING[nyt.rating] ? `<span class="tag">${esc(RATING[nyt.rating])}</span>` : "";
-  return `<article class="race"><h3>${esc(title)} ${rt} ${titular(nyt)}${link}</h3>${oddsBlock(rows)}${resultsBlock(nyt)}</article>`;
+  const flip = flipTag(flipInfo(holderOf(pm), leadingParty(pm)));
+  return `<article class="race"><h3>${esc(title)} ${rt} ${titular(nyt)} ${flip}${link}</h3>${oddsBlock(rows)}${resultsBlock(nyt)}</article>`;
 }
 function placeName(race){
   if (race.office === "house" && race.district){

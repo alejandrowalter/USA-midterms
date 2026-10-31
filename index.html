@@ -10,7 +10,7 @@
 <style>
 :root{--bg:#f5f6f8;--card:#fff;--ink:#1d2330;--mut:#6b7280;--line:#e3e6ea;--dem:#1b3a8a;--rep:#c4161c;--ind:#1e8a3e;--hdr:#0f1b33}
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.35}
+body{margin:0;overflow-x:clip;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.35}
 header{position:sticky;top:0;z-index:30;background:var(--hdr);color:#fff;padding:10px 14px 12px;padding-top:max(10px,env(safe-area-inset-top))}
 header .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
 header h1{font-size:18px;margin:0;font-weight:680;letter-spacing:-.02em}
@@ -22,9 +22,10 @@ header .meta{font-size:12px;opacity:.88;margin:4px 0 10px}
 .chamber button{flex:1;min-height:44px;border:0;border-radius:10px;background:transparent;color:#fff;font:inherit;font-size:15.5px;font-weight:680;cursor:pointer}
 .chamber button.on{background:#fff;color:var(--hdr)}
 button:focus-visible,input:focus-visible,a:focus-visible,path:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}
-main{max-width:880px;margin:0 auto;padding:12px;display:grid;gap:12px}
+main{max-width:880px;margin:0 auto;padding:12px;display:grid;gap:12px;min-width:0}
+#view{min-width:0}
 @media(min-width:800px){main{padding:16px}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px}
+.card{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px}
 .card h2{font-size:18px;margin:0 0 12px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
 .card h2 .same, h2 .same{font-size:13px;font-weight:500}
 .same{color:var(--mut);font-size:13px}
@@ -49,15 +50,18 @@ details.extra summary{cursor:pointer;font-weight:650;font-size:14px;padding:4px 
 .mapwrap{position:relative}
 svg#map{width:100%;height:auto;display:block;background:#eef1f4;border-radius:10px;touch-action:manipulation}
 svg#map path.st{stroke:#fff;stroke-width:1.6;cursor:pointer}
-svg#map path.st.sel{stroke:#111;stroke-width:3}
-svg#map path.off{cursor:pointer}
+svg#map path.comp{stroke:#111;stroke-width:2.6}
+svg#map path.flip{stroke:#111;stroke-width:3.2;stroke-dasharray:8 4}
+svg#map path.st.sel{stroke:#111;stroke-width:4}
+svg#map path.flip.sel{stroke-dasharray:8 4}
+.flipb{display:inline-block;background:#111;color:#fff;border-radius:4px;padding:1px 6px;font-size:12px;font-weight:750}
 .legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;color:var(--mut);margin-top:8px}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid rgba(0,0,0,.06)}
 .tiny{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .tiny button,.chips button{min-height:36px;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
 .tiny button.on,.chips button.on{background:var(--hdr);color:#fff;border-color:var(--hdr)}
-.chips{display:flex;gap:6px;overflow:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
-.chips button{flex:0 0 auto}
+.chips{display:block;width:100%;overflow-x:auto;white-space:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.chips button{display:inline-block;margin:0 6px 6px 0}
 #detail{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
 #detail h3{font-size:18px;margin:0 0 8px}
 .toggle{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
@@ -108,6 +112,7 @@ footer a{color:inherit}
 </footer>
 <noscript><p style="padding:16px">Esta página necesita JavaScript para cargar los mercados y el escrutinio.</p></noscript>
 <script src="map.js"></script>
+<script src="holders.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
