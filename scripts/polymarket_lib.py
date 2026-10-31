@@ -320,6 +320,19 @@ def choose(prev: dict | None, new: dict) -> dict:
     return new if score(new) >= score(prev) else prev
 
 
+def enough_midpoints(token_ids: list[str], tokmap: dict) -> bool:
+    """The snapshot is the odds source for browsers that cannot reach Polymarket.
+
+    Require a real book midpoint for at least 80% of tokens, and at least 100
+    tokens. Below that, Gamma's last trade would be published as if it were fresh.
+    """
+    ids = [t for t in dict.fromkeys(token_ids) if t]
+    if len(ids) < 100:
+        return False
+    got = sum(1 for t in ids if tokmap.get(t) not in (None, ""))
+    return got * 5 >= len(ids) * 4
+
+
 def midpoints(clob: str, token_ids: list[str]) -> dict:
     res = {}
     ids = [t for t in dict.fromkeys(token_ids) if t]

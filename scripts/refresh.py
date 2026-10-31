@@ -21,6 +21,7 @@ from polymarket_lib import (  # noqa: E402
     all_tokens,
     build_page,
     discover,
+    enough_midpoints,
     midpoints,
 )
 
@@ -97,8 +98,18 @@ def main() -> int:
     toks = all_tokens(found)
     print(f"pidiendo {len(toks)} midpoints…")
     tokmap = midpoints(found["clob"], toks)
-    print(f"midpoints {len(tokmap)}")
+    unique = len([t for t in dict.fromkeys(toks) if t])
+    print(f"midpoints {len(tokmap)} de {unique}")
+    if not enough_midpoints(toks, tokmap):
+        print(
+            f"midpoints insuficientes ({len(tokmap)} de {unique}); no reescribo page.json",
+            file=sys.stderr,
+        )
+        return 1
     page = build_page(found, tokmap, as_iso, as_bta)
+    page["price_source"] = "clob.polymarket.com/midpoints"
+    page["midpoints"] = len(tokmap)
+    page["tokens"] = unique
 
     results = None
     try:

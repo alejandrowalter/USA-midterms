@@ -39,13 +39,14 @@ La clasificación (empate, inclina, probable, sólido) es `general_rating` de es
 
 ## Cómo se actualiza
 
-Dos caminos, como en el sitio de Brasil. El navegador intenta la fuente en vivo y, si no llega (por ejemplo un operador que bloquea el dominio), usa la copia del propio sitio.
+La página no depende de que el navegador llegue a Polymarket. En Colombia hay redes que bloquean ese dominio; el libro de órdenes responde bien desde el servidor de GitHub, así que la copia del sitio es la fuente.
 
-- **Al abrir la página**, y otra vez cada pocos minutos: lee el NYT en el navegador y arma el escrutinio ahí mismo. En la noche electoral (3 nov 16:00 a 6 nov 12:00, hora de Bogotá) repite esa lectura **cada 2 minutos**. Antes de eso repite la copia `data/results.json` cada 3 minutos, para no bajar 7 MB de Cámara en el teléfono cuando todavía no hay votos. `?live=1` fuerza la lectura directa; `?live=0` no la intenta.
-- **Cada 60 segundos** pide el punto medio del libro de Polymarket para el control, el Senado, las gobernaciones y los distritos competitivos. Si falla, se quedan los precios de `data/page.json`.
-- **GitHub Action** `.github/workflows/refresh.yml` corre cada 5 minutos (GitHub a veces la atrasa a 10–15) y al empujar cambios de `scripts/` o `sources.json`. `scripts/refresh.py` reescribe `data/page.json` y `data/results.json` y hace commit solo si cambiaron. Si Polymarket no devuelve los mercados de control, no toca los archivos. Si el NYT falla, actualiza los mercados y **deja la copia anterior del escrutinio**.
+- **Precios.** Al abrir, y otra vez cada minuto, el navegador lee `data/page.json` (mismo dominio). Arriba dice «Precios de Polymarket de las HH:MM (hora Bogotá)», la hora de esa copia. Si el navegador sí llega a `clob.polymarket.com`, pide el punto medio una vez y, si responde, lo sigue actualizando en silencio. Si no responde, no hay aviso.
+- **Escrutinio.** Siempre parte de `data/results.json`, con «Escrutinio de las HH:MM (hora Bogotá)». En la noche electoral (3 nov 16:00 a 6 nov 12:00, hora de Bogotá) el navegador también intenta el NYT cada 2 minutos. Si no llega, se queda la copia, sin aviso, y no reintenta el NYT por 10 minutos. Antes de esa noche no baja los ~7 MB de la Cámara al teléfono. `?live=1` fuerza la lectura directa; `?live=0` no la intenta.
+- **Aviso** solo si la copia no carga, o si la que está en pantalla tiene más de 30 minutos.
+- **GitHub Action** `.github/workflows/refresh.yml`. El cron de GitHub es de mínimo 5 minutos, pero no cumple la hora: en este repo un `*/5` arrancaba cerca de cada 30 minutos, y se atrasa más en el cambio de hora. Por eso el schedule dispara a los minutos 7 y 37, y **el job, una vez en marcha, vuelve a bajar Polymarket (con el punto medio del libro) y el NYT cada 8 minutos**. Cada copia nueva es un commit en `main` y Pages la publica. Ocho minutos, y no cinco, porque Pages tiene un tope blando de 10 builds por hora: cada 5 minutos serían 12 y el sitio puede quedarse atrás. Fuera de la noche electoral el bucle dura ~75 minutos, así un arranque tardío igual se solapa con el siguiente. Del 3 nov 16:00 al 6 nov 12:00 (Bogotá) el mismo bucle sigue **4 horas**, para que el escrutinio no dependa de que GitHub dispare el cron a tiempo.
 
-La copia es la red de seguridad: el navegador la lee de `data/page.json` y `data/results.json` en el mismo dominio, así que no depende de CORS.
+`scripts/refresh.py` reescribe `data/page.json` solo si el libro devolvió el punto medio de al menos el 80% de los tokens. Si Polymarket no devuelve los mercados de control, o si faltan esos precios, no toca el archivo. Si el NYT falla, actualiza los mercados y **deja la copia anterior del escrutinio**.
 
 ## Cambiar la fuente del escrutinio
 
@@ -54,7 +55,7 @@ Hoy está cableado el NYT. No hay una segunda fuente conectada.
 1. Edita las URLs en `sources.json` → `nyt` y las mismas en `SOURCES.nyt` dentro de `app.js`.
 2. Si el JSON nuevo no tiene la forma del NYT (`races`, `candidate_metadata`, `top_reporting_unit.eevp`, `top_reporting_unit.candidates[].votes.total`, `outcome.won`, `partyControlData`), adapta `scripts/nyt_results.py` y las funciones `slimRace` / `slimControl` de `app.js`. Las dos tienen que devolver el mismo objeto: `status` (`sin_votos`, `contando`, `llamado`, `proyectado`, `segunda_vuelta`), `eevp`, `total_votes`, `winner`, `candidates[]` con `name`, `party` (`D`/`R`/`O`), `votes`.
 3. Corre `python3 scripts/test_normalize.py` y `python3 scripts/refresh.py`.
-4. Si ninguna URL responde, la página muestra «Resultados no disponibles todavía» y no inventa un conteo.
+4. Si la copia del escrutinio no carga, la página dice «No se pudo leer el escrutinio guardado en este sitio» y no inventa un conteo.
 
 Decision Desk HQ pide credenciales. Esta página no las usa.
 

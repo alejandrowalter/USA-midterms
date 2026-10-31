@@ -9,7 +9,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from nyt_results import assign_keys, house_code, slim_control, slim_race  # noqa: E402
-from polymarket_lib import extract_district, is_gov_event, is_senate_event, party_of, senate_key  # noqa: E402
+from polymarket_lib import (  # noqa: E402
+    enough_midpoints,
+    extract_district,
+    is_gov_event,
+    is_senate_event,
+    party_of,
+    senate_key,
+)
 
 
 def race(**kwargs):
@@ -141,6 +148,15 @@ class PolymarketTests(unittest.TestCase):
         self.assertEqual(party_of(m), "D")
         m2 = {"groupItemTitle": "Mary Peltola", "question": "Will Mary Peltola win the Alaska senate election?"}
         self.assertEqual(party_of(m2), "D")
+
+    def test_midpoint_coverage(self):
+        tokens = [str(i) for i in range(100)]
+        self.assertTrue(enough_midpoints(tokens, {t: "0.5" for t in tokens}))
+        self.assertTrue(enough_midpoints(tokens, {t: "0.5" for t in tokens[:80]}))
+        self.assertFalse(enough_midpoints(tokens, {t: "0.5" for t in tokens[:79]}))
+        self.assertFalse(enough_midpoints(tokens, {t: "" for t in tokens}))
+        self.assertFalse(enough_midpoints([str(i) for i in range(50)], {str(i): "0.5" for i in range(50)}))
+        self.assertTrue(enough_midpoints(tokens + tokens, {t: "0.5" for t in tokens}))
 
 
 if __name__ == "__main__":

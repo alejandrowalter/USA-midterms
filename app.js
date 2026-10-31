@@ -72,6 +72,19 @@ function bogota(input){
     timeZone:"America/Bogota", day:"2-digit", month:"short", hour:"2-digit", minute:"2-digit", hour12:false
   }).format(d) + " (Bogotá)";
 }
+function hm(input){
+  const d = new Date(input);
+  if (!input || Number.isNaN(d.getTime())) return "–";
+  return new Intl.DateTimeFormat("es-CO", {timeZone:"America/Bogota", hour:"2-digit", minute:"2-digit", hour12:false}).format(d);
+}
+const STALE_MS = 30 * 60 * 1000;
+function ageMs(iso){
+  const t = Date.parse(iso || "");
+  return Number.isNaN(t) ? Infinity : Date.now() - t;
+}
+function snapshotStale(iso){
+  return ageMs(iso) > STALE_MS;
+}
 function nightMode(){
   if (Q.get("live") === "1") return true;
   if (Q.get("live") === "0") return false;
@@ -315,7 +328,7 @@ function applyMids(page, mids){
   for (const group of ["senate","governor","house"]) for (const race of page[group] || []) for (const c of race.candidates || []) price(c);
 }
 async function refreshMids(){
-  if (!S.page) return;
+  if (!S.page || S.clob !== "on") return;
   const before = capturePrices();
   const ids = collectTokens(S.page);
   const mids = {};
@@ -324,13 +337,21 @@ async function refreshMids(){
     try {
       const r = await fetchJSON_post(SOURCES.clob, chunk.map(token_id => ({token_id})), 8000);
       if (r && typeof r === "object" && !r.error) Object.assign(mids, r);
-    } catch (e) { /* el siguiente lote puede funcionar */ }
+    } catch (e) { /* un lote caído no reemplaza la copia */ }
   }
   if (Object.keys(mids).length < 2) throw new Error("sin midpoints");
   applyMids(S.page, mids);
   S.prev = before;
   S.oddsLiveAt = new Date().toISOString();
-  S.oddsVia = "libro de órdenes en vivo";
+}
+async function probeClob(){
+  if (Q.get("live") === "0" || !S.page) return;
+  const id = collectTokens(S.page)[0];
+  if (!id) return;
+  try {
+    const r = await fetchJSON_post(SOURCES.clob, [{token_id: id}], 3500);
+    if (r && r[id] != null && r[id] !== "") S.clob = "on";
+  } catch (e) { /* red bloqueada: la copia alcanza */ }
 }
 async function fetchJSON_post(url, body, ms){
   const ctrl = new AbortController();
@@ -573,7 +594,7 @@ function controlHTML(view){
   return `<section class="card"><h2>Control ${esc(title)} <a class="same" href="${esc(block.url)}" target="_blank" rel="noopener">Polymarket ↗</a></h2>
     <div class="pcards">${cards}</div>
     ${ctrl ? seatBar(ctrl) : `<p class="empty">Conteo de escaños no disponible todavía.</p>`}
-    <p class="note">${esc(flipSummary(view))}. Volumen ${money(block.volume)} · ${esc(S.oddsVia || "copia")}</p>
+    <p class="note">${esc(flipSummary(view))}. Volumen ${money(block.volume)}</p>
     ${seatRows.length ? `<details class="extra"><summary>Cuántos escaños republicanos</summary>${outcomesBars(seatRows, seatsKey)}<p class="note">Polymarket · ${money(seats.volume)}</p></details>` : ""}
     </section>`;
 }
@@ -1015,20 +1036,18 @@ function renderAll(){
     q2.oninput = () => { S.q = q2.value; S._focusQ = true; renderAll(); };
     if (S._focusQ){ q2.focus(); const n = q2.value.length; q2.setSelectionRange(n, n); S._focusQ = false; }
   }
-  const viaCorta = v => v === "libro de órdenes en vivo" ? "en vivo" : v === "copia en GitHub" ? "copia" : v === "NYT directo" ? "NYT" : (v || "");
-  const hm = (input) => {
-    const d = new Date(input);
-    if (!input || Number.isNaN(d.getTime())) return "–";
-    return new Intl.DateTimeFormat("es-CO", {timeZone:"America/Bogota", hour:"2-digit", minute:"2-digit", hour12:false}).format(d);
-  };
-  document.getElementById("oddsAt").textContent = hm(S.oddsLiveAt || S.page.as_of_iso) + (S.oddsVia ? " · "+viaCorta(S.oddsVia) : "");
+  const oddsIso = S.oddsLiveAt || S.page.as_of_iso;
+  document.getElementById("oddsAt").textContent = "Precios de Polymarket de las " + hm(oddsIso) + " (hora Bogotá)";
   const res = S.results;
-  document.getElementById("resAt").textContent = res ? (hm(res.fetched_at_iso) + " · " + viaCorta(S.resultsVia)) : "sin datos";
+  document.getElementById("resAt").textContent = res
+    ? "Escrutinio de las " + hm(res.fetched_at_iso) + " (hora Bogotá)"
+    : "Escrutinio sin datos";
   const banner = document.getElementById("banner");
   const bits = [];
-  if (!nightMode() && Date.now() < POLLS) bits.push("El escrutinio empieza el martes 3 de noviembre. Los mercados ya están en vivo; los votos aparecen cuando los estados empiezan a reportar.");
+  if (!nightMode() && Date.now() < POLLS) bits.push("El escrutinio empieza el martes 3 de noviembre. Los precios son los de Polymarket; los votos aparecen cuando los estados empiezan a reportar.");
+  if (snapshotStale(oddsIso)) bits.push("Los precios de Polymarket tienen más de 30 minutos. Última copia: " + hm(oddsIso) + " (hora Bogotá).");
+  if (res && snapshotStale(res.fetched_at_iso)) bits.push("El escrutinio guardado tiene más de 30 minutos. Última copia: " + hm(res.fetched_at_iso) + " (hora Bogotá).");
   if (S.resultsWarn) bits.push(S.resultsWarn);
-  if (S.oddsWarn) bits.push(S.oddsWarn);
   if (bits.length){ banner.hidden = false; banner.className = "banner" + (S.resultsWarn && !S.results ? " err" : ""); banner.innerHTML = bits.map(t=>`<div>${esc(t)}</div>`).join(""); }
   else banner.hidden = true;
   if (S._scrollDetail){
@@ -1040,9 +1059,15 @@ function renderAll(){
   }
 }
 
+function adoptPage(page){
+  if (!page) return;
+  if (S.page && page.as_of_iso && page.as_of_iso > (S.page.as_of_iso || "")) S.prev = capturePrices();
+  S.page = page;
+  S.oddsLiveAt = null;
+}
 async function bootOdds(){
   try {
-    S.page = await fetchJSON("data/page.json?t="+Date.now(), 8000);
+    adoptPage(await fetchJSON("data/page.json?t="+Date.now(), 8000));
   } catch (e) {
     const banner = document.getElementById("banner");
     banner.hidden = false;
@@ -1051,57 +1076,55 @@ async function bootOdds(){
     document.getElementById("view").innerHTML = "<p class=\"empty\">No se pudieron cargar los mercados.</p>";
     return;
   }
-  S.oddsVia = "copia en GitHub";
-  S.oddsWarn = "";
   renderAll();
-  try {
-    await refreshMids();
-    S.oddsWarn = "";
-  } catch (e) {
-    S.oddsVia = "copia en GitHub";
-    S.oddsWarn = "El libro de órdenes de Polymarket no respondió; se muestran los precios de la última copia.";
+  await probeClob();
+  if (S.clob === "on"){
+    try { await refreshMids(); }
+    catch (e) { S.clob = "off"; S.oddsLiveAt = null; }
+    renderAll();
   }
-  renderAll();
 }
 async function bootResults(){
   S.resultsWarn = "";
-  let directOk = false;
-  if (Q.get("live") !== "0"){
-    try { await loadDirectResults(); directOk = true; }
-    catch (e) { /* fallback */ }
-  }
-  if (!directOk){
-    try { await loadSnapshotResults(); }
-    catch (e) {
-      S.results = null;
-      S.resultsWarn = "Resultados no disponibles todavía: ni el NYT ni la copia de este sitio respondieron.";
-    }
-  }
-  if (!directOk && S.results && Q.get("live") !== "0"){
-    S.resultsWarn = "El NYT no respondió en el navegador; se muestra la última copia guardada en este sitio.";
+  try { await loadSnapshotResults(); }
+  catch (e) {
+    S.results = null;
+    S.resultsWarn = "No se pudo leer el escrutinio guardado en este sitio.";
   }
   renderAll();
+  if (await tryDirectResults()) renderAll();
+}
+async function tryDirectResults(){
+  if (Q.get("live") === "0") return false;
+  if (!(nightMode() || Q.get("live") === "1")) return false;
+  if (Date.now() < (S.nytSkipUntil || 0)) return false;
+  try {
+    await loadDirectResults();
+    S.resultsWarn = "";
+    return true;
+  } catch (e) {
+    S.nytSkipUntil = Date.now() + 10 * 60 * 1000;
+    return false;
+  }
 }
 async function tickOdds(){
   try {
     const fresh = await fetchJSON("data/page.json?t="+Date.now(), 8000);
-    if (fresh && fresh.as_of_iso && (!S.page || fresh.as_of_iso > S.page.as_of_iso)) S.page = fresh;
-  } catch (e) { /* sigue el que ya hay */ }
-  try { await refreshMids(); S.oddsWarn = ""; }
-  catch (e) { S.oddsWarn = "Polymarket no respondió en este ciclo; siguen los últimos precios cargados."; }
+    if (fresh && fresh.as_of_iso && (!S.page || fresh.as_of_iso > (S.page.as_of_iso || ""))) adoptPage(fresh);
+  } catch (e) { /* sigue la copia que ya está en pantalla */ }
+  if (S.clob === "on"){
+    try { await refreshMids(); }
+    catch (e) { S.clob = "off"; S.oddsLiveAt = null; }
+  }
   renderAll();
 }
 async function tickResults(){
-  const useDirect = nightMode();
+  if (await tryDirectResults()){ renderAll(); return; }
   try {
-    if (useDirect) await loadDirectResults();
-    else await loadSnapshotResults();
-    S.resultsWarn = "";
+    await loadSnapshotResults();
+    if (S.results) S.resultsWarn = "";
   } catch (e) {
-    if (useDirect){
-      try { await loadSnapshotResults(); S.resultsWarn = "NYT directo falló; copia de GitHub."; }
-      catch (e2) { S.resultsWarn = "Resultados no disponibles en este ciclo."; }
-    }
+    if (!S.results) S.resultsWarn = "No se pudo leer el escrutinio guardado en este sitio.";
   }
   renderAll();
 }
