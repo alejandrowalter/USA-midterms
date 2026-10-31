@@ -34,7 +34,7 @@ const RATING_ORDER = ["tossup", "lean-dem", "lean-rep", "likely-dem", "likely-re
 const PARTY_ES = {D:"Demócratas", R:"Republicanos", I:"Independiente", O:"Otro"};
 const COL = {D:"#0A47C2", R:"#D0122D", I:"#0E8A3D", O:"#5c6778"};
 
-const VIEW_FROM = {senado:"senate", senate:"senate", camara:"house", cámara:"house", house:"house", gob:"gov", gobernadores:"gov", gov:"gov"};
+const VIEW_FROM = {senado:"senate", senate:"senate", camara:"house", cámara:"house", house:"house", gob:"gov", gobernadores:"gov", gov:"gov", batallas:"battles", battles:"battles", clave:"battles"};
 const S = {
   page: null, results: null,
   oddsVia: "", resultsVia: "",
@@ -684,8 +684,118 @@ function listHTML(view){
   const title = view === "house" ? "Distritos reñidos" : view === "gov" ? "Gobernaciones" : "Carreras del Senado";
   return `<section class="card"><h2>${title} <span class="same">${list.length}</span></h2>${filters}<div id="raceList">${list.map(r => raceCard(r, nytOf(r), view==="house" ? (r.district||"")+" · "+placeName(r) : placeName(r), r.url)).join("") || `<p class="empty">No hay carreras con este filtro.</p>`}</div></section>`;
 }
+function bestParty(race, party){
+  const cs = ((race && race.candidates) || []).filter(c => c.party === party && c.price != null);
+  return cs.length ? cs.slice().sort((a,b)=>b.price-a.price)[0] : null;
+}
+function battleScore(race){
+  const gap = gapOf(race.candidates);
+  const closeness = Math.max(0, 1 - Math.min(1, gap));
+  const holder = holderOf(race);
+  const lead = leadingParty(race);
+  const flips = !!(holder && lead && holder !== lead && lead !== "O" && holder !== "O");
+  const key = race.key || "";
+  let impact = 1;
+  if (key.startsWith("senate")) impact = flips ? 4 : 2.4;
+  else if (key.startsWith("house")) impact = flips ? 2 : 1.15;
+  else impact = flips ? 1.5 : 1;
+  return closeness * impact;
+}
+function countParties(list){
+  const n = {D:0, R:0, I:0};
+  for (const p of list) if (n[p] != null) n[p]++;
+  return n;
+}
+function houseNow(){
+  const n = {d:0, r:0, i:0, v:0};
+  for (const x of Object.values(HOLD.house)){ n.d += x.d; n.r += x.r; n.i += x.i; n.v += x.v; }
+  return n;
+}
+function pathCard(){
+  const sen = countParties([].concat(...Object.values(HOLD.senate)));
+  const up = countParties(Object.values(HOLD.senateUp));
+  const caucus = sen.D + sen.I;
+  const nytS = S.results && S.results.senate;
+  const nytH = S.results && S.results.house;
+  const needD = nytS && nytS.to_win ? nytS.to_win.D : null;
+  const needR = nytS && nytS.to_win ? nytS.to_win.R : null;
+  const h = houseNow();
+  const needH = nytH && nytH.to_win ? nytH.to_win.D : 218;
+  const demGain = needH - h.d;
+  let senPath = `Hoy el Senado tiene ${sen.R} republicanos, ${sen.D} demócratas y ${sen.I} independientes que votan con los demócratas: un caucus de ${caucus} frente a ${sen.R} (lista de senadores al ${HOLD.asOf}).`;
+  if (needD && needR) senPath += ` El feed del NYT marca la mayoría en ${needD} escaños demócratas o ${needR} republicanos. Desde ${caucus}, el caucus demócrata necesita una ganancia neta de ${needD - caucus}. Desde ${sen.R}, los republicanos pueden perder hasta ${sen.R - needR} y seguir en su cifra.`;
+  senPath += ` De los escaños que se votan, ${up.R} los ocupa un republicano y ${up.D} un demócrata.`;
+  const housePath = `La Cámara tiene 435 escaños; la mayoría es ${needH}. Hoy hay ${h.r} republicanos y ${h.d} demócratas, más ${h.i} independiente y ${h.v} vacantes (The Green Papers). Los demócratas necesitan una ganancia neta de ${demGain} para llegar a ${needH}. Los republicanos están en ${h.r}: una pérdida neta de ${h.r - needH + 1} los deja por debajo.`;
+  return `<section class="card"><h2>Batallas clave</h2>
+    <p>El orden sale de los datos: qué tan cerca está el precio de Polymarket del empate, y si quien va adelante es de otro partido que quien ocupa el cargo. No es una selección editorial.</p>
+    <p>${esc(senPath)}</p>
+    <p>${esc(housePath)}</p>
+  </section>`;
+}
+function whyText(race){
+  const holder = holderOf(race);
+  const lead = leadingParty(race);
+  const flip = flipInfo(holder, lead);
+  const nyt = nytOf(race);
+  const kind = (race.key || "").startsWith("house") ? "distrito" : (race.key || "").startsWith("gov") ? "cargo" : "escaño";
+  const bits = [];
+  if (holder) bits.push(`Hoy este ${kind} es ${sideName(holder)}.`);
+  else bits.push("En la boleta del NYT no figura un titular, así que no se marca cambio de partido.");
+  if (flip && flip.flip) bits.push(`Quien va adelante es ${sideName(lead)}: el partido cambiaría.`);
+  else if (flip) bits.push("Quien va adelante es del mismo partido que el titular.");
+  if (nyt && nyt.status === "llamado" && nyt.winner) bits.push(`El NYT la marca llamada: ${nyt.winner}.`);
+  else if (nyt && nyt.status !== "sin_votos" && nyt.total_votes) bits.push(`Hay escrutinio: ${fmtP(nyt.eevp, 0)} del voto esperado.`);
+  else bits.push("El feed del NYT todavía no trae votos de esta carrera.");
+  return bits.join(" ");
+}
+function ranked(list, limit){
+  return list.map(r => ({r, s: battleScore(r)})).sort((a,b)=>b.s-a.s || gapOf(a.r.candidates)-gapOf(b.r.candidates)).slice(0, limit);
+}
+function battleBlock(race, n, label){
+  const title = (race.key || "").startsWith("house") ? (race.district || "") + " · " + placeName(race) : placeName(race);
+  return `<article class="battle"><p class="rank">${n} · ${esc(label)}</p>${raceCard(race, nytOf(race), title, race.url)}<p class="why">${esc(whyText(race))}</p></article>`;
+}
+function battlesHTML(){
+  const senate = racesOf("senate").filter(r => {
+    const nyt = nytOf(r);
+    const rating = nyt && nyt.rating;
+    const gap = gapOf(r.candidates);
+    const flip = flipInfo(holderOf(r), leadingParty(r));
+    return rating === "tossup" || (rating || "").startsWith("lean") || gap <= 0.22 || (flip && flip.flip);
+  });
+  const house = racesOf("house").filter(r => passes(r, "battle") || gapOf(r.candidates) <= 0.12);
+  const gov = racesOf("gov").filter(r => {
+    const nyt = nytOf(r);
+    const rating = nyt && nyt.rating;
+    return rating === "tossup" || (rating || "").startsWith("lean") || gapOf(r.candidates) <= 0.4;
+  });
+  const senList = ranked(senate, 12);
+  const houList = ranked(house, 8);
+  const govList = ranked(gov.length ? gov : racesOf("gov"), 6);
+  const byState = {};
+  for (const {r, s} of ranked(house, 40)){
+    const x = byState[r.state] || (byState[r.state] = {st:r.state, n:0, score:0});
+    x.n++; x.score += s;
+  }
+  const states = Object.values(byState).sort((a,b)=>b.score-a.score).slice(0, 6);
+  const stateLine = states.map(x => `${ST[x.st] || x.st} (${x.n})`).join(" · ");
+  return `${pathCard()}
+    <section class="card"><h2>Senado <span class="same">${senList.length} carreras</span></h2>
+      <p class="note">Empates, inclinadas y escaños que cambiarían de partido, ordenados por cercanía del precio e impacto en la mayoría.</p>
+      ${senList.map((x,i)=>battleBlock(x.r, i+1, "Senado")).join("") || `<p class="empty">No hay carreras de Senado con precio cargado.</p>`}
+    </section>
+    <section class="card"><h2>Cámara <span class="same">${houList.length} distritos</span></h2>
+      <p class="note">Los distritos más cerrados. Dónde se concentran: ${esc(stateLine || "aún sin mercados")}.</p>
+      ${houList.map((x,i)=>battleBlock(x.r, i+1, "Cámara")).join("")}
+    </section>
+    <section class="card"><h2>Gobernadores <span class="same">${govList.length} carreras</span></h2>
+      <p class="note">Las gobernaciones con el precio más cerca del empate.</p>
+      ${govList.map((x,i)=>battleBlock(x.r, i+1, "Gobernador")).join("")}
+    </section>`;
+}
 function viewHTML(){
   const view = S.view;
+  if (view === "battles") return battlesHTML();
   const mapTitle = view === "house" ? "Mayoría de la delegación" : view === "gov" ? "Gobernadores" : "Senado por estado";
   return `${controlHTML(view)}
     <section class="card"><h2>${mapTitle}</h2>
@@ -923,7 +1033,7 @@ document.getElementById("chamber").onclick = (e) => {
   if (!b) return;
   S.view = b.dataset.v;
   const params = new URLSearchParams(location.search);
-  params.set("v", S.view === "house" ? "camara" : S.view === "gov" ? "gob" : "senado");
+  params.set("v", {house:"camara", gov:"gob", battles:"batallas"}[S.view] || "senado");
   history.replaceState(null, "", "?" + params.toString());
   window.scrollTo(0, 0);
   renderAll();

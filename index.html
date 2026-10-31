@@ -19,7 +19,8 @@ header .meta{font-size:12px;opacity:.88;margin:4px 0 10px}
 .pill.live{background:#16a34a}
 .pill.wait{background:#f59e0b;color:#111}
 .chamber{display:flex;background:rgba(255,255,255,.12);border-radius:12px;padding:3px;gap:3px}
-.chamber button{flex:1;min-height:44px;border:0;border-radius:10px;background:transparent;color:#fff;font:inherit;font-size:15.5px;font-weight:680;cursor:pointer}
+.chamber button{flex:1;min-height:48px;border:0;border-radius:10px;background:transparent;color:#fff;font:inherit;font-size:12.5px;line-height:1.15;font-weight:680;cursor:pointer;padding:6px 2px}
+@media(min-width:420px){.chamber button{font-size:14.5px}}
 .chamber button.on{background:#fff;color:var(--hdr)}
 button:focus-visible,input:focus-visible,a:focus-visible,path:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}
 main{max-width:880px;margin:0 auto;padding:12px;display:grid;gap:12px;min-width:0}
@@ -55,6 +56,10 @@ svg#map path.flip{stroke:#111;stroke-width:3.2;stroke-dasharray:8 4}
 svg#map path.st.sel{stroke:#111;stroke-width:4}
 svg#map path.flip.sel{stroke-dasharray:8 4}
 .flipb{display:inline-block;background:#111;color:#fff;border-radius:4px;padding:1px 6px;font-size:12px;font-weight:750}
+.battle{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.battle:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.rank{font-size:12px;font-weight:750;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin:0 0 4px}
+.why{font-size:14.5px;line-height:1.45;margin:8px 0 0}
 .legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;color:var(--mut);margin-top:8px}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid rgba(0,0,0,.06)}
 .tiny{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
@@ -98,6 +103,7 @@ footer a{color:inherit}
     <button type="button" data-v="senate">Senado</button>
     <button type="button" data-v="house">Cámara</button>
     <button type="button" data-v="gov">Gobernadores</button>
+    <button type="button" data-v="battles">Batallas</button>
   </nav>
 </header>
 <main>

@@ -10,7 +10,7 @@ Polymarket es un mercado de apuestas, no una encuesta ni un resultado. Un llamad
 
 ## Qué se ve
 
-Arriba, un botón **Senado | Cámara | Gobernadores** (uno a la vez). En cada vista: el control de esa cámara en números grandes, un mapa de estados y, al tocarlo, la carrera con la probabilidad y el escrutinio.
+Arriba, un botón **Senado | Cámara | Gobernadores | Batallas** (uno a la vez). **Batallas clave** ordena las carreras más cerradas y las que cambiarían de partido: cercanía del precio de Polymarket por el efecto en la mayoría. El texto de cada una usa el titular de `holders.js`, los candidatos del mercado y, si ya hay votos, el feed del NYT. No es una selección editorial. En cada vista: el control de esa cámara en números grandes, un mapa de estados y, al tocarlo, la carrera con la probabilidad y el escrutinio.
 
 - **Senado y gobernadores.** Color firme, inclinado o reñido según quién va adelante (Polymarket ahora; votos o llamado cuando existan). El borde punteado es un cambio de partido frente a quien ocupa el cargo. Si el estado no vota ese cargo en 2026, el mapa usa un tramado del partido que lo tiene hoy (delegación dividida en el Senado: azul y rojo). Leyenda: «Dem. sin elección», «Rep. sin elección».
 - **Cámara.** Cada estado va del color de la mayoría de su delegación (proyección de los distritos; si aún no hay votos, la mayoría actual). El borde negro marca distritos reñidos. No hay estados grises: los 50 eligen Cámara.
