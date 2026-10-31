@@ -34,12 +34,21 @@ const RATING_ORDER = ["tossup", "lean-dem", "lean-rep", "likely-dem", "likely-re
 const PARTY_ES = {D:"Demócratas", R:"Republicanos", I:"Independiente", O:"Otro"};
 const COL = {D:"#1b3a8a", R:"#c4161c", I:"#1e8a3e", O:"#64748b"};
 
+const VIEW_FROM = {senado:"senate", senate:"senate", camara:"house", cámara:"house", house:"house", gob:"gov", gobernadores:"gov", gov:"gov"};
 const S = {
   page: null, results: null,
   oddsVia: "", resultsVia: "",
-  senF: "play", govF: "close", houF: "battle", houseState: "ALL", q: "",
-  prev: {}
+  view: VIEW_FROM[(Q.get("v") || "").toLowerCase()] || "senate",
+  sel: {senate:null, house:null, gov:null},
+  listMode: {senate:"play", house:"battle", gov:"close"},
+  houseAll: false, q: "",
+  prev: {}, userPicked: false
 };
+const SOLID = {D:"#1b3a8a", R:"#c4161c", I:"#1e8a3e", O:"#64748b"};
+const PASTEL = {D:"#b5c4ea", R:"#f4b4b6", I:"#b4e0bf", O:"#d5d8de"};
+const PALE = {D:"#dce4f6", R:"#f8e2e3", I:"#e5f6ea", O:"#eceff3"};
+const GREY = "#cfd5dc";
+const TINY = ["VT","NH","MA","RI","CT","NJ","DE","MD"];
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 const fmtP = (n, d=1) => (n == null || Number.isNaN(n)) ? "–" : Number(n).toLocaleString("es-CO", {minimumFractionDigits:d, maximumFractionDigits:d}) + "%";
@@ -398,12 +407,7 @@ function seatBar(ctrl){
   const rest = ctrl.total - d - r - o;
   if (rest < 0) return `<p class="note">El desglose del NYT no suma ${ctrl.total} escaños (D ${d} · R ${r} · otros ${o}).</p>`;
   const w = n => (n / ctrl.total * 100);
-  const lines = [];
-  if (ctrl.to_win){
-    for (const n of [ctrl.to_win.R, ctrl.to_win.D]) if (n && !lines.includes(n)) lines.push(n);
-  }
-  const ticks = lines.map(n => `<b style="left:${w(n)}%" title="${n}"></b>`).join("");
-  const mayoria = ctrl.to_win ? ` Mayoría según el NYT: ${ctrl.to_win.R} republicanos · ${ctrl.to_win.D} demócratas.` : "";
+  const mayoria = ctrl.to_win ? ` Mayoría: ${ctrl.to_win.R} rep. o ${ctrl.to_win.D} dem.` : "";
   const called = ctrl.called || 0;
   let caption = `Conteo NYT: <b>${d} dem.</b> · <b>${r} rep.</b>`;
   if (o) caption += ` · <b>${o} otros</b>`;
@@ -422,7 +426,6 @@ function seatBar(ctrl){
       <i style="width:${w(o)}%;background:${COL.I}"></i>
       <i style="width:${w(Math.max(0,rest))}%;background:#d7dbe0"></i>
     </div>
-    <div class="tick">${ticks}</div>
     <p class="note">${caption}</p>${before}${win}`;
 }
 function niceLabel(s){
@@ -435,28 +438,195 @@ function outcomesBars(list, keyPrefix){
     return `<div class="mrow"><span>${esc(niceLabel(o.label))}</span><span class="b"><span style="width:${Math.max(0,Math.min(100,pct))}%;background:${COL[p]}"></span></span><b>${fmtP(pct, 1)}${deltaHTML(keyPrefix+"|"+o.label, o.price)}</b></div>`;
   }).join("");
 }
-function controlCard(id, title, blockKey, ctrlKey, blurb){
-  const block = S.page && S.page.control && S.page.control[blockKey];
-  const el = document.getElementById(id);
-  if (!block || !(block.outcomes||[]).length){
-    el.innerHTML = `<h2>${esc(title)}</h2><p class="empty">Mercado no disponible.</p>`;
-    return;
+function nytOf(race){
+  return race && S.results && S.results.races && S.results.races[race.key];
+}
+function racesOf(view){
+  if (!S.page) return [];
+  if (view === "house") return S.page.house || [];
+  if (view === "gov") return S.page.governor || [];
+  return S.page.senate || [];
+}
+function tone(party, mode){
+  const table = mode === "solid" ? SOLID : mode === "pale" ? PALE : PASTEL;
+  return table[party] || GREY;
+}
+function pmLeader(race){
+  const cs = ((race && race.candidates) || []).filter(c => c.price != null);
+  return cs.length ? cs.slice().sort((a,b)=>b.price-a.price)[0] : null;
+}
+function voteLeader(nyt){
+  if (!nyt || nyt.status === "sin_votos") return null;
+  const cs = (nyt.candidates || []).filter(c => (c.votes || 0) > 0 || c.winner);
+  if (!cs.length) return null;
+  return cs.slice().sort((a,b) => (b.winner - a.winner) || ((b.votes||0) - (a.votes||0)))[0];
+}
+function paintState(view, st){
+  if (view === "house") return paintHouse(st);
+  const race = racesOf(view).find(r => r.state === st);
+  const nyt = nytOf(race);
+  if (!race && !nyt) return {fill:GREY, off:true, strong:false, text:"Sin elección en 2026"};
+  if (nyt && nyt.status === "llamado" && nyt.winner_party){
+    return {fill:tone(nyt.winner_party, "solid"), off:false, strong:true, text:"Llamado"};
   }
-  const main = block.outcomes.filter(o => partyOfLabel(o)==="D" || partyOfLabel(o)==="R").slice(0,2);
+  if (nyt && nyt.status !== "sin_votos"){
+    const lead = voteLeader(nyt);
+    return {fill:tone(lead && lead.party, "mid"), off:false, strong:false, text:"Va adelante en el escrutinio"};
+  }
+  const lead = pmLeader(race);
+  if (!lead) return {fill:GREY, off:false, strong:false, text:"Sin mercado"};
+  const close = gapOf(race.candidates) < 0.15;
+  return {fill:tone(lead.party, close ? "pale" : "mid"), off:false, strong:false, text: close ? "Reñida" : "Va adelante en Polymarket"};
+}
+function paintHouse(st){
+  const races = racesOf("house").filter(r => r.state === st);
+  let d = 0, r = 0, n = 0, called = 0, comp = 0;
+  for (const race of races){
+    const nyt = nytOf(race);
+    if (!passes(race, "comp")) continue;
+    comp++;
+    if (nyt && nyt.status === "llamado") called++;
+    let party = nyt && nyt.status === "llamado" ? nyt.winner_party : null;
+    if (!party && nyt && nyt.status !== "sin_votos") party = (voteLeader(nyt) || {}).party;
+    if (!party) party = (pmLeader(race) || {}).party;
+    if (party === "D") d++;
+    else if (party === "R") r++;
+    n++;
+  }
+  if (!comp) return {fill:GREY, off:true, strong:false, text:"Sin distritos reñidos"};
+  if (d === r) return {fill:"#d5d8de", off:false, strong:false, text:"Distritos reñidos, sin lado claro"};
+  const party = d > r ? "D" : "R";
+  const allCalled = called === n && n > 0;
+  const share = Math.abs(d - r) / n;
+  return {fill:tone(party, allCalled ? "solid" : share >= 0.5 ? "mid" : "pale"), off:false, strong:allCalled, text: allCalled ? "Llamados" : "Va adelante"};
+}
+function controlHTML(view){
+  if (view === "gov"){
+    return `<section class="card"><h2>Gobernadores <span class="same">2026</span></h2><p class="note">Cada estado del mapa es una gobernación. El color es quien va adelante en Polymarket y, cuando haya votos, quien va adelante o ya fue llamado.</p></section>`;
+  }
+  const blockKey = view === "house" ? "house" : "senate";
+  const block = S.page.control && S.page.control[blockKey];
+  const ctrl = S.results && S.results[blockKey];
+  if (!block || !(block.outcomes || []).length) return `<section class="card"><h2>Control</h2><p class="empty">Mercado no disponible.</p></section>`;
+  const main = block.outcomes.filter(o => partyOfLabel(o)==="D" || partyOfLabel(o)==="R").slice(0, 2);
   const cards = main.map(o => {
     const p = partyOfLabel(o);
     return `<div class="pmc"><div class="who">${esc(o.label)}</div><div class="pc" style="color:${COL[p]}">${fmtP(o.price*100,1)}${deltaHTML(blockKey+"|"+o.label, o.price)}</div></div>`;
   }).join("");
-  const ctrl = S.results && S.results[ctrlKey];
-  const seats = S.page.control[blockKey === "senate" ? "senate_seats" : "house_seats"];
+  const seatsKey = blockKey === "senate" ? "senate_seats" : "house_seats";
+  const seats = S.page.control[seatsKey];
   const seatRows = ((seats && seats.outcomes) || []).slice().sort((a,b)=>seatSort(a.label)-seatSort(b.label)).filter(o => o.price >= 0.005);
-  el.innerHTML = `<h2>${esc(title)} <a class="same" href="${esc(block.url)}" target="_blank" rel="noopener">mercado ↗</a></h2>
+  const title = view === "house" ? "Cámara" : "Senado";
+  return `<section class="card"><h2>Control ${esc(title)} <a class="same" href="${esc(block.url)}" target="_blank" rel="noopener">Polymarket ↗</a></h2>
     <div class="pcards">${cards}</div>
-    ${outcomesBars(block.outcomes, blockKey)}
-    <p class="note">${esc(blurb)} Volumen ${money(block.volume)}. ${esc(S.oddsVia || "copia en GitHub")}.</p>
-    <h3>Escaños en vivo</h3>
-    ${ctrl ? seatBar(ctrl) : `<p class="empty">Resultados no disponibles todavía.</p>`}
-    ${seatRows.length ? `<h3>Escaños republicanos · Polymarket</h3>${outcomesBars(seatRows, blockKey === "senate" ? "senate_seats" : "house_seats")}<p class="note">Volumen ${money(seats.volume)}. <a href="${esc(seats.url)}" target="_blank" rel="noopener">mercado ↗</a></p>` : ""}`;
+    ${ctrl ? seatBar(ctrl) : `<p class="empty">Conteo de escaños no disponible todavía.</p>`}
+    <p class="note">Volumen ${money(block.volume)} · ${esc(S.oddsVia || "copia")}</p>
+    ${seatRows.length ? `<details class="extra"><summary>Cuántos escaños republicanos</summary>${outcomesBars(seatRows, seatsKey)}<p class="note">Polymarket · ${money(seats.volume)}</p></details>` : ""}
+    </section>`;
+}
+function legendHTML(view){
+  const grey = view === "house" ? "Sin distritos reñidos" : "Sin elección en 2026";
+  return `<div class="legend">
+    <span><i style="background:${SOLID.D}"></i>Dem. llamado</span>
+    <span><i style="background:${PASTEL.D}"></i>Dem. adelante</span>
+    <span><i style="background:${SOLID.R}"></i>Rep. llamado</span>
+    <span><i style="background:${PASTEL.R}"></i>Rep. adelante</span>
+    <span><i style="background:${PALE.D}"></i>Reñido</span>
+    <span><i style="background:${GREY}"></i>${esc(grey)}</span>
+  </div>`;
+}
+function tinyHTML(view){
+  return `<div class="tiny" id="tiny">${TINY.map(st => {
+    const on = S.sel[view] === st ? " on" : "";
+    return `<button type="button" data-st="${st}" class="${on.trim()}">${st}</button>`;
+  }).join("")}</div>`;
+}
+function detailHTML(view){
+  const st = S.sel[view];
+  if (!st) return `<div id="detail"><p class="empty">Toca un estado para ver la carrera, las probabilidades y el escrutinio.</p></div>`;
+  const name = ST[st] || st;
+  if (view === "house"){
+    const all = racesOf("house").filter(r => r.state === st);
+    let show = all.filter(r => passes(r, "comp"));
+    const note = show.length ? `${show.length} distrito${show.length===1?"":"s"} competitivo${show.length===1?"":"s"}.` : "Los más ajustados del estado:";
+    if (!show.length) show = sortRaces(all).slice(0, 3);
+    else show = sortRaces(show);
+    const info = paintHouse(st);
+    return `<div id="detail"><h3>${esc(name)}</h3><p class="note">${esc(info.text)}. ${esc(note)}</p>${show.map(r => raceCard(r, nytOf(r), (r.district||"")+" · "+placeName(r), r.url)).join("") || `<p class="empty">No hay mercados de estos distritos.</p>`}</div>`;
+  }
+  const race = racesOf(view).find(r => r.state === st);
+  const nyt = nytOf(race);
+  if (!race && !nyt) return `<div id="detail"><h3>${esc(name)}</h3><p class="empty">${view==="senate"?"Este estado no elige senador en 2026.":"Este estado no elige gobernador en 2026."}</p></div>`;
+  return `<div id="detail">${raceCard(race, nyt, name + (race && race.key.endsWith(":special") ? " · especial" : ""), race && race.url)}</div>`;
+}
+function listHTML(view){
+  const mode = S.listMode[view];
+  if (view === "house" && !S.houseAll){
+    const by = (S.results && S.results.house_by_state) || {};
+    const rows = Object.entries(by).map(([st, ratings]) => {
+      const toss = ratings.tossup||0, lean = (ratings["lean-dem"]||0)+(ratings["lean-rep"]||0), likely = (ratings["likely-dem"]||0)+(ratings["likely-rep"]||0);
+      return {st, toss, lean, likely, score: toss*3+lean*2+likely};
+    }).filter(r => r.score > 0).sort((a,b)=>b.score-a.score || a.st.localeCompare(b.st));
+    const chips = rows.map(r => {
+      const bits = [];
+      if (r.toss) bits.push(r.toss+" empate"+(r.toss>1?"s":""));
+      if (r.lean) bits.push(r.lean+" inclin.");
+      if (r.likely && bits.length < 2) bits.push(r.likely+" prob.");
+      const on = S.sel.house === r.st ? " on" : "";
+      return `<button type="button" data-st="${r.st}" class="${on.trim()}">${esc(ST[r.st]||r.st)} · ${esc(bits.join(" · "))}</button>`;
+    }).join("");
+    return `<section class="card"><h2>Estados pendulares</h2><div class="chips" id="chips">${chips || `<span class="same">Aparecen cuando carga la clasificación del NYT.</span>`}</div><p class="note" style="margin-top:10px"><button type="button" id="showAll" class="tiny" style="border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font:inherit;cursor:pointer">Ver todos los distritos reñidos</button></p></section>`;
+  }
+  let list = racesOf(view).filter(r => passes(r, mode) && (view === "house" || r.state !== S.sel[view]));
+  if (view === "house" && S.q.trim()){
+    const q = S.q.trim().toLowerCase();
+    list = racesOf(view).filter(r => ((r.district||"")+" "+placeName(r)+" "+(r.candidates||[]).map(c=>c.name).join(" ")).toLowerCase().includes(q));
+  }
+  list = sortRaces(list);
+  const filters = view === "house"
+    ? `<div class="tools"><input id="q" type="search" placeholder="Buscar distrito o candidato" aria-label="Buscar distrito" value="${esc(S.q)}"><button type="button" id="hideAll" style="border:1px solid var(--line);background:#fff;border-radius:10px;min-height:40px;padding:8px 12px;font:inherit;cursor:pointer">Volver al mapa</button></div>`
+    : `<div class="tools"><div class="toggle" id="raceF">${view==="senate"
+        ? `<button type="button" data-m="play" class="${mode==="play"?"on":""}">En juego</button><button type="button" data-m="all" class="${mode==="all"?"on":""}">Todas</button>`
+        : `<button type="button" data-m="close" class="${mode==="close"?"on":""}">Reñidas</button><button type="button" data-m="all" class="${mode==="all"?"on":""}">Todas</button>`}</div></div>`;
+  const title = view === "house" ? "Distritos reñidos" : view === "gov" ? "Gobernaciones" : "Carreras del Senado";
+  return `<section class="card"><h2>${title} <span class="same">${list.length}</span></h2>${filters}<div id="raceList">${list.map(r => raceCard(r, nytOf(r), view==="house" ? (r.district||"")+" · "+placeName(r) : placeName(r), r.url)).join("") || `<p class="empty">No hay carreras con este filtro.</p>`}</div></section>`;
+}
+function viewHTML(){
+  const view = S.view;
+  const mapTitle = view === "house" ? "Estados, según sus distritos reñidos" : view === "gov" ? "Gobernadores" : "Senado por estado";
+  return `${controlHTML(view)}
+    <section class="card"><h2>${mapTitle}</h2>
+      <div class="mapwrap"><svg id="map" viewBox="0 0 ${USMAP.w} ${USMAP.h}" role="img" aria-label="Mapa de Estados Unidos"></svg></div>
+      ${legendHTML(view)}
+      <p class="note">Estados pequeños:</p>
+      ${tinyHTML(view)}
+      ${detailHTML(view)}
+    </section>
+    ${view==="senate" ? balanceHTML() : ""}
+    ${listHTML(view)}`;
+}
+function balanceHTML(){
+  const b = S.page.control && S.page.control.balance;
+  if (!b || !(b.outcomes||[]).length) return "";
+  return `<section class="card"><details class="extra"><summary>Quién se queda con cada cámara</summary>${outcomesBars(b.outcomes, "balance")}<p class="note">Polymarket · ${money(b.volume)}</p></details></section>`;
+}
+function drawMap(){
+  const svg = document.getElementById("map");
+  if (!svg || typeof USMAP === "undefined") return;
+  const view = S.view;
+  svg.innerHTML = Object.entries(USMAP.d).map(([st, d]) => {
+    const info = paintState(view, st);
+    const sel = S.sel[view] === st ? " sel" : "";
+    const off = info.off ? " off" : "";
+    return `<path class="st${sel}${off}" data-st="${st}" d="${d}" fill="${info.fill}"><title>${esc(ST[st]||st)}. ${esc(info.text)}</title></path>`;
+  }).join("");
+}
+function pickState(st){
+  S.sel[S.view] = st;
+  S.userPicked = true;
+  S.houseAll = false;
+  S._scrollDetail = true;
+  renderAll();
 }
 
 function buildRows(pm, nyt){
@@ -543,68 +713,28 @@ function placeName(race){
   return race.key.endsWith(":special") ? base + " · especial" : base;
 }
 
-function renderLists(){
-  const page = S.page;
-  if (!page) return;
-  const nyt = (S.results && S.results.races) || {};
-  const sen = sortRaces((page.senate||[]).filter(r => passes(r, S.senF)));
-  document.getElementById("senCount").textContent = sen.length + (S.senF==="all" ? " en la boleta" : " competitivas");
-  document.getElementById("senList").innerHTML = sen.map(r => raceCard(r, nyt[r.key], placeName(r), r.url)).join("") || `<p class="empty">No hay carreras con este filtro.</p>`;
-
-  const gov = sortRaces((page.governor||[]).filter(r => passes(r, S.govF)));
-  document.getElementById("govCount").textContent = gov.length + (S.govF==="all" ? "" : " en juego");
-  document.getElementById("govList").innerHTML = gov.map(r => raceCard(r, nyt[r.key], placeName(r), r.url)).join("") || `<p class="empty">No hay gobernaciones con este filtro.</p>`;
-
-  renderStates();
-  const q = S.q.trim().toLowerCase();
-  let house = (page.house||[]).filter(r => passes(r, S.houF));
-  if (S.houseState !== "ALL") house = house.filter(r => r.state === S.houseState || (r.district||"").startsWith(S.houseState));
-  if (q) house = house.filter(r => {
-    const blob = (placeName(r)+" "+(r.district||"")+" "+(r.candidates||[]).map(c=>c.name).join(" ")).toLowerCase();
-    return blob.includes(q);
-  });
-  house = sortRaces(house);
-  document.getElementById("houCount").textContent = house.length + " distritos";
-  document.getElementById("houList").innerHTML = house.map(r => raceCard(r, nyt[r.key], (r.district||"")+" · "+placeName(r), r.url)).join("") || `<p class="empty">No hay distritos con este filtro.</p>`;
-}
-function renderStates(){
-  const by = (S.results && S.results.house_by_state) || {};
-  const rows = Object.entries(by).map(([st, ratings]) => {
-    const toss = ratings.tossup||0;
-    const lean = (ratings["lean-dem"]||0)+(ratings["lean-rep"]||0);
-    const likely = (ratings["likely-dem"]||0)+(ratings["likely-rep"]||0);
-    return {st, toss, lean, likely, score: toss*3+lean*2+likely};
-  }).filter(r => r.toss+r.lean+r.likely > 0).sort((a,b)=>b.score-a.score || a.st.localeCompare(b.st));
-  const chips = [`<button type="button" data-st="ALL" class="${S.houseState==="ALL"?"on":""}">Todos</button>`];
-  for (const r of rows){
-    const bits = [];
-    if (r.toss) bits.push(r.toss+" empate"+(r.toss>1?"s":""));
-    if (r.lean) bits.push(r.lean+" inclin.");
-    if (r.likely) bits.push(r.likely+" prob.");
-    chips.push(`<button type="button" data-st="${r.st}" class="${S.houseState===r.st?"on":""}">${esc(ST[r.st]||r.st)} · ${esc(bits.join(" · "))}</button>`);
-  }
-  const el = document.getElementById("stateChips");
-  el.innerHTML = rows.length ? chips.join("") : `<span class="same">La clasificación por estado aparece cuando carga el escrutinio del NYT.</span>`;
-}
-function renderBalance(){
-  const b = S.page && S.page.control && S.page.control.balance;
-  const el = document.getElementById("balance");
-  if (!b || !(b.outcomes||[]).length){ el.hidden = true; return; }
-  el.hidden = false;
-  el.innerHTML = `<h2>Control de las dos cámaras <a class="same" href="${esc(b.url)}" target="_blank" rel="noopener">mercado ↗</a></h2>
-    ${outcomesBars(b.outcomes, "balance")}
-    <p class="note">Volumen ${money(b.volume)}. Quién se queda con el Senado y quién con la Cámara, según Polymarket.</p>`;
-}
 function renderAll(){
   if (!S.page) return;
-  controlCard("card-senate", "Senado", "senate", "senate", "Probabilidad de controlar el Senado.");
-  controlCard("card-house", "Cámara de Representantes", "house", "house", "Probabilidad de controlar la Cámara.");
-  renderBalance();
-  renderLists();
+  const extraOpen = [...document.querySelectorAll("details.extra")].map(d => d.open);
+  const y = S._scrollDetail ? null : window.scrollY;
+  document.querySelectorAll("#chamber button").forEach(b => b.classList.toggle("on", b.dataset.v === S.view));
+  document.getElementById("view").innerHTML = viewHTML();
+  drawMap();
+  document.querySelectorAll("details.extra").forEach((d, i) => { if (extraOpen[i]) d.open = true; });
+  const q2 = document.getElementById("q");
+  if (q2){
+    q2.oninput = () => { S.q = q2.value; S._focusQ = true; renderAll(); };
+    if (S._focusQ){ q2.focus(); const n = q2.value.length; q2.setSelectionRange(n, n); S._focusQ = false; }
+  }
   const viaCorta = v => v === "libro de órdenes en vivo" ? "en vivo" : v === "copia en GitHub" ? "copia" : v === "NYT directo" ? "NYT" : (v || "");
-  document.getElementById("oddsAt").textContent = bogota(S.oddsLiveAt || S.page.as_of_iso) + (S.oddsVia ? " · "+viaCorta(S.oddsVia) : "");
+  const hm = (input) => {
+    const d = new Date(input);
+    if (!input || Number.isNaN(d.getTime())) return "–";
+    return new Intl.DateTimeFormat("es-CO", {timeZone:"America/Bogota", hour:"2-digit", minute:"2-digit", hour12:false}).format(d);
+  };
+  document.getElementById("oddsAt").textContent = hm(S.oddsLiveAt || S.page.as_of_iso) + (S.oddsVia ? " · "+viaCorta(S.oddsVia) : "");
   const res = S.results;
-  document.getElementById("resAt").textContent = res ? (bogota(res.fetched_at_iso) + " · " + viaCorta(S.resultsVia)) : "sin datos";
+  document.getElementById("resAt").textContent = res ? (hm(res.fetched_at_iso) + " · " + viaCorta(S.resultsVia)) : "sin datos";
   const banner = document.getElementById("banner");
   const bits = [];
   if (!nightMode() && Date.now() < POLLS) bits.push("El escrutinio empieza el martes 3 de noviembre. Los mercados ya están en vivo; los votos aparecen cuando los estados empiezan a reportar.");
@@ -612,31 +742,13 @@ function renderAll(){
   if (S.oddsWarn) bits.push(S.oddsWarn);
   if (bits.length){ banner.hidden = false; banner.className = "banner" + (S.resultsWarn && !S.results ? " err" : ""); banner.innerHTML = bits.map(t=>`<div>${esc(t)}</div>`).join(""); }
   else banner.hidden = true;
-}
-
-function wireFilters(){
-  const mk = (id, options, key) => {
-    const el = document.getElementById(id);
-    el.innerHTML = options.map(([v, lab]) => `<button type="button" data-v="${v}" class="${S[key]===v?"on":""}">${lab}</button>`).join("");
-    el.onclick = (e) => {
-      const b = e.target.closest("button");
-      if (!b) return;
-      S[key] = b.dataset.v;
-      wireFilters();
-      renderLists();
-    };
-  };
-  mk("senF", [["play","En juego"],["all","Todas"]], "senF");
-  mk("govF", [["close","Reñidas"],["all","Todas"]], "govF");
-  mk("houF", [["battle","Reñidas"],["comp","Competitivas"]], "houF");
-  document.getElementById("stateChips").onclick = (e) => {
-    const b = e.target.closest("button");
-    if (!b) return;
-    S.houseState = b.dataset.st;
-    renderLists();
-  };
-  const q = document.getElementById("q");
-  q.oninput = () => { S.q = q.value; renderLists(); };
+  if (S._scrollDetail){
+    const det = document.getElementById("detail");
+    if (det) det.scrollIntoView({behavior:"smooth", block:"nearest"});
+    S._scrollDetail = false;
+  } else if (y != null) {
+    window.scrollTo(0, y);
+  }
 }
 
 async function bootOdds(){
@@ -647,7 +759,7 @@ async function bootOdds(){
     banner.hidden = false;
     banner.className = "banner err";
     banner.textContent = "No se pudo leer data/page.json.";
-    document.getElementById("card-senate").innerHTML = "<h2>Senado</h2><p class=\"empty\">No se pudieron cargar los mercados.</p>";
+    document.getElementById("view").innerHTML = "<p class=\"empty\">No se pudieron cargar los mercados.</p>";
     return;
   }
   S.oddsVia = "copia en GitHub";
@@ -705,7 +817,24 @@ async function tickResults(){
   renderAll();
 }
 
-wireFilters();
+document.getElementById("chamber").onclick = (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  S.view = b.dataset.v;
+  const params = new URLSearchParams(location.search);
+  params.set("v", S.view === "house" ? "camara" : S.view === "gov" ? "gob" : "senado");
+  history.replaceState(null, "", "?" + params.toString());
+  window.scrollTo(0, 0);
+  renderAll();
+};
+document.getElementById("view").onclick = (e) => {
+  const st = e.target.closest("[data-st]");
+  if (st && st.dataset.st){ pickState(st.dataset.st); return; }
+  const m = e.target.closest("[data-m]");
+  if (m){ S.listMode[S.view] = m.dataset.m; renderAll(); return; }
+  if (e.target.closest("#showAll")){ S.houseAll = true; S.sel.house = null; renderAll(); return; }
+  if (e.target.closest("#hideAll")){ S.houseAll = false; S.q = ""; renderAll(); }
+};
 countdown();
 setInterval(countdown, 30000);
 bootOdds();

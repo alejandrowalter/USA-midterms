@@ -10,118 +10,104 @@
 <style>
 :root{--bg:#f5f6f8;--card:#fff;--ink:#1d2330;--mut:#6b7280;--line:#e3e6ea;--dem:#1b3a8a;--rep:#c4161c;--ind:#1e8a3e;--hdr:#0f1b33}
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
-header{background:var(--hdr);color:#fff;padding:14px 18px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
-header h1{font-size:18px;margin:0;font-weight:650;letter-spacing:-.01em}
-header .meta{font-size:12.5px;opacity:.92;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.pill{display:inline-block;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.15);font-size:12px}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.35}
+header{position:sticky;top:0;z-index:30;background:var(--hdr);color:#fff;padding:10px 14px 12px;padding-top:max(10px,env(safe-area-inset-top))}
+header .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+header h1{font-size:18px;margin:0;font-weight:680;letter-spacing:-.02em}
+header .meta{font-size:12px;opacity:.88;margin:4px 0 10px}
+.pill{display:inline-block;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.16);font-size:12.5px;font-weight:650}
 .pill.live{background:#16a34a}
-.pill.wait{background:#f59e0b;color:#111;font-weight:650}
-.pill.err{background:#dc2626}
-main{max-width:1100px;margin:0 auto;padding:14px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-@media(max-width:800px){main{grid-template-columns:minmax(0,1fr);padding:8px}}
-.card{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
-.full{grid-column:1/-1}
-.card h2{font-size:15px;margin:0 0 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-h3{font-size:13px;margin:14px 0 6px}
-.same{color:var(--mut);font-size:12px;font-weight:450}
+.pill.wait{background:#f59e0b;color:#111}
+.chamber{display:flex;background:rgba(255,255,255,.12);border-radius:12px;padding:3px;gap:3px}
+.chamber button{flex:1;min-height:44px;border:0;border-radius:10px;background:transparent;color:#fff;font:inherit;font-size:15.5px;font-weight:680;cursor:pointer}
+.chamber button.on{background:#fff;color:var(--hdr)}
+button:focus-visible,input:focus-visible,a:focus-visible,path:focus-visible{outline:2px solid #f59e0b;outline-offset:2px}
+main{max-width:880px;margin:0 auto;padding:12px;display:grid;gap:12px}
+@media(min-width:800px){main{padding:16px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px}
+.card h2{font-size:18px;margin:0 0 12px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card h2 .same, h2 .same{font-size:13px;font-weight:500}
+.same{color:var(--mut);font-size:13px}
 a{color:var(--dem)}
-.banner{grid-column:1/-1;border-radius:12px;padding:12px 14px;background:#fff7e6;border:1px solid #f5c26b}
+.banner{border-radius:12px;padding:12px 14px;background:#fff7e6;border:1px solid #f5c26b;font-size:14px}
 .banner.err{background:#fdecec;border-color:#f3a5a5}
 .banner[hidden]{display:none}
-.toggle{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;flex-wrap:wrap}
-.toggle button{border:0;background:#fff;padding:7px 12px;font-size:13px;cursor:pointer;color:var(--ink)}
-.toggle button.on{background:var(--hdr);color:#fff}
-button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--dem);outline-offset:2px}
 .pcards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:520px){.pcards{grid-template-columns:1fr}}
-.pmc{border:1px solid var(--line);border-radius:10px;padding:10px}
-.pmc .who{font-weight:650}
-.pmc .pc{font-size:30px;font-weight:750;line-height:1.05;margin-top:2px}
-@media(max-width:520px){.pmc .pc{font-size:26px}}
-.up{color:#15803d;font-weight:650}.dn{color:#b91c1c;font-weight:650}.nochg{color:var(--mut);font-weight:500}
-.bar{height:12px;border-radius:6px;background:#eef0f3;overflow:hidden;display:flex;margin:8px 0 4px}
-.bar span{display:block;height:100%}
-.mrow{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(40px,1.6fr) 58px;gap:6px;align-items:center;font-size:12.5px;margin:3px 0}
-.mrow span:first-child{min-width:0}
+.pmc{border-radius:12px;padding:12px 12px 10px;background:#f7f8fa}
+.pmc .who{font-weight:650;font-size:14px}
+.pmc .pc{font-size:42px;font-weight:760;line-height:1;letter-spacing:-.03em;margin-top:4px}
+@media(max-width:380px){.pmc .pc{font-size:34px}}
+.up{color:#15803d;font-weight:700}.dn{color:#b91c1c;font-weight:700}
+.seatbar{height:22px;border-radius:7px;background:#e5e7eb;overflow:hidden;display:flex;margin:14px 0 6px}
+.seatbar i{display:block;height:100%}
+.note{font-size:13px;color:var(--mut);margin:6px 0 0;line-height:1.4}
+details.extra{margin-top:12px}
+details.extra summary{cursor:pointer;font-weight:650;font-size:14px;padding:4px 0}
+.mrow{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(48px,1.4fr) 64px;gap:8px;align-items:center;font-size:13.5px;margin:4px 0}
 .mrow .b{height:10px;background:#eef0f3;border-radius:5px;overflow:hidden}
 .mrow .b span{display:block;height:100%}
-.note{font-size:11.5px;color:var(--mut);margin-top:8px;line-height:1.45}
-.seatbar{position:relative;height:18px;border-radius:6px;background:#e5e7eb;overflow:hidden;display:flex;margin:8px 0 4px}
-.seatbar i{display:block;height:100%}
-.tick{position:relative;height:0}
-.tick b{position:absolute;top:-20px;width:2px;height:22px;background:#111;transform:translateX(-1px)}
-.kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
-.kv div{background:#f7f8fa;border-radius:8px;padding:8px}
-.kv small{display:block;color:var(--mut);font-size:11.5px}
-.kv b{font-size:16px}
-.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 10px}
-input[type=search]{font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;min-width:0;flex:1}
-.states{display:flex;gap:6px;overflow:auto;padding:0 0 8px;-webkit-overflow-scrolling:touch}
-.states button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 10px;font-size:12.5px;cursor:pointer;color:var(--ink)}
-.states button.on{background:var(--hdr);color:#fff;border-color:var(--hdr)}
-.race{border-top:1px solid var(--line);padding:10px 0}
-.race:first-of-type{border-top:0}
-.race h3{margin:0;font-size:14.5px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.tag{display:inline-block;border-radius:4px;padding:1px 6px;font-size:11px;background:#eef2ff;color:#3730a3;font-weight:650}
+.mapwrap{position:relative}
+svg#map{width:100%;height:auto;display:block;background:#eef1f4;border-radius:10px;touch-action:manipulation}
+svg#map path.st{stroke:#fff;stroke-width:1.6;cursor:pointer}
+svg#map path.st.sel{stroke:#111;stroke-width:3}
+svg#map path.off{cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;color:var(--mut);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid rgba(0,0,0,.06)}
+.tiny{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tiny button,.chips button{min-height:36px;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
+.tiny button.on,.chips button.on{background:var(--hdr);color:#fff;border-color:var(--hdr)}
+.chips{display:flex;gap:6px;overflow:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.chips button{flex:0 0 auto}
+#detail{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+#detail h3{font-size:18px;margin:0 0 8px}
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.toggle button{border:0;background:#fff;min-height:40px;padding:8px 12px;font:inherit;font-size:14px;cursor:pointer}
+.toggle button.on{background:var(--hdr);color:#fff}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 8px}
+input[type=search]{font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;min-width:0;flex:1}
+.race{border-top:1px solid var(--line);padding:14px 0 6px}
+.race:first-of-type{border-top:0;padding-top:4px}
+.race h3{margin:0 0 8px;font-size:17px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tag{display:inline-block;border-radius:6px;padding:2px 7px;font-size:12px;background:#eef2ff;color:#3730a3;font-weight:680}
 .tag.t1{background:#f1f5f9;color:#475569}
 .tag.call{background:#111;color:#fff}
 .tag.d{background:#e8eefc;color:var(--dem)}
 .tag.r{background:#fde8e8;color:var(--rep)}
-.subh{font-size:11.5px;color:var(--mut);font-weight:650;margin:8px 0 2px;text-transform:uppercase;letter-spacing:.03em}
-.cand{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(70px,.6fr) 64px;gap:6px;align-items:center;margin:3px 0;font-size:13px}
-.cand .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:-1px}
-.votes .cand{grid-template-columns:minmax(0,1.4fr) minmax(70px,.8fr) 72px}
-.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--mut);margin-top:6px}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}
-footer{max-width:1100px;margin:0 auto;padding:4px 14px 28px;color:var(--mut);font-size:12px;line-height:1.5}
-footer a{color:inherit}
-.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 10px;font-size:13px;cursor:pointer}
+.subh{font-size:12px;color:var(--mut);font-weight:700;margin:10px 0 4px;letter-spacing:.04em;text-transform:uppercase}
+.cand{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(56px,.7fr) 72px;gap:8px;align-items:center;margin:5px 0;font-size:15px}
+.cand .nm{min-width:0}
+.cand b{font-size:17px;font-weight:750}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
 .empty{color:var(--mut);margin:8px 0}
+footer{max-width:880px;margin:0 auto;padding:4px 16px 32px;color:var(--mut);font-size:12.5px;line-height:1.5}
+footer a{color:inherit}
 </style>
 </head>
 <body>
 <header>
-  <h1>🇺🇸 Midterms EE.UU. 2026</h1>
-  <div class="meta">
-    <span id="when" class="pill wait">3 nov 2026</span>
-    <span>Mercados: <b id="oddsAt">…</b></span>
-    <span>Escrutinio: <b id="resAt">…</b></span>
+  <div class="top">
+    <h1>🇺🇸 Midterms 2026</h1>
+    <span id="when" class="pill wait">3 nov</span>
   </div>
+  <div class="meta">Mercados <b id="oddsAt">…</b> · Escrutinio <b id="resAt">…</b></div>
+  <nav class="chamber" id="chamber" aria-label="Cámara">
+    <button type="button" data-v="senate">Senado</button>
+    <button type="button" data-v="house">Cámara</button>
+    <button type="button" data-v="gov">Gobernadores</button>
+  </nav>
 </header>
 <main>
   <div id="banner" class="banner" hidden></div>
-  <section class="card" id="card-senate" aria-live="polite"><h2>Senado</h2><p class="same">Cargando mercados…</p></section>
-  <section class="card" id="card-house" aria-live="polite"><h2>Cámara</h2><p class="same">Cargando mercados…</p></section>
-  <section class="card full" id="balance" hidden></section>
-  <section class="card full" id="senate">
-    <h2>Senado en juego <span class="same" id="senCount"></span></h2>
-    <div class="tools"><div class="toggle" id="senF"></div></div>
-    <div id="senList"></div>
-  </section>
-  <section class="card full" id="house">
-    <h2>Cámara · estados pendulares y distritos competitivos <span class="same" id="houCount"></span></h2>
-    <div class="states" id="stateChips"></div>
-    <div class="tools">
-      <div class="toggle" id="houF"></div>
-      <input id="q" type="search" placeholder="Buscar distrito o candidato" aria-label="Buscar distrito o candidato">
-    </div>
-    <div id="houList"></div>
-  </section>
-  <section class="card full" id="gov">
-    <h2>Gobernaciones reñidas <span class="same" id="govCount"></span></h2>
-    <div class="tools"><div class="toggle" id="govF"></div></div>
-    <div id="govList"></div>
-  </section>
+  <div id="view"><p class="same">Cargando…</p></div>
 </main>
 <footer>
-  <p><b>Polymarket</b> es un mercado de apuestas, no una encuesta ni un resultado electoral. Los precios son la probabilidad implícita (punto medio del libro de órdenes; si no hay, el precio que publica Gamma).</p>
-  <p><b>Escrutinio:</b> JSON público de <a href="https://www.nytimes.com/news-event/2026-midterm-elections">The New York Times</a>, armado con datos de The Associated Press, sin clave de pago. El “% del voto esperado” es el EEVP del NYT. Un llamado no es la certificación oficial del estado. Si el feed no responde, se muestra la última copia guardada en este sitio o el aviso “resultados no disponibles”.</p>
-  <p>Hora de actualización en <b>America/Bogotá</b>. Elección: martes 3 de noviembre de 2026. Primeros cierres de urnas (Indiana y Kentucky, 18:00 hora del Este) coinciden con las 18:00 en Bogotá.</p>
-  <p>Código y fuentes: <a href="https://github.com/alejandrowalter/USA-midterms">github.com/alejandrowalter/USA-midterms</a>. La referencia visual es el seguimiento de <a href="https://alejandrowalter.github.io/Brasil-elecciones/">Brasil 2026</a>.</p>
+  <p><b>Polymarket</b> es un mercado de apuestas, no una encuesta ni un resultado. El precio es la probabilidad implícita (punto medio del libro; si no hay, el de Gamma).</p>
+  <p><b>Escrutinio:</b> JSON público de <a href="https://www.nytimes.com/news-event/2026-midterm-elections">The New York Times</a>, con datos de The Associated Press. El “% del voto esperado” es el EEVP. Un llamado no es la certificación del estado. Si el feed no responde, se usa la última copia de este sitio.</p>
+  <p>Hora en <b>America/Bogotá</b>. Elección: martes 3 de noviembre de 2026. Primeros cierres (Indiana y Kentucky, 18:00 del Este) son las 18:00 en Bogotá. El mapa usa límites estatales simplificados de dominio público; Alaska y Hawái van en recuadro.</p>
+  <p><a href="https://github.com/alejandrowalter/USA-midterms">Código</a> · referencia visual: <a href="https://alejandrowalter.github.io/Brasil-elecciones/">Brasil 2026</a>.</p>
 </footer>
 <noscript><p style="padding:16px">Esta página necesita JavaScript para cargar los mercados y el escrutinio.</p></noscript>
+<script src="map.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

@@ -10,10 +10,10 @@ Polymarket es un mercado de apuestas, no una encuesta ni un resultado. Un llamad
 
 ## Qué se ve
 
-1. **Control del Senado y de la Cámara.** Precio de cada partido, distribución de escaños republicanos y el conteo de escaños del feed de resultados (los que no se renuevan más los que ya fueron llamados).
-2. **Senado en juego.** Carreras competitivas según la clasificación del New York Times (empate, inclina, probable) y también las de margen chico en Polymarket.
-3. **Cámara.** Estados con distritos competitivos y la lista de distritos reñidos.
-4. **Gobernaciones reñidas.**
+Arriba, un botón **Senado | Cámara | Gobernadores** (uno a la vez). En cada vista: el control de esa cámara en números grandes, un mapa de estados y, al tocarlo, la carrera con la probabilidad y el escrutinio.
+
+- **Senado y gobernadores.** El estado se pinta con quien va adelante en Polymarket (color suave si está reñida). Cuando hay votos, con quien va adelante; si el NYT trae un llamado, el color es fuerte. Los estados que no eligen ese cargo en 2026 quedan grises.
+- **Cámara.** El mapa es por estado, según sus distritos reñidos (no un mapa de los 435 distritos). Al tocar un estado se ven esos distritos. Gris = ninguno reñido.
 
 En cada carrera, el precio de Polymarket va al lado del escrutinio: porción del voto esperado, votos y, cuando el feed trae un ganador, la marca **Llamado**. Si el feed está en línea pero el conteo sigue en cero, la página dice **Sin votos todavía**. No hay números de relleno.
 
