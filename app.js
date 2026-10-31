@@ -39,6 +39,11 @@ const S = {
   page: null, results: null,
   oddsVia: "", resultsVia: "",
   view: VIEW_FROM[(Q.get("v") || "").toLowerCase()] || "senate",
+  bf: {
+    inc: new Set((Q.get("inc") || "").split(",").filter(Boolean)),
+    hol: new Set((Q.get("hol") || "").split(",").filter(Boolean)),
+    chg: new Set((Q.get("chg") || "").split(",").filter(Boolean))
+  },
   sel: {senate:null, house:null, gov:null},
   listMode: {senate:"play", house:"battle", gov:"close"},
   houseAll: false, q: "",
@@ -751,11 +756,59 @@ function whyText(race){
 function ranked(list, limit){
   return list.map(r => ({r, s: battleScore(r)})).sort((a,b)=>b.s-a.s || gapOf(a.r.candidates)-gapOf(b.r.candidates)).slice(0, limit);
 }
+function leanKey(race){
+  const lead = leadingParty(race);
+  if (!lead || (lead !== "D" && lead !== "R" && lead !== "I")) return null;
+  const nyt = nytOf(race);
+  const mode = nyt && nyt.status === "llamado" ? "solid" : shadeOf(gapOf(race.candidates), nyt && nyt.rating);
+  return mode + lead;
+}
+function changeKey(race){
+  const holder = holderOf(race);
+  const lead = leadingParty(race);
+  const info = flipInfo(holder, lead);
+  if (!info) return "none";
+  if (!info.flip) return "hold";
+  return holder + lead;
+}
+function filtersOn(){
+  return S.bf.inc.size + S.bf.hol.size + S.bf.chg.size > 0;
+}
+function passesBattleFilters(race){
+  if (S.bf.inc.size && !S.bf.inc.has(leanKey(race))) return false;
+  if (S.bf.hol.size && !S.bf.hol.has(holderOf(race) || "none")) return false;
+  if (S.bf.chg.size && !S.bf.chg.has(changeKey(race))) return false;
+  return true;
+}
+function writeBattleQuery(){
+  const params = new URLSearchParams(location.search);
+  for (const [q, set] of [["inc", S.bf.inc], ["hol", S.bf.hol], ["chg", S.bf.chg]]){
+    if (set.size) params.set(q, [...set].join(","));
+    else params.delete(q);
+  }
+  history.replaceState(null, "", "?" + params.toString());
+}
+const LEAN_CHIPS = [
+  ["solidD", "Dem. firme"], ["leanD", "Dem. inclina"], ["tossD", "Dem. reñido"],
+  ["tossR", "Rep. reñido"], ["leanR", "Rep. inclina"], ["solidR", "Rep. firme"],
+  ["solidI", "Ind. firme"], ["leanI", "Ind. inclina"], ["tossI", "Ind. reñido"]
+];
+const HOLD_CHIPS = [["D", "Demócrata"], ["R", "Republicano"], ["I", "Independiente"], ["none", "Sin titular"]];
+const CHG_CHIPS = [
+  ["RD", "R→D"], ["DR", "D→R"], ["hold", "Se mantiene"],
+  ["ID", "I→D"], ["DI", "D→I"], ["IR", "I→R"], ["RI", "R→I"], ["none", "Sin dato"]
+];
+function chipRow(group, chips, present){
+  return chips.filter(([k]) => !present || present.has(k)).map(([k, lab]) => {
+    const on = S.bf[group].has(k) ? " on" : "";
+    return `<button type="button" data-bf="${group}:${k}" class="${on.trim()}">${lab}</button>`;
+  }).join("");
+}
 function battleBlock(race, n, label){
   const title = (race.key || "").startsWith("house") ? (race.district || "") + " · " + placeName(race) : placeName(race);
   return `<article class="battle"><p class="rank">${n} · ${esc(label)}</p>${raceCard(race, nytOf(race), title, race.url)}<p class="why">${esc(whyText(race))}</p></article>`;
 }
-function battlesHTML(){
+function battlePools(){
   const senate = racesOf("senate").filter(r => {
     const nyt = nytOf(r);
     const rating = nyt && nyt.rating;
@@ -764,33 +817,58 @@ function battlesHTML(){
     return rating === "tossup" || (rating || "").startsWith("lean") || gap <= 0.22 || (flip && flip.flip);
   });
   const house = racesOf("house").filter(r => passes(r, "battle") || gapOf(r.candidates) <= 0.12);
-  const gov = racesOf("gov").filter(r => {
+  const govAll = racesOf("gov");
+  const gov = govAll.filter(r => {
     const nyt = nytOf(r);
     const rating = nyt && nyt.rating;
     return rating === "tossup" || (rating || "").startsWith("lean") || gapOf(r.candidates) <= 0.4;
   });
-  const senList = ranked(senate, 12);
-  const houList = ranked(house, 8);
-  const govList = ranked(gov.length ? gov : racesOf("gov"), 6);
+  return {senate, house, gov: gov.length ? gov : govAll};
+}
+function battlesHTML(){
+  const pools = battlePools();
+  const universe = pools.senate.concat(pools.house, pools.gov);
+  const presentLean = new Set(universe.map(leanKey).filter(Boolean));
+  const presentChg = new Set(universe.map(changeKey));
+  const on = filtersOn();
+  const senAll = pools.senate.filter(passesBattleFilters);
+  const houAll = pools.house.filter(passesBattleFilters);
+  const govAll = pools.gov.filter(passesBattleFilters);
+  const senList = ranked(senAll, on ? senAll.length : 12);
+  const houList = ranked(houAll, on ? houAll.length : 8);
+  const govList = ranked(govAll, on ? govAll.length : 6);
+  const shown = senList.length + houList.length + govList.length;
+  const matched = senAll.length + houAll.length + govAll.length;
   const byState = {};
-  for (const {r, s} of ranked(house, 40)){
+  for (const {r, s} of ranked(houAll, 40)){
     const x = byState[r.state] || (byState[r.state] = {st:r.state, n:0, score:0});
     x.n++; x.score += s;
   }
   const states = Object.values(byState).sort((a,b)=>b.score-a.score).slice(0, 6);
   const stateLine = states.map(x => `${ST[x.st] || x.st} (${x.n})`).join(" · ");
+  const empty = `<p class="empty">Ninguna carrera de esta lista cumple los filtros.</p>`;
   return `${pathCard()}
-    <section class="card"><h2>Senado <span class="same">${senList.length} carreras</span></h2>
+    <section class="card"><h2>Filtros <span class="same">${shown} de ${universe.length}</span></h2>
+      <p class="subh">Inclinación</p>
+      <div class="tiny">${chipRow("inc", LEAN_CHIPS, presentLean)}</div>
+      <p class="subh">Partido actual</p>
+      <div class="tiny">${chipRow("hol", HOLD_CHIPS)}</div>
+      <p class="subh">Tipo de cambio</p>
+      <div class="tiny">${chipRow("chg", CHG_CHIPS, presentChg)}</div>
+      <p class="note">Se combinan: dentro de una fila basta una opción; entre filas tienen que cumplirse todas. ${on ? "Los tres listados respetan estos filtros y conservan el orden." : "Sin filtros se enseña el recorte más importante, en el mismo orden."}</p>
+      <p style="margin-top:10px"><button type="button" id="bclear" style="border:1px solid var(--line);background:#fff;border-radius:10px;min-height:40px;padding:8px 12px;font:inherit;cursor:pointer">Limpiar filtros</button></p>
+    </section>
+    <section class="card"><h2>Senado <span class="same">${senList.length}</span></h2>
       <p class="note">Empates, inclinadas y escaños que cambiarían de partido, ordenados por cercanía del precio e impacto en la mayoría.</p>
-      ${senList.map((x,i)=>battleBlock(x.r, i+1, "Senado")).join("") || `<p class="empty">No hay carreras de Senado con precio cargado.</p>`}
+      ${senList.map((x,i)=>battleBlock(x.r, i+1, "Senado")).join("") || empty}
     </section>
-    <section class="card"><h2>Cámara <span class="same">${houList.length} distritos</span></h2>
-      <p class="note">Los distritos más cerrados. Dónde se concentran: ${esc(stateLine || "aún sin mercados")}.</p>
-      ${houList.map((x,i)=>battleBlock(x.r, i+1, "Cámara")).join("")}
+    <section class="card"><h2>Cámara <span class="same">${houList.length}</span></h2>
+      <p class="note">Los distritos más cerrados. Dónde se concentran: ${esc(stateLine || "ninguno con estos filtros")}.</p>
+      ${houList.map((x,i)=>battleBlock(x.r, i+1, "Cámara")).join("") || empty}
     </section>
-    <section class="card"><h2>Gobernadores <span class="same">${govList.length} carreras</span></h2>
+    <section class="card"><h2>Gobernadores <span class="same">${govList.length}</span></h2>
       <p class="note">Las gobernaciones con el precio más cerca del empate.</p>
-      ${govList.map((x,i)=>battleBlock(x.r, i+1, "Gobernador")).join("")}
+      ${govList.map((x,i)=>battleBlock(x.r, i+1, "Gobernador")).join("") || empty}
     </section>`;
 }
 function viewHTML(){
@@ -1039,6 +1117,23 @@ document.getElementById("chamber").onclick = (e) => {
   renderAll();
 };
 document.getElementById("view").onclick = (e) => {
+  const bf = e.target.closest("[data-bf]");
+  if (bf){
+    const i = bf.dataset.bf.indexOf(":");
+    const group = bf.dataset.bf.slice(0, i);
+    const key = bf.dataset.bf.slice(i + 1);
+    const set = S.bf[group];
+    if (set.has(key)) set.delete(key); else set.add(key);
+    writeBattleQuery();
+    renderAll();
+    return;
+  }
+  if (e.target.closest("#bclear")){
+    S.bf.inc.clear(); S.bf.hol.clear(); S.bf.chg.clear();
+    writeBattleQuery();
+    renderAll();
+    return;
+  }
   const st = e.target.closest("[data-st]");
   if (st && st.dataset.st){ pickState(st.dataset.st); return; }
   const m = e.target.closest("[data-m]");
