@@ -1,6 +1,6 @@
 {
- "as_of_iso": "2026-11-02T15:07:10-05:00",
- "as_of_bogota": "2026-11-02 15:07",
+ "as_of_iso": "2026-11-02T15:15:18-05:00",
+ "as_of_bogota": "2026-11-02 15:15",
  "source": "gamma-api.polymarket.com + clob.polymarket.com",
  "missing_slugs": [],
  "control_slugs": [
@@ -15,7 +15,7 @@
    "slug": "which-party-will-win-the-senate-in-2026",
    "title": "Which party will win the Senate in 2026?",
    "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
-   "volume": 16707473,
+   "volume": 16754796,
    "outcomes": [
     {
      "label": "Demócratas",
@@ -28,7 +28,7 @@
      "label": "Republicanos",
      "label_en": "Republican Party",
      "party": "R",
-     "price": 0.225,
+     "price": 0.215,
      "token": "51939490109676186832507970701169130490548061087912630009168726706475001411420"
     }
    ]
@@ -37,7 +37,7 @@
    "slug": "which-party-will-win-the-house-in-2026",
    "title": "Which party will win the House in 2026?",
    "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
-   "volume": 39245314,
+   "volume": 39475784,
    "outcomes": [
     {
      "label": "Demócratas",
@@ -59,13 +59,13 @@
    "slug": "balance-of-power-2026-midterms",
    "title": "Balance of Power: 2026 Midterms",
    "url": "https://polymarket.com/event/balance-of-power-2026-midterms",
-   "volume": 58166631,
+   "volume": 58283923,
    "outcomes": [
     {
      "label": "Barrida demócrata",
      "label_en": "Democrats Sweep",
      "party": "D",
-     "price": 0.765,
+     "price": 0.775,
      "token": "34722410608062854697106861099776685947172185964394483545370684749662285977831"
     },
     {
@@ -102,7 +102,7 @@
    "slug": "republican-senate-seats-after-the-2026-midterm-elections-927",
    "title": "Republican Senate seats after the 2026 midterm elections?",
    "url": "https://polymarket.com/event/republican-senate-seats-after-the-2026-midterm-elections-927",
-   "volume": 4757279,
+   "volume": 4765015,
    "outcomes": [
     {
      "label": "≤47",
@@ -129,7 +129,7 @@
      "label": "50",
      "label_en": "50",
      "party": "R",
-     "price": 0.08,
+     "price": 0.085,
      "token": "23243487444956959885535301419786787791218675785513044513046312975446911578713"
     },
     {
@@ -150,7 +150,7 @@
      "label": "52",
      "label_en": "52",
      "party": "R",
-     "price": 0.0265,
+     "price": 0.0275,
      "token": "71547572456937213989007089427188853117815317606685045433579261770964952182308"
     },
     {
@@ -187,7 +187,7 @@
    "slug": "republican-house-seats-after-the-2026-midterm-elections",
    "title": "Republican House seats after the 2026 midterm elections?",
    "url": "https://polymarket.com/event/republican-house-seats-after-the-2026-midterm-elections",
-   "volume": 567869,
+   "volume": 574452,
    "outcomes": [
     {
      "label": "Below 190",
@@ -200,7 +200,7 @@
      "label": "190-194",
      "label_en": "190-194",
      "party": "R",
-     "price": 0.17,
+     "price": 0.175,
      "token": "28563039514548428320768176747354466148898869862983186828076262234559578730437"
     },
     {
@@ -214,7 +214,7 @@
      "label": "200-204",
      "label_en": "200-204",
      "party": "R",
-     "price": 0.1115,
+     "price": 0.111,
      "token": "72002069499527925398637560287453277989370912181886433715927009264225913591577"
     },
     {
@@ -242,7 +242,7 @@
      "label": "220-224",
      "label_en": "220-224",
      "party": "R",
-     "price": 0.026,
+     "price": 0.0265,
      "token": "11440416578482803281113271939006595670566573058595214243294246034853366786529"
     },
     {
@@ -271,7 +271,7 @@
    "name": "Alaska",
    "slug": "alaska-senate-election-winner",
    "url": "https://polymarket.com/event/alaska-senate-election-winner",
-   "volume": 2691179,
+   "volume": 2692738,
    "candidates": [
     {
      "name": "Mary Peltola",
@@ -319,18 +319,18 @@
    "name": "Arkansas",
    "slug": "arkansas-senate-election-winner",
    "url": "https://polymarket.com/event/arkansas-senate-election-winner",
-   "volume": 113701,
+   "volume": 113789,
    "candidates": [
     {
      "name": "Tom Cotton",
      "party": "R",
-     "price": 0.963,
+     "price": 0.962,
      "token": "48125407658537781630126353551882211313520827583468729408685633955919030034320"
     },
     {
      "name": "Hallie Shoffner",
      "party": "D",
-     "price": 0.038,
+     "price": 0.039,
      "token": "68370995073141964079913803663665941780115677360430806954011390499916208708512"
     }
    ]
@@ -348,13 +348,13 @@
     {
      "name": "John Hickenlooper",
      "party": "D",
-     "price": 0.9915,
+     "price": 0.991,
      "token": "68194463917260305435439145066031544476540679280823247532132832363696000101185"
     },
     {
      "name": "Mark Baisley",
      "party": "R",
-     "price": 0.0065,
+     "price": 0.0095,
      "token": "94387913280398317052582281843978069916338462525042652614881277797162415545237"
     }
    ]
@@ -378,7 +378,7 @@
     {
      "name": "Republican",
      "party": "R",
-     "price": 0.0125,
+     "price": 0.013,
      "token": "18791277393217683755628516529477058015186638022373024614300661393042993809537"
     }
    ]
@@ -391,7 +391,7 @@
    "name": "Florida",
    "slug": "florida-senate-election-winner",
    "url": "https://polymarket.com/event/florida-senate-election-winner",
-   "volume": 813933,
+   "volume": 816379,
    "candidates": [
     {
      "name": "Ashley Moody",
@@ -439,7 +439,7 @@
    "name": "Iowa",
    "slug": "iowa-senate-election-winner",
    "url": "https://polymarket.com/event/iowa-senate-election-winner",
-   "volume": 2132540,
+   "volume": 2132604,
    "candidates": [
     {
      "name": "Ashley Hinson",
@@ -517,7 +517,7 @@
    "name": "Kansas",
    "slug": "kansas-senate-election-winner",
    "url": "https://polymarket.com/event/kansas-senate-election-winner",
-   "volume": 2325956,
+   "volume": 2326008,
    "candidates": [
     {
      "name": "Adam Hamilton",
@@ -546,13 +546,13 @@
     {
      "name": "Andy Barr",
      "party": "R",
-     "price": 0.964,
+     "price": 0.9635,
      "token": "48498511771232100148522166869811267217315069499419645745771730197179043728388"
     },
     {
      "name": "Charles Booker",
      "party": "D",
-     "price": 0.035,
+     "price": 0.0365,
      "token": "37649267567982889592011384409533519112993266261975620703097847510820818713285"
     }
    ]
@@ -565,7 +565,7 @@
    "name": "Louisiana",
    "slug": "louisiana-senate-election-winner",
    "url": "https://polymarket.com/event/louisiana-senate-election-winner",
-   "volume": 163395,
+   "volume": 165073,
    "candidates": [
     {
      "name": "Julia Letlow",
@@ -613,7 +613,7 @@
    "name": "Maine",
    "slug": "maine-senate-election-winner",
    "url": "https://polymarket.com/event/maine-senate-election-winner",
-   "volume": 3383240,
+   "volume": 3383697,
    "candidates": [
     {
      "name": "Troy Jackson",
@@ -637,7 +637,7 @@
    "name": "Michigan",
    "slug": "michigan-senate-election-winner",
    "url": "https://polymarket.com/event/michigan-senate-election-winner",
-   "volume": 7717713,
+   "volume": 7722927,
    "candidates": [
     {
      "name": "Abdul El-Sayed",
@@ -661,7 +661,7 @@
    "name": "Minnesota",
    "slug": "minnesota-senate-election-winner",
    "url": "https://polymarket.com/event/minnesota-senate-election-winner",
-   "volume": 844868,
+   "volume": 852882,
    "candidates": [
     {
      "name": "Peggy Flanagan",
@@ -763,7 +763,7 @@
    "name": "Nebraska",
    "slug": "nebraska-senate-election-winner",
    "url": "https://polymarket.com/event/nebraska-senate-election-winner",
-   "volume": 2410895,
+   "volume": 2414380,
    "candidates": [
     {
      "name": "Pete Ricketts",
@@ -828,7 +828,7 @@
     {
      "name": "Justin Murphy",
      "party": "R",
-     "price": 0.01,
+     "price": 0.0105,
      "token": "80469582416211324277551196813384851504222711072116234686695188046152640511225"
     }
    ]
@@ -846,7 +846,7 @@
     {
      "name": "Ben Ray Luján",
      "party": "D",
-     "price": 0.99,
+     "price": 0.9945,
      "token": "86827974851753312617441915824618617861250657564707166327567168877893121374182"
     },
     {
@@ -865,7 +865,7 @@
    "name": "Ohio",
    "slug": "ohio-senate-election-winner",
    "url": "https://polymarket.com/event/ohio-senate-election-winner",
-   "volume": 2653358,
+   "volume": 2654185,
    "candidates": [
     {
      "name": "Sherrod Brown",
@@ -894,13 +894,13 @@
     {
      "name": "Kevin Hern",
      "party": "R",
-     "price": 0.983,
+     "price": 0.982,
      "token": "83554519035704522672644117478876258278018394754028161940314277335853541553559"
     },
     {
      "name": "N’Kiyla “Jasmine” Thomas",
      "party": "D",
-     "price": 0.0195,
+     "price": 0.0205,
      "token": "112281295057865404870041957222562306206517476142557838682690649172966968734671"
     }
    ]
@@ -924,7 +924,7 @@
     {
      "name": "David Brock Smith",
      "party": "R",
-     "price": 0.0105,
+     "price": 0.011,
      "token": "79489800771199803792838465972773376352837733018768490302999836500381020065853"
     }
    ]
@@ -942,13 +942,13 @@
     {
      "name": "Jack Reed",
      "party": "D",
-     "price": 0.99,
+     "price": 0.991,
      "token": "77004273724753899183699441849597881417275931290950171679615354396048734034984"
     },
     {
      "name": "Raymond McKay",
      "party": "R",
-     "price": 0.0095,
+     "price": 0.0085,
      "token": "18128207363125529330540526475108389147728645885887417700651189282375630645842"
     }
    ]
@@ -961,7 +961,7 @@
    "name": "South Carolina",
    "slug": "south-carolina-senate-election-winner",
    "url": "https://polymarket.com/event/south-carolina-senate-election-winner",
-   "volume": 2025914,
+   "volume": 2026030,
    "candidates": [
     {
      "name": "Darline Graham Nordone",
@@ -1039,7 +1039,7 @@
    "name": "Texas",
    "slug": "texas-senate-election-winner",
    "url": "https://polymarket.com/event/texas-senate-election-winner",
-   "volume": 11449494,
+   "volume": 11451594,
    "candidates": [
     {
      "name": "James Talarico",
@@ -1137,12 +1137,12 @@
    "name": "Alaska",
    "slug": "alaska-governor-election-winner",
    "url": "https://polymarket.com/event/alaska-governor-election-winner",
-   "volume": 1788212,
+   "volume": 1791368,
    "candidates": [
     {
      "name": "Jonathan Kreiss-Tomkins",
      "party": "D",
-     "price": 0.887,
+     "price": 0.89,
      "token": "20244362049417025533374049121400436676833898969884666612361039499958684857530"
     },
     {
@@ -1161,18 +1161,18 @@
    "name": "Alabama",
    "slug": "alabama-governor-winner-2026",
    "url": "https://polymarket.com/event/alabama-governor-winner-2026",
-   "volume": 61345,
+   "volume": 65846,
    "candidates": [
     {
      "name": "Tommy Tuberville",
      "party": "R",
-     "price": 0.941,
+     "price": 0.9385,
      "token": "109054998942213692077271472955675949350077711784792442998941210738471587356514"
     },
     {
      "name": "Doug Jones",
      "party": "D",
-     "price": 0.062,
+     "price": 0.065,
      "token": "66799540193763442273153807390120946960260027428359861674134091731050086258652"
     }
    ]
@@ -1209,7 +1209,7 @@
    "name": "Arizona",
    "slug": "arizona-governor-winner-2026",
    "url": "https://polymarket.com/event/arizona-governor-winner-2026",
-   "volume": 708010,
+   "volume": 713107,
    "candidates": [
     {
      "name": "Katie Hobbs",
@@ -1238,13 +1238,13 @@
     {
      "name": "Xavier Becerra",
      "party": "D",
-     "price": 0.986,
+     "price": 0.9855,
      "token": "60977129292396881848833910361112107174416489010090570432106122538120602786646"
     },
     {
      "name": "Steve Hilton",
      "party": "R",
-     "price": 0.0145,
+     "price": 0.0165,
      "token": "82742036522262670996662794097029680950132682539859985097974842241612036171395"
     }
    ]
@@ -1262,7 +1262,7 @@
     {
      "name": "Phil Weiser",
      "party": "D",
-     "price": 0.9715,
+     "price": 0.97,
      "token": "13561110222018578357785114619723468880952494576477687978085608584743809891728"
     },
     {
@@ -1292,7 +1292,7 @@
     {
      "name": "Ryan Fazio",
      "party": "R",
-     "price": 0.024,
+     "price": 0.0245,
      "token": "28222949582692352334110457056784683609708218641745397767642367585928375878193"
     }
    ]
@@ -1305,7 +1305,7 @@
    "name": "Florida",
    "slug": "florida-governor-winner-2026",
    "url": "https://polymarket.com/event/florida-governor-winner-2026",
-   "volume": 1573795,
+   "volume": 1574190,
    "candidates": [
     {
      "name": "Byron Donalds",
@@ -1353,7 +1353,7 @@
    "name": "Hawaii",
    "slug": "hawaii-governor-winner-2026",
    "url": "https://polymarket.com/event/hawaii-governor-winner-2026",
-   "volume": 30196,
+   "volume": 30296,
    "candidates": [
     {
      "name": "Josh Green",
@@ -1425,12 +1425,12 @@
    "name": "Illinois",
    "slug": "illinois-governor-winner-2026",
    "url": "https://polymarket.com/event/illinois-governor-winner-2026",
-   "volume": 36550,
+   "volume": 36619,
    "candidates": [
     {
      "name": "JB Pritzker",
      "party": "D",
-     "price": 0.9905,
+     "price": 0.99,
      "token": "23435178151774440115423538812688705649247609803850018642847000556068202005554"
     },
     {
@@ -1473,18 +1473,18 @@
    "name": "Massachusetts",
    "slug": "massachusetts-governor-winner-2026",
    "url": "https://polymarket.com/event/massachusetts-governor-winner-2026",
-   "volume": 256871,
+   "volume": 256911,
    "candidates": [
     {
      "name": "Maura Healey",
      "party": "D",
-     "price": 0.9845,
+     "price": 0.984,
      "token": "86599393407315290835574565918707146460542680358932655202787183319230565551172"
     },
     {
      "name": "Michael Minogue",
      "party": "R",
-     "price": 0.0165,
+     "price": 0.0155,
      "token": "60883119277247470994582429550632811829505423471772740208057726618094988141160"
     }
    ]
@@ -1497,7 +1497,7 @@
    "name": "Maryland",
    "slug": "maryland-governor-winner-2026",
    "url": "https://polymarket.com/event/maryland-governor-winner-2026",
-   "volume": 32688,
+   "volume": 32715,
    "candidates": [
     {
      "name": "Wes Moore",
@@ -1526,7 +1526,7 @@
     {
      "name": "Hannah Pingree",
      "party": "D",
-     "price": 0.9655,
+     "price": 0.966,
      "token": "92845243966002494782242842696395378111295494684532387488276103452077216171518"
     },
     {
@@ -1574,13 +1574,13 @@
     {
      "name": "Amy Klobuchar",
      "party": "D",
-     "price": 0.9755,
+     "price": 0.9735,
      "token": "9126148503694470083148381233969293708563386203943196700151133094426622508276"
     },
     {
      "name": "Lisa Demuth",
      "party": "R",
-     "price": 0.027,
+     "price": 0.029,
      "token": "52147423614804649302719056405435366546705837330765266472799012257146403501281"
     }
    ]
@@ -1641,7 +1641,7 @@
    "name": "New Mexico",
    "slug": "new-mexico-governor-winner-2026",
    "url": "https://polymarket.com/event/new-mexico-governor-winner-2026",
-   "volume": 122543,
+   "volume": 122603,
    "candidates": [
     {
      "name": "Deb Haaland",
@@ -1652,7 +1652,7 @@
     {
      "name": "Gregg Hull",
      "party": "R",
-     "price": 0.0455,
+     "price": 0.045,
      "token": "66486026915087812107390926299428531209332603871609345502520740675575639289776"
     }
    ]
@@ -1665,7 +1665,7 @@
    "name": "Nevada",
    "slug": "nevada-governor-winner-2026",
    "url": "https://polymarket.com/event/nevada-governor-winner-2026",
-   "volume": 1393571,
+   "volume": 1394571,
    "candidates": [
     {
      "name": "Aaron Ford",
@@ -1694,13 +1694,13 @@
     {
      "name": "Kathy Hochul",
      "party": "D",
-     "price": 0.973,
+     "price": 0.9725,
      "token": "64050273355694113671090110638685043795558853994186493795797238541534244584786"
     },
     {
      "name": "Bruce Blakeman",
      "party": "R",
-     "price": 0.0255,
+     "price": 0.027,
      "token": "108106288970534575307495623455701128869187166289634633189375113923142364674394"
     }
    ]
@@ -1713,7 +1713,7 @@
    "name": "Ohio",
    "slug": "ohio-governor-winner-2026",
    "url": "https://polymarket.com/event/ohio-governor-winner-2026",
-   "volume": 1870736,
+   "volume": 1872759,
    "candidates": [
     {
      "name": "Amy Acton",
@@ -1737,7 +1737,7 @@
    "name": "Oklahoma",
    "slug": "oklahoma-governor-winner-2026",
    "url": "https://polymarket.com/event/oklahoma-governor-winner-2026",
-   "volume": 157384,
+   "volume": 159565,
    "candidates": [
     {
      "name": "Mike Mazzei",
@@ -1820,7 +1820,7 @@
     {
      "name": "Republican",
      "party": "R",
-     "price": 0.011,
+     "price": 0.0105,
      "token": "102532646565376609462398061495436415751549869365588135784659237547896983513156"
     }
    ]
@@ -1838,7 +1838,7 @@
     {
      "name": "Alan Wilson",
      "party": "R",
-     "price": 0.964,
+     "price": 0.9635,
      "token": "115258259561547414610995893322363332894307320697384633557391293684664191320185"
     },
     {
@@ -1886,13 +1886,13 @@
     {
      "name": "Marsha Blackburn",
      "party": "R",
-     "price": 0.9495,
+     "price": 0.947,
      "token": "24326213014906491852819643583064878883456155870415421965354259617491710449915"
     },
     {
      "name": "Jerri Green",
      "party": "D",
-     "price": 0.0445,
+     "price": 0.047,
      "token": "42092635016892213098098431597314233695276464574605657188222427223673881775927"
     }
    ]
@@ -1905,7 +1905,7 @@
    "name": "Texas",
    "slug": "texas-governor-winner-2026",
    "url": "https://polymarket.com/event/texas-governor-winner-2026",
-   "volume": 2338621,
+   "volume": 2340447,
    "candidates": [
     {
      "name": "Greg Abbott",
@@ -1929,7 +1929,7 @@
    "name": "Vermont",
    "slug": "vermont-governor-winner-2026",
    "url": "https://polymarket.com/event/vermont-governor-winner-2026",
-   "volume": 369600,
+   "volume": 369750,
    "candidates": [
     {
      "name": "Phil Scott",
@@ -1940,7 +1940,7 @@
     {
      "name": "Amanda Janoo",
      "party": "D",
-     "price": 0.294,
+     "price": 0.2925,
      "token": "60184991030711150053889856154789765911962237408503307206289529109604385579009"
     }
    ]
@@ -1953,7 +1953,7 @@
    "name": "Wisconsin",
    "slug": "wisconsin-governor-winner-2026",
    "url": "https://polymarket.com/event/wisconsin-governor-winner-2026",
-   "volume": 1038839,
+   "volume": 1038850,
    "candidates": [
     {
      "name": "David Crowley",
@@ -2014,7 +2014,7 @@
     {
      "name": "Bill Hill",
      "party": "O",
-     "price": 0.201,
+     "price": 0.2015,
      "token": "25264395884794585041068738174790155913872374353541552562714054259339230907354"
     },
     {
@@ -2044,7 +2044,7 @@
     {
      "name": "Clyde Jones Jr.",
      "party": "D",
-     "price": 0.0145,
+     "price": 0.016,
      "token": "84357600230025345245988905658786788578454211224023948178259553114344917506444"
     }
    ]
@@ -2129,18 +2129,18 @@
    "name": "AL-05",
    "slug": "al-05-house-election-winner",
    "url": "https://polymarket.com/event/al-05-house-election-winner",
-   "volume": 72254,
+   "volume": 72280,
    "candidates": [
     {
      "name": "Dale Strong",
      "party": "R",
-     "price": 0.982,
+     "price": 0.9815,
      "token": "110154721038568552453699357958709798501775671607304208004274771081047834890368"
     },
     {
      "name": "Andrew Sneed",
      "party": "D",
-     "price": 0.022,
+     "price": 0.0225,
      "token": "68631875322565868523285154270242603272847606597552721969696141534251250602740"
     }
    ]
@@ -2158,7 +2158,7 @@
     {
      "name": "Gary Palmer",
      "party": "R",
-     "price": 0.981,
+     "price": 0.9855,
      "token": "85504762581730680073030114993105519797750662841512543833812336938514282067413"
     },
     {
@@ -2188,7 +2188,7 @@
     {
      "name": "Ammie Akin",
      "party": "R",
-     "price": 0.0125,
+     "price": 0.0105,
      "token": "48932068578796028923012406794909309876994424221398501633113990013167001051920"
     }
    ]
@@ -2206,13 +2206,13 @@
     {
      "name": "Rick Crawford",
      "party": "R",
-     "price": 0.9885,
+     "price": 0.9915,
      "token": "10338190405180154118936293944395303427193801143492644827913863100070644247979"
     },
     {
      "name": "Terri Green",
      "party": "D",
-     "price": 0.011,
+     "price": 0.009,
      "token": "56916541151504189682963392088762873335652021052344419920270272661926471477661"
     }
    ]
@@ -2278,13 +2278,13 @@
     {
      "name": "Bruce Westerman",
      "party": "R",
-     "price": 0.9875,
+     "price": 0.988,
      "token": "110260830882991092144633307502150803745905837491299682969153292964467579292018"
     },
     {
      "name": "James Russell",
      "party": "D",
-     "price": 0.017,
+     "price": 0.0175,
      "token": "50458232542956383496300859937545837985706054640526708956484147944970313678882"
     }
    ]
@@ -2297,7 +2297,7 @@
    "name": "AZ-01",
    "slug": "az-01-house-election-winner",
    "url": "https://polymarket.com/event/az-01-house-election-winner",
-   "volume": 228166,
+   "volume": 228304,
    "candidates": [
     {
      "name": "Amish Shah",
@@ -2326,13 +2326,13 @@
     {
      "name": "Eli Crane",
      "party": "R",
-     "price": 0.555,
+     "price": 0.57,
      "token": "9769128509997586115354824623743902848286350478991278642403742423177008633185"
     },
     {
      "name": "Jonathan Nez",
      "party": "D",
-     "price": 0.435,
+     "price": 0.425,
      "token": "3443730243629009067137575970938200548553205123774326260772894121725693586787"
     }
    ]
@@ -2374,13 +2374,13 @@
     {
      "name": "Greg Stanton",
      "party": "D",
-     "price": 0.969,
+     "price": 0.9695,
      "token": "104005970128480337104891874367750547833990519520483573882668365353248989502114"
     },
     {
      "name": "Zuhdi Jasser",
      "party": "R",
-     "price": 0.0335,
+     "price": 0.033,
      "token": "64633719897927492512537711735811546215062268551854454614021704771709854529127"
     }
    ]
@@ -2518,13 +2518,13 @@
     {
      "name": "Mike McGuire",
      "party": "D",
-     "price": 0.969,
+     "price": 0.9685,
      "token": "67331357705585385027071329660686959600809248171117571210800179069993878608538"
     },
     {
      "name": "James Gallagher",
      "party": "R",
-     "price": 0.033,
+     "price": 0.0345,
      "token": "84204232533183310647414129153220648374644429385686946941846106746814756022120"
     }
    ]
@@ -2620,7 +2620,7 @@
     {
      "name": "Michael Masuda",
      "party": "D",
-     "price": 0.057,
+     "price": 0.058,
      "token": "10097990086146552692434796309930846203740286356284250873413191160242311510338"
     }
    ]
@@ -2638,13 +2638,13 @@
     {
      "name": "Demócratas",
      "party": "D",
-     "price": 0.961,
+     "price": 0.9585,
      "token": "2134037089581532637329414286322804711019060118686677518408765454795417362994"
     },
     {
      "name": "Republicanos",
      "party": "R",
-     "price": 0.0165,
+     "price": 0.014,
      "token": "59806094464759018653457544899968678781121289155365429270494493910099266076888"
     }
    ]
@@ -2686,13 +2686,13 @@
     {
      "name": "John Garamendi",
      "party": "D",
-     "price": 0.984,
+     "price": 0.9855,
      "token": "32409172986688708254453939759567926507325930685066184413591607977540990743355"
     },
     {
      "name": "Rudy Recile",
      "party": "R",
-     "price": 0.0115,
+     "price": 0.011,
      "token": "86454663480052451048663328774956628965596549937504050809136998500804198020398"
     }
    ]
@@ -2806,7 +2806,7 @@
     {
      "name": "Adam Gray",
      "party": "D",
-     "price": 0.9515,
+     "price": 0.9505,
      "token": "62184131032386611428464897252491116870859707412945073702683019894928068509899"
     },
     {
@@ -2830,7 +2830,7 @@
     {
      "name": "Demócratas",
      "party": "D",
-     "price": 0.9945,
+     "price": 0.9925,
      "token": "56542430623743630001983814528342808876147298738287935111501459814410092726879"
     },
     {
@@ -2860,7 +2860,7 @@
     {
      "name": "Charles Hoelter",
      "party": "R",
-     "price": 0.009,
+     "price": 0.008,
      "token": "20647153759573909623791585491804284637429984868360522426394429016885746798367"
     }
    ]
@@ -2878,13 +2878,13 @@
     {
      "name": "Sam Liccardo",
      "party": "D",
-     "price": 0.982,
+     "price": 0.981,
      "token": "11485298158163142949629589061097195465202436801821259030086136660830277505443"
     },
     {
      "name": "Peter Soulé",
      "party": "R",
-     "price": 0.0205,
+     "price": 0.0195,
      "token": "78465499938008816731441981415784021095387642217390347268629630983066909631530"
     }
    ]
@@ -2908,7 +2908,7 @@
     {
      "name": "Ritesh Tandon",
      "party": "R",
-     "price": 0.011,
+     "price": 0.0125,
      "token": "31716558951764367817603701750430875409552385403445590084030710604263053895732"
     }
    ]
@@ -3004,7 +3004,7 @@
     {
      "name": "Kyle Kirkland",
      "party": "R",
-     "price": 0.03,
+     "price": 0.032,
      "token": "15825912819351702304735983344356370328199854215928277295411087517531158333253"
     }
    ]
@@ -3046,7 +3046,7 @@
     {
      "name": "Jay Obernolte",
      "party": "R",
-     "price": 0.967,
+     "price": 0.968,
      "token": "73218655564121263252056865916585196455541353816579438410752822117747448839519"
     },
     {
@@ -3070,7 +3070,7 @@
     {
      "name": "Salud Carbajal",
      "party": "D",
-     "price": 0.9885,
+     "price": 0.99,
      "token": "91042408418874085082573210998669472137340222837081715470306261334519787272505"
     },
     {
@@ -3100,7 +3100,7 @@
     {
      "name": "Joe Males",
      "party": "R",
-     "price": 0.021,
+     "price": 0.0205,
      "token": "5303272226170862640387215231845346193274115085158313711437158418061753820825"
     }
    ]
@@ -3118,13 +3118,13 @@
     {
      "name": "Jacqui Irwin",
      "party": "D",
-     "price": 0.9675,
+     "price": 0.9685,
      "token": "87285509233591279304429507969779729564225110757523024943761239796898054120656"
     },
     {
      "name": "Sam Gallucci",
      "party": "R",
-     "price": 0.0285,
+     "price": 0.0275,
      "token": "81563274329968895473756023576559426445912964712326376070263141771139848191988"
     }
    ]
@@ -3142,7 +3142,7 @@
     {
      "name": "George Whitesides",
      "party": "D",
-     "price": 0.976,
+     "price": 0.977,
      "token": "3386886768575392625178430469513095175799394167104373172920267896603859431569"
     },
     {
@@ -3166,7 +3166,7 @@
     {
      "name": "Judy Chu",
      "party": "D",
-     "price": 0.977,
+     "price": 0.9765,
      "token": "3949727603937712746781949111015540145637195568645838629090400676710532251292"
     },
     {
@@ -3214,7 +3214,7 @@
     {
      "name": "Laura Friedman",
      "party": "D",
-     "price": 0.981,
+     "price": 0.9815,
      "token": "34983341218437533963753074066269899883642439029665592893273274695413016540444"
     },
     {
@@ -3286,13 +3286,13 @@
     {
      "name": "Pete Aguilar",
      "party": "D",
-     "price": 0.976,
+     "price": 0.978,
      "token": "90218640894801286056699580976373890351978277299544759889402066126599593735696"
     },
     {
      "name": "Stephanie Vargas",
      "party": "R",
-     "price": 0.02,
+     "price": 0.0225,
      "token": "39297236086577390649224647069141224832978456086770040950011658744165796998011"
     }
    ]
@@ -3334,7 +3334,7 @@
     {
      "name": "Norma Torres",
      "party": "D",
-     "price": 0.9865,
+     "price": 0.988,
      "token": "46607031111207676209444906351728648132408234041010933066205820523989113184464"
     },
     {
@@ -3358,13 +3358,13 @@
     {
      "name": "Ted Lieu",
      "party": "D",
-     "price": 0.977,
+     "price": 0.978,
      "token": "105030662843099079784307703451452793616518221619892194711045165270815786680115"
     },
     {
      "name": "Houston Brignano",
      "party": "R",
-     "price": 0.011,
+     "price": 0.0085,
      "token": "96434460617776569851044978478147830833462146970776113458777033674620808859764"
     }
    ]
@@ -3473,18 +3473,18 @@
    "name": "CA-41",
    "slug": "ca-41-house-election-winner",
    "url": "https://polymarket.com/event/ca-41-house-election-winner",
-   "volume": 24243,
+   "volume": 24263,
    "candidates": [
     {
      "name": "Linda Sánchez",
      "party": "D",
-     "price": 0.9845,
+     "price": 0.986,
      "token": "48593915301513824754675795036918399098342443342199462614665200546792921742958"
     },
     {
      "name": "Mitch Clemmons",
      "party": "R",
-     "price": 0.012,
+     "price": 0.014,
      "token": "9474953060586541493475811220548525444675867519187898251855456654031527100756"
     }
    ]
@@ -3502,7 +3502,7 @@
     {
      "name": "Robert Garcia",
      "party": "D",
-     "price": 0.9715,
+     "price": 0.9735,
      "token": "62187895827376865423511059445361168124523159012773371646352461822543770688965"
     },
     {
@@ -3526,13 +3526,13 @@
     {
      "name": "Maxine Waters",
      "party": "D",
-     "price": 0.9815,
+     "price": 0.9835,
      "token": "67592085098804909338818971248447750368121416656139011957919229756470489040380"
     },
     {
      "name": "Cristian Morales",
      "party": "R",
-     "price": 0.0185,
+     "price": 0.0165,
      "token": "108425042634169201745256955435506727044568468851213247093771411608705310874560"
     }
    ]
@@ -3550,7 +3550,7 @@
     {
      "name": "Nanette Barragán",
      "party": "D",
-     "price": 0.9765,
+     "price": 0.979,
      "token": "10296237703139843012968120979265014381098318284287494364694927343168252773108"
     },
     {
@@ -3598,7 +3598,7 @@
     {
      "name": "Lou Correa",
      "party": "D",
-     "price": 0.975,
+     "price": 0.978,
      "token": "26734344833513300674234719907751272517113741511748230891830434511213294147108"
     },
     {
@@ -3670,13 +3670,13 @@
     {
      "name": "Mike Levin",
      "party": "D",
-     "price": 0.9745,
+     "price": 0.976,
      "token": "104036299545597550224954508385716352383975603171183358856957817363966564935570"
     },
     {
      "name": "Armen Kurdian",
      "party": "R",
-     "price": 0.0125,
+     "price": 0.012,
      "token": "99494966074927465120632739668273077125543269633658592239886057791527778982163"
     }
    ]
@@ -3694,7 +3694,7 @@
     {
      "name": "Scott Peters",
      "party": "D",
-     "price": 0.972,
+     "price": 0.9715,
      "token": "60502155618282716870886097957277479061300277140585516478510964442797433574718"
     },
     {
@@ -3718,13 +3718,13 @@
     {
      "name": "Sara Jacobs",
      "party": "D",
-     "price": 0.975,
+     "price": 0.9755,
      "token": "7156989868040696319126353265768767091541749672171227459728717470927509001750"
     },
     {
      "name": "Ricardo Cabrera",
      "party": "R",
-     "price": 0.017,
+     "price": 0.0165,
      "token": "61779806613787336543503208076878512444377280115888152435795175115147089406820"
     }
    ]
@@ -3742,13 +3742,13 @@
     {
      "name": "Juan Vargas",
      "party": "D",
-     "price": 0.981,
+     "price": 0.982,
      "token": "4717851890462964829531501658272716735434325138881095698857038267811764307639"
     },
     {
      "name": "Jeff Belle",
      "party": "R",
-     "price": 0.019,
+     "price": 0.016,
      "token": "52105149092674149221192796188933941763733006961576053198249190527663707947750"
     }
    ]
@@ -3766,7 +3766,7 @@
     {
      "name": "Melat Kiros",
      "party": "D",
-     "price": 0.992,
+     "price": 0.993,
      "token": "53333828829338167402940504493087621160687962922171690836209868671596736362342"
     },
     {
@@ -3790,7 +3790,7 @@
     {
      "name": "Joe Neguse",
      "party": "D",
-     "price": 0.9775,
+     "price": 0.9825,
      "token": "14569938996060500988395771925115023434689650463880118983545400855529442255391"
     },
     {
@@ -3929,7 +3929,7 @@
    "name": "CO-08",
    "slug": "co-08-house-election-winner",
    "url": "https://polymarket.com/event/co-08-house-election-winner",
-   "volume": 36635,
+   "volume": 36636,
    "candidates": [
     {
      "name": "Manny Rutinel",
@@ -4006,7 +4006,7 @@
     {
      "name": "Rosa DeLauro",
      "party": "D",
-     "price": 0.972,
+     "price": 0.9705,
      "token": "61805914769576357154141784317338605281239399229499269455463920311946449766495"
     },
     {
@@ -4030,13 +4030,13 @@
     {
      "name": "Jim Himes",
      "party": "D",
-     "price": 0.976,
+     "price": 0.9775,
      "token": "30845995565483439200950091503974036110492918423464931036871676569100055706690"
     },
     {
      "name": "Michael Goldstein",
      "party": "R",
-     "price": 0.012,
+     "price": 0.0115,
      "token": "86651441908864117903375488501931828989628641303188233276953480708262634639722"
     }
    ]
@@ -4102,7 +4102,7 @@
     {
      "name": "Jimmy Patronis",
      "party": "R",
-     "price": 0.9765,
+     "price": 0.9775,
      "token": "24805513897473743946283724267497228121380165587169711787176514837357325331239"
     },
     {
@@ -4174,7 +4174,7 @@
     {
      "name": "Aaron Bean",
      "party": "R",
-     "price": 0.83,
+     "price": 0.825,
      "token": "23596369499779152397891425859484409991842806532061356717884745743527936130199"
     },
     {
@@ -4217,18 +4217,18 @@
    "name": "FL-06",
    "slug": "fl-06-house-election-winner",
    "url": "https://polymarket.com/event/fl-06-house-election-winner",
-   "volume": 42520,
+   "volume": 42546,
    "candidates": [
     {
      "name": "Randy Fine",
      "party": "R",
-     "price": 0.978,
+     "price": 0.9745,
      "token": "99543058953801321682044152137677182942226646940612732177310381176666406510698"
     },
     {
      "name": "Eric Yonce",
      "party": "D",
-     "price": 0.027,
+     "price": 0.0275,
      "token": "14493765828815585435212077831493209076305209190633778625530667653484462204255"
     }
    ]
@@ -4270,13 +4270,13 @@
     {
      "name": "Mike Haridopolos",
      "party": "R",
-     "price": 0.9245,
+     "price": 0.925,
      "token": "92150218229771964198000109706598096599776903652382831959679241477371035603915"
     },
     {
      "name": "Jennifer Jenkins",
      "party": "D",
-     "price": 0.0725,
+     "price": 0.0695,
      "token": "60039628376482795180122471000567571421989975659088379837905895784454590204593"
     }
    ]
@@ -4342,13 +4342,13 @@
     {
      "name": "Joe Strada",
      "party": "R",
-     "price": 0.89,
+     "price": 0.885,
      "token": "84179237005038964400897714800107939466526824819664642862730274257504652351902"
     },
     {
      "name": "James Pericola",
      "party": "D",
-     "price": 0.11,
+     "price": 0.115,
      "token": "57595511401001951405669372555419629091897524458564721628661835129821765206024"
     }
    ]
@@ -4372,7 +4372,7 @@
     {
      "name": "Kimberly Overman",
      "party": "D",
-     "price": 0.125,
+     "price": 0.13,
      "token": "32640993452562469811384870498493041930158769559803970678048099545457759727118"
     }
    ]
@@ -4438,13 +4438,13 @@
     {
      "name": "Laurel Lee",
      "party": "R",
-     "price": 0.9405,
+     "price": 0.9345,
      "token": "79117636430602278160108927593605041096497444222139646261397905323187792406272"
     },
     {
      "name": "Robert People",
      "party": "D",
-     "price": 0.0515,
+     "price": 0.053,
      "token": "96412044624330308417511747745169822641961893942489167496092059233341631794786"
     }
    ]
@@ -4534,13 +4534,13 @@
     {
      "name": "Jim Schwartzel",
      "party": "R",
-     "price": 0.9695,
+     "price": 0.9685,
      "token": "71120081629655495320105336830396984838638066723903109632802809261192412192199"
     },
     {
      "name": "Victor Arias",
      "party": "D",
-     "price": 0.027,
+     "price": 0.029,
      "token": "27167490071280448640121657035638617647929748449745143529869350819235215102781"
     }
    ]
@@ -4636,7 +4636,7 @@
     {
      "name": "Deborah Adeimy",
      "party": "R",
-     "price": 0.0155,
+     "price": 0.0145,
      "token": "106967461893932918792074292039309387479759826215419074353281316001017570240715"
     }
    ]
@@ -4697,7 +4697,7 @@
    "name": "FL-26",
    "slug": "fl-26-house-election-winner",
    "url": "https://polymarket.com/event/fl-26-house-election-winner",
-   "volume": 122558,
+   "volume": 122763,
    "candidates": [
     {
      "name": "Mario Díaz-Balart",
@@ -4721,7 +4721,7 @@
    "name": "FL-27",
    "slug": "fl-27-house-election-winner",
    "url": "https://polymarket.com/event/fl-27-house-election-winner",
-   "volume": 75307,
+   "volume": 75323,
    "candidates": [
     {
      "name": "María Elvira Salazar",
@@ -4774,7 +4774,7 @@
     {
      "name": "Jim Kingston",
      "party": "R",
-     "price": 0.88,
+     "price": 0.885,
      "token": "48394479462636980163048205529654521418041874935792585825550470023831938177817"
     },
     {
@@ -4798,7 +4798,7 @@
     {
      "name": "Sanford Bishop",
      "party": "D",
-     "price": 0.9735,
+     "price": 0.976,
      "token": "19606361507228583496697532968311671202824580545845457919639287792278838929378"
     },
     {
@@ -4822,13 +4822,13 @@
     {
      "name": "Brian Jack",
      "party": "R",
-     "price": 0.974,
+     "price": 0.9745,
      "token": "103257482141284479640939213216595977945118958994352823451037949058819717284337"
     },
     {
      "name": "Maura Keller",
      "party": "D",
-     "price": 0.028,
+     "price": 0.029,
      "token": "93216066216573421643919428342777488462101652443005836091292546013322331366653"
     }
    ]
@@ -4846,13 +4846,13 @@
     {
      "name": "Hank Johnson",
      "party": "D",
-     "price": 0.9825,
+     "price": 0.98,
      "token": "13680509751369621848120596311629020444987156332032223738528884749388341271486"
     },
     {
      "name": "James Duffie",
      "party": "R",
-     "price": 0.015,
+     "price": 0.0175,
      "token": "11793754849818553909617583099643887683593982683521388353100814452172042789885"
     }
    ]
@@ -4966,7 +4966,7 @@
     {
      "name": "Andrew Clyde",
      "party": "R",
-     "price": 0.9865,
+     "price": 0.985,
      "token": "12199032496315355748891477105973308318467279884251275343020306936405585236867"
     },
     {
@@ -5014,13 +5014,13 @@
     {
      "name": "John Cowan",
      "party": "R",
-     "price": 0.958,
+     "price": 0.9565,
      "token": "103369004718401843338269667199855496468561165212082578929632001514114566164683"
     },
     {
      "name": "Chris Harden",
      "party": "D",
-     "price": 0.041,
+     "price": 0.0425,
      "token": "72900022567886343853178791815126963203359299208775840478222238101389988850285"
     }
    ]
@@ -5038,13 +5038,13 @@
     {
      "name": "Rick Allen",
      "party": "R",
-     "price": 0.885,
+     "price": 0.875,
      "token": "101804221129923221311468014764974740374334424163195744719593146528253694482543"
     },
     {
      "name": "Ceretta Smith",
      "party": "D",
-     "price": 0.105,
+     "price": 0.115,
      "token": "97139774774978169791769691500888812902677754367501285709810861067968446301099"
     }
    ]
@@ -5062,13 +5062,13 @@
     {
      "name": "Jasmine Clark",
      "party": "D",
-     "price": 0.9845,
+     "price": 0.9855,
      "token": "92366745958982953364146635159406186196503900280465649334522612642814735137916"
     },
     {
      "name": "Jonathan Chavez",
      "party": "R",
-     "price": 0.0155,
+     "price": 0.0145,
      "token": "19608305082891809390734283967290795745968969868699400350028849287352302979382"
     }
    ]
@@ -5092,7 +5092,7 @@
     {
      "name": "Shawn Harris",
      "party": "D",
-     "price": 0.024,
+     "price": 0.0235,
      "token": "91131397249312416576223157599368571228066840214649784700657406169672496108342"
     }
    ]
@@ -5105,18 +5105,18 @@
    "name": "HI-01",
    "slug": "hi-01-house-election-winner",
    "url": "https://polymarket.com/event/hi-01-house-election-winner",
-   "volume": 54489,
+   "volume": 54649,
    "candidates": [
     {
      "name": "Ed Case",
      "party": "D",
-     "price": 0.9865,
+     "price": 0.9895,
      "token": "18768979471139908284162200778802218271515638957740177933884891945679834825678"
     },
     {
      "name": "Adriel Lam",
      "party": "R",
-     "price": 0.015,
+     "price": 0.013,
      "token": "92660101588003048847057734474702416766704940709939485161564066847438017046107"
     }
    ]
@@ -5129,7 +5129,7 @@
    "name": "HI-02",
    "slug": "hi-02-house-election-winner",
    "url": "https://polymarket.com/event/hi-02-house-election-winner",
-   "volume": 83633,
+   "volume": 83893,
    "candidates": [
     {
      "name": "Jill Tokuda",
@@ -5153,7 +5153,7 @@
    "name": "IA-01",
    "slug": "ia-01-house-election-winner",
    "url": "https://polymarket.com/event/ia-01-house-election-winner",
-   "volume": 81191,
+   "volume": 81334,
    "candidates": [
     {
      "name": "Christina Bohannan",
@@ -5254,7 +5254,7 @@
     {
      "name": "Russ Fulcher",
      "party": "R",
-     "price": 0.9765,
+     "price": 0.9755,
      "token": "59444449436643247197673661974704245652808613383687876481385838085076471526148"
     },
     {
@@ -5278,7 +5278,7 @@
     {
      "name": "Mike Simpson",
      "party": "R",
-     "price": 0.973,
+     "price": 0.9725,
      "token": "65993218055079856936465332296399500348362669984481638170531207311767296274108"
     },
     {
@@ -5302,7 +5302,7 @@
     {
      "name": "Jonathan Jackson",
      "party": "D",
-     "price": 0.975,
+     "price": 0.9755,
      "token": "111429360194976642463122155544941063467273552031677199852315518536574003906807"
     },
     {
@@ -5374,13 +5374,13 @@
     {
      "name": "Patty Garcia",
      "party": "D",
-     "price": 0.962,
+     "price": 0.9555,
      "token": "14007319973449580941216207693284702915706751340337137875886243280887361329837"
     },
     {
      "name": "Lupe Castillo",
      "party": "R",
-     "price": 0.015,
+     "price": 0.0125,
      "token": "74128330986408847467673009736009283505929691039479877368922821510089058197053"
     }
    ]
@@ -5398,13 +5398,13 @@
     {
      "name": "Mike Quigley",
      "party": "D",
-     "price": 0.993,
+     "price": 0.989,
      "token": "59538856919674036464194404666118133375410978992899157908501423782766880692308"
     },
     {
      "name": "Tommy Hanson",
      "party": "R",
-     "price": 0.01,
+     "price": 0.012,
      "token": "100241408384251420621104421944751988879046543997369116885995396871382976467097"
     }
    ]
@@ -5422,7 +5422,7 @@
     {
      "name": "Sean Casten",
      "party": "D",
-     "price": 0.9755,
+     "price": 0.9765,
      "token": "13654136294912737786273382394715340531059951183029651993265228432317113997179"
     },
     {
@@ -5470,13 +5470,13 @@
     {
      "name": "Melissa Bean",
      "party": "D",
-     "price": 0.9685,
+     "price": 0.963,
      "token": "102618255098980928381245340214937749006014028599970120758351748685033845740904"
     },
     {
      "name": "Jennifer Davis",
      "party": "R",
-     "price": 0.0305,
+     "price": 0.0395,
      "token": "36815313003852310657260746460657475736774387222418235162062538673678082788361"
     }
    ]
@@ -5513,12 +5513,12 @@
    "name": "IL-10",
    "slug": "il-10-house-election-winner",
    "url": "https://polymarket.com/event/il-10-house-election-winner",
-   "volume": 34351,
+   "volume": 34496,
    "candidates": [
     {
      "name": "Brad Schneider",
      "party": "D",
-     "price": 0.974,
+     "price": 0.9755,
      "token": "5514412393314426155366889345650333693615971892269906531312041388469159744311"
     },
     {
@@ -5542,13 +5542,13 @@
     {
      "name": "Bill Foster",
      "party": "D",
-     "price": 0.983,
+     "price": 0.984,
      "token": "92072846265586511868586470791377749271872899011769483788505230170764282743130"
     },
     {
      "name": "Jeff Walter",
      "party": "R",
-     "price": 0.013,
+     "price": 0.0125,
      "token": "107314769780168259837937863911047786377970115659468305716640990751436373312461"
     }
    ]
@@ -5566,7 +5566,7 @@
     {
      "name": "Mike Bost",
      "party": "R",
-     "price": 0.982,
+     "price": 0.9835,
      "token": "78264086266431777354915017991718793388689075926627813902541971720840376364633"
     },
     {
@@ -5590,13 +5590,13 @@
     {
      "name": "Nikki Budzinski",
      "party": "D",
-     "price": 0.9705,
+     "price": 0.973,
      "token": "3904177267315978971890515897810671806164054590188148968600555332716763176480"
     },
     {
      "name": "Jeff Wilson",
      "party": "R",
-     "price": 0.017,
+     "price": 0.018,
      "token": "91515894388112611050598804533473146777050076792667824351038277601968938641156"
     }
    ]
@@ -5638,7 +5638,7 @@
     {
      "name": "Mary Miller",
      "party": "R",
-     "price": 0.989,
+     "price": 0.9895,
      "token": "109528554285704323290672010666667480648525134207671747877060739163187610434188"
     },
     {
@@ -5692,7 +5692,7 @@
     {
      "name": "Dillan Vancil",
      "party": "R",
-     "price": 0.022,
+     "price": 0.02,
      "token": "79444164673355678927805316500838460900416549296677774453550281993241120090194"
     }
    ]
@@ -5716,7 +5716,7 @@
     {
      "name": "Barb Regnitz",
      "party": "R",
-     "price": 0.0265,
+     "price": 0.027,
      "token": "22030065740164700928038468784540592655625559910021860526489310133305636885909"
     }
    ]
@@ -5734,13 +5734,13 @@
     {
      "name": "Rudy Yakym",
      "party": "R",
-     "price": 0.9685,
+     "price": 0.9665,
      "token": "104110618855204897179758174935615534705942022933638073904086960360976204837940"
     },
     {
      "name": "Jamee Decio",
      "party": "D",
-     "price": 0.0225,
+     "price": 0.0235,
      "token": "68473920370550942284778062999961072427533064836719068542486321146365474007076"
     }
    ]
@@ -5782,13 +5782,13 @@
     {
      "name": "Jim Baird",
      "party": "R",
-     "price": 0.974,
+     "price": 0.9745,
      "token": "94297835491058229298800069016262105031794718356267914478174965074407849527709"
     },
     {
      "name": "Drew Cox",
      "party": "D",
-     "price": 0.02,
+     "price": 0.0215,
      "token": "12343176385593004266642091177683242459636741863464767955952481212727580174668"
     }
    ]
@@ -5860,7 +5860,7 @@
     {
      "name": "Patrick McAuley",
      "party": "R",
-     "price": 0.0195,
+     "price": 0.019,
      "token": "55016365551312930843558439404767551893950013647637723078603554099142875854285"
     }
    ]
@@ -5878,13 +5878,13 @@
     {
      "name": "Mark Messmer",
      "party": "R",
-     "price": 0.9755,
+     "price": 0.977,
      "token": "83388939929131108336260751638688657812004759539209873062054138374244861962518"
     },
     {
      "name": "Mary Allen",
      "party": "D",
-     "price": 0.0165,
+     "price": 0.014,
      "token": "95921693205139574246015633311664876104700010628639765928559751578355120528115"
     }
    ]
@@ -5908,7 +5908,7 @@
     {
      "name": "Brad Meyer",
      "party": "D",
-     "price": 0.0145,
+     "price": 0.014,
      "token": "75814564646906024391505686234286869785556668391616726624515278941870896420214"
     }
    ]
@@ -5926,7 +5926,7 @@
     {
      "name": "Tracey Mann",
      "party": "R",
-     "price": 0.98,
+     "price": 0.981,
      "token": "89294124183402626957238695801193055654720813412868177081309936389936344950473"
     },
     {
@@ -5974,13 +5974,13 @@
     {
      "name": "Sharice Davids",
      "party": "D",
-     "price": 0.9655,
+     "price": 0.965,
      "token": "24408795137379296145834607141111059105940561833545478664246639219635821780622"
     },
     {
      "name": "Eric Jenkins",
      "party": "R",
-     "price": 0.038,
+     "price": 0.0365,
      "token": "14554449836619157580380385529943820085165866521390216525436199151671052168872"
     }
    ]
@@ -5998,13 +5998,13 @@
     {
      "name": "Ron Estes",
      "party": "R",
-     "price": 0.9655,
+     "price": 0.968,
      "token": "43799238947251203777445504621620114876351756621174658011021531591688284839834"
     },
     {
      "name": "Katy Tyndell",
      "party": "D",
-     "price": 0.025,
+     "price": 0.027,
      "token": "36101921222343321276777121922457537752474375137102167252750271401788017619669"
     }
    ]
@@ -6022,7 +6022,7 @@
     {
      "name": "James Comer",
      "party": "R",
-     "price": 0.9835,
+     "price": 0.9805,
      "token": "114613335906453541270201343696599025113116042822457278107587423434896590215533"
     },
     {
@@ -6070,7 +6070,7 @@
     {
      "name": "Morgan McGarvey",
      "party": "D",
-     "price": 0.9805,
+     "price": 0.981,
      "token": "50591339736475770518294199587652146939953189671285507981419322365453510581727"
     },
     {
@@ -6094,7 +6094,7 @@
     {
      "name": "Ed Gallrein",
      "party": "R",
-     "price": 0.969,
+     "price": 0.9705,
      "token": "4360584608318889792359076982751499707146205412289783849766659973245585132129"
     },
     {
@@ -6124,7 +6124,7 @@
     {
      "name": "Ned Pillersdorf",
      "party": "D",
-     "price": 0.0125,
+     "price": 0.012,
      "token": "3731751693751219174965309328780167055408234377609642462157329019698768916719"
     }
    ]
@@ -6166,13 +6166,13 @@
     {
      "name": "Republicanos",
      "party": "R",
-     "price": 0.978,
+     "price": 0.9775,
      "token": "49043659567826669485017158377308895897528805060838306024082456979869722387233"
     },
     {
      "name": "Demócratas",
      "party": "D",
-     "price": 0.017,
+     "price": 0.0155,
      "token": "108450267932091164902219104496869723319856263158007752331718585825959126776087"
     }
    ]
@@ -6238,13 +6238,13 @@
     {
      "name": "Republicanos",
      "party": "R",
-     "price": 0.9685,
+     "price": 0.9695,
      "token": "104224394142168771784654595412189099310755814445779478276765086079351864865879"
     },
     {
      "name": "Demócratas",
      "party": "D",
-     "price": 0.0265,
+     "price": 0.027,
      "token": "51535851194395779047138541676153087184313347583915702209724951204467090617227"
     }
    ]
@@ -6262,13 +6262,13 @@
     {
      "name": "Republicanos",
      "party": "R",
-     "price": 0.976,
+     "price": 0.9765,
      "token": "9955638384017424271469919771014656710534847362374264075493263668768212521280"
     },
     {
      "name": "Demócratas",
      "party": "D",
-     "price": 0.0115,
+     "price": 0.0125,
      "token": "19490938531861722372068854358093961008109215248794288770298340819739802576040"
     }
    ]
@@ -6286,13 +6286,13 @@
     {
      "name": "Republicanos",
      "party": "R",
-     "price": 0.951,
+     "price": 0.9495,
      "token": "91671510030965550095021879097009816234573148362920309916964884322529522639478"
     },
     {
      "name": "Demócratas",
      "party": "D",
-     "price": 0.047,
+     "price": 0.0495,
      "token": "10527812993097872709394414368167833403731281477203524030944528898870068340952"
     }
    ]
@@ -6310,7 +6310,7 @@
     {
      "name": "Richard Neal",
      "party": "D",
-     "price": 0.9765,
+     "price": 0.978,
      "token": "98083281865435907915120393579854118827352568698356665968911918305957421002881"
     },
     {
@@ -6364,7 +6364,7 @@
     {
      "name": "Gary Grossi",
      "party": "R",
-     "price": 0.0175,
+     "price": 0.016,
      "token": "87526990484940391070244441581489657363832414612167063074845498412082808728395"
     }
    ]
@@ -6382,13 +6382,13 @@
     {
      "name": "Jake Auchincloss",
      "party": "D",
-     "price": 0.9835,
+     "price": 0.9845,
      "token": "74326183548830060152261865595826652442679082014276179322488060383141546311354"
     },
     {
      "name": "Tom Stalcup",
      "party": "R",
-     "price": 0.018,
+     "price": 0.017,
      "token": "40605748465275471690979513296141122810533356066219314498079953068846834170761"
     }
    ]
@@ -6430,13 +6430,13 @@
     {
      "name": "Dan Koh",
      "party": "D",
-     "price": 0.977,
+     "price": 0.9765,
      "token": "54280566946606072209137225607486249010960919222499183903339238683706957983003"
     },
     {
      "name": "Micah Jones",
      "party": "R",
-     "price": 0.0185,
+     "price": 0.021,
      "token": "88615868530658018443676068457637493584921370007049961572430018501948033480886"
     }
    ]
@@ -6478,7 +6478,7 @@
     {
      "name": "Stephen Lynch",
      "party": "D",
-     "price": 0.9785,
+     "price": 0.9805,
      "token": "94942197335447814139209609749404898815210845147808744178807009819254277159529"
     },
     {
@@ -6508,7 +6508,7 @@
     {
      "name": "Tyler MacAllister",
      "party": "R",
-     "price": 0.0175,
+     "price": 0.017,
      "token": "61188048232712829235997156689088194846751416868371736688279929704678483705931"
     }
    ]
@@ -6550,13 +6550,13 @@
     {
      "name": "Johnny Olszewski",
      "party": "D",
-     "price": 0.9755,
+     "price": 0.976,
      "token": "53103196534956788063389746567749006622484562321611427912527055111548589493172"
     },
     {
      "name": "Dave Wallace",
      "party": "R",
-     "price": 0.018,
+     "price": 0.017,
      "token": "1549068663237471240442336637159124654983811497854383856514610448026879327400"
     }
    ]
@@ -6574,7 +6574,7 @@
     {
      "name": "Sarah Elfreth",
      "party": "D",
-     "price": 0.97,
+     "price": 0.974,
      "token": "115393868697986750908604632086086437149748671552794849757229011010349637939635"
     },
     {
@@ -6622,13 +6622,13 @@
     {
      "name": "Adrian Boafo",
      "party": "D",
-     "price": 0.977,
+     "price": 0.978,
      "token": "28478131063001026807361778849929266433908190357007795184217176524024153251717"
     },
     {
      "name": "Chris Chaffee",
      "party": "R",
-     "price": 0.0255,
+     "price": 0.025,
      "token": "14157519553647063196638345849975541580042624916826976217417643598039779737067"
     }
    ]
@@ -6646,13 +6646,13 @@
     {
      "name": "April McClain Delaney",
      "party": "D",
-     "price": 0.9765,
+     "price": 0.9725,
      "token": "101572405229665321411192436104414707582704335666762755358707714601998657377973"
     },
     {
      "name": "Robin Ficker",
      "party": "R",
-     "price": 0.0235,
+     "price": 0.02,
      "token": "95567367329653989609085742025028688511005919423884278854597717191338334205598"
     }
    ]
@@ -6694,7 +6694,7 @@
     {
      "name": "Jamie Raskin",
      "party": "D",
-     "price": 0.9805,
+     "price": 0.9815,
      "token": "53916740545517839349216178413458364739889257015230314536170949469606787286266"
     },
     {
@@ -6766,13 +6766,13 @@
     {
      "name": "Jack Bergman",
      "party": "R",
-     "price": 0.88,
+     "price": 0.885,
      "token": "89187166147098654501333313040509745809647631071013697757141017419083807292557"
     },
     {
      "name": "Callie Barr",
      "party": "D",
-     "price": 0.1235,
+     "price": 0.1225,
      "token": "41743582415601049003331942374065703524534822586342858533554241205206427587044"
     }
    ]
@@ -6862,13 +6862,13 @@
     {
      "name": "Tim Walberg",
      "party": "R",
-     "price": 0.9655,
+     "price": 0.966,
      "token": "12900989264527489320840573054156831878952785783526076877231672998703813572704"
     },
     {
      "name": "Christian Vukasovich",
      "party": "D",
-     "price": 0.037,
+     "price": 0.0375,
      "token": "62694377895422729381177566396647397531220654086396070123871631077834206331814"
     }
    ]
@@ -6886,7 +6886,7 @@
     {
      "name": "Debbie Dingell",
      "party": "D",
-     "price": 0.976,
+     "price": 0.982,
      "token": "105011922586023571915478527337761797775393875537483459103864314881977242534500"
     },
     {
@@ -6964,7 +6964,7 @@
     {
      "name": "Ray Pooley",
      "party": "D",
-     "price": 0.0235,
+     "price": 0.025,
      "token": "59659013858927173873028594154232925903439088837471278636127800530440252868472"
     }
    ]
@@ -7006,7 +7006,7 @@
     {
      "name": "Jeremy Moss",
      "party": "D",
-     "price": 0.9805,
+     "price": 0.9795,
      "token": "94783659918770239317818656816702174600429243282316094830530472030988142199344"
     },
     {
@@ -7030,13 +7030,13 @@
     {
      "name": "Rashida Tlaib",
      "party": "D",
-     "price": 0.985,
+     "price": 0.987,
      "token": "21471308238274335916402966452176639965235702356917550717105652186396512355403"
     },
     {
      "name": "James Hooper",
      "party": "R",
-     "price": 0.0115,
+     "price": 0.01,
      "token": "36101520257074963963456275436359613251450499531870369675800008056594256101460"
     }
    ]
@@ -7073,7 +7073,7 @@
    "name": "MN-01",
    "slug": "mn-01-house-election-winner",
    "url": "https://polymarket.com/event/mn-01-house-election-winner",
-   "volume": 104966,
+   "volume": 104978,
    "candidates": [
     {
      "name": "Brad Finstad",
@@ -7108,7 +7108,7 @@
     {
      "name": "Eric Pratt",
      "party": "R",
-     "price": 0.0475,
+     "price": 0.048,
      "token": "27227352588644125911835255791745199294766435051633840882741518772610280264133"
     }
    ]
@@ -7126,13 +7126,13 @@
     {
      "name": "Kelly Morrison",
      "party": "D",
-     "price": 0.971,
+     "price": 0.9715,
      "token": "3228938764569003888564215692390895054949196678467842248977529232523751161485"
     },
     {
      "name": "Tyler Bass",
      "party": "R",
-     "price": 0.0215,
+     "price": 0.022,
      "token": "23476903434490358031579717646665948910888615139360139480767655973511605184512"
     }
    ]
@@ -7150,13 +7150,13 @@
     {
      "name": "Betty McCollum",
      "party": "D",
-     "price": 0.9875,
+     "price": 0.9885,
      "token": "104158302579049473385072664454945553466127955319557792320823339328808868622414"
     },
     {
      "name": "Paul Wikstrom",
      "party": "R",
-     "price": 0.015,
+     "price": 0.014,
      "token": "111500283128350593208525797077881909328050635985682057717607173275072401516650"
     }
    ]
@@ -7174,13 +7174,13 @@
     {
      "name": "Ilhan Omar",
      "party": "D",
-     "price": 0.983,
+     "price": 0.9825,
      "token": "20781040640207419108275494852260640607740976077797936236220411009198028862221"
     },
     {
      "name": "John Nagel",
      "party": "R",
-     "price": 0.007,
+     "price": 0.008,
      "token": "85481834502498043935806386600094738202338314908938508331117373587697666440459"
     }
    ]
@@ -7198,13 +7198,13 @@
     {
      "name": "Tom Emmer",
      "party": "R",
-     "price": 0.952,
+     "price": 0.946,
      "token": "95705980522682633277376846361113336199940485063572400683361002354333832728615"
     },
     {
      "name": "Doug Chapin",
      "party": "D",
-     "price": 0.042,
+     "price": 0.043,
      "token": "15726895418092875926057978874172540181211975820455635284392556234963657454181"
     }
    ]
@@ -7222,13 +7222,13 @@
     {
      "name": "Michelle Fischbach",
      "party": "R",
-     "price": 0.973,
+     "price": 0.974,
      "token": "83781593412524661536732241077647977450815832180784099193265949724656222514028"
     },
     {
      "name": "Erik Osberg",
      "party": "D",
-     "price": 0.0205,
+     "price": 0.0215,
      "token": "50485028072309238513020723765879042080882812445038996183979043405748038609339"
     }
    ]
@@ -7313,18 +7313,18 @@
    "name": "MO-03",
    "slug": "mo-03-house-election-winner",
    "url": "https://polymarket.com/event/mo-03-house-election-winner",
-   "volume": 44623,
+   "volume": 44641,
    "candidates": [
     {
      "name": "Bob Onder",
      "party": "R",
-     "price": 0.982,
+     "price": 0.98,
      "token": "78731837307763791013205666606889953610367275623708569393097319597715511164419"
     },
     {
      "name": "Bethany Mann",
      "party": "D",
-     "price": 0.0135,
+     "price": 0.0145,
      "token": "27237659461749395126949339507775498287619143517476509888079639110706576460737"
     }
    ]
@@ -7337,18 +7337,18 @@
    "name": "MO-04",
    "slug": "mo-04-house-election-winner",
    "url": "https://polymarket.com/event/mo-04-house-election-winner",
-   "volume": 73549,
+   "volume": 73564,
    "candidates": [
     {
      "name": "Mark Alford",
      "party": "R",
-     "price": 0.965,
+     "price": 0.967,
      "token": "33645701896124991311985050953575991665601315467134928097442568167678692026478"
     },
     {
      "name": "Jordan Herrera",
      "party": "D",
-     "price": 0.022,
+     "price": 0.021,
      "token": "104197034099333569333837134544585073669697793844586510243032661490930472807886"
     }
    ]
@@ -7385,18 +7385,18 @@
    "name": "MO-06",
    "slug": "mo-06-house-election-winner",
    "url": "https://polymarket.com/event/mo-06-house-election-winner",
-   "volume": 69137,
+   "volume": 69267,
    "candidates": [
     {
      "name": "Chris Stigall",
      "party": "R",
-     "price": 0.977,
+     "price": 0.9785,
      "token": "71012483416445340922096538210914425387735984717083875164919479899797090139500"
     },
     {
      "name": "Josh Smead",
      "party": "D",
-     "price": 0.022,
+     "price": 0.021,
      "token": "93999537599924381845798528565256546851931511384160498603450139908772095936064"
     }
    ]
@@ -7414,13 +7414,13 @@
     {
      "name": "Eric Burlison",
      "party": "R",
-     "price": 0.9765,
+     "price": 0.983,
      "token": "82146828848524154428088275430761176468349279782664926918519700351713043177651"
     },
     {
      "name": "Missi Hesketh",
      "party": "D",
-     "price": 0.024,
+     "price": 0.021,
      "token": "45676807799734966144632275397577504654867533978087009952488348220559614187556"
     }
    ]
@@ -7486,13 +7486,13 @@
     {
      "name": "Bennie Thompson",
      "party": "D",
-     "price": 0.981,
+     "price": 0.9815,
      "token": "51347448994089433355280463011438822136590800609862167377963831735494419997312"
     },
     {
      "name": "Ron Eller",
      "party": "R",
-     "price": 0.012,
+     "price": 0.01,
      "token": "69103471084888238979269433776056234821474148443092190636689705317282716460262"
     }
    ]
@@ -7553,7 +7553,7 @@
    "name": "MT-01",
    "slug": "mt-01-house-election-winner",
    "url": "https://polymarket.com/event/mt-01-house-election-winner",
-   "volume": 165876,
+   "volume": 165926,
    "candidates": [
     {
      "name": "Sam Forstag",
@@ -7630,13 +7630,13 @@
     {
      "name": "Deborah Ross",
      "party": "D",
-     "price": 0.99,
+     "price": 0.988,
      "token": "66264472454555373826914091188096503489754118022662710664484922183640373034825"
     },
     {
      "name": "Eugene Douglass",
      "party": "R",
-     "price": 0.011,
+     "price": 0.013,
      "token": "31075304234394304925734800924207836407031141064223616881386299350189407439154"
     }
    ]
@@ -7649,7 +7649,7 @@
    "name": "NC-03",
    "slug": "nc-03-house-election-winner",
    "url": "https://polymarket.com/event/nc-03-house-election-winner",
-   "volume": 256302,
+   "volume": 256398,
    "candidates": [
     {
      "name": "Greg Murphy",
@@ -7697,7 +7697,7 @@
    "name": "NC-05",
    "slug": "nc-05-house-election-winner",
    "url": "https://polymarket.com/event/nc-05-house-election-winner",
-   "volume": 55266,
+   "volume": 56116,
    "candidates": [
     {
      "name": "Virginia Foxx",
@@ -7726,7 +7726,7 @@
     {
      "name": "Addison McDowell",
      "party": "R",
-     "price": 0.89,
+     "price": 0.885,
      "token": "110248383649282035723587516659176804306429506602301677654400204028843553475305"
     },
     {
@@ -7774,7 +7774,7 @@
     {
      "name": "Mark Harris",
      "party": "R",
-     "price": 0.9365,
+     "price": 0.937,
      "token": "13109396291948652510746958612522514006218447920213086120935927680954617715010"
     },
     {
@@ -7822,7 +7822,7 @@
     {
      "name": "Pat Harrigan",
      "party": "R",
-     "price": 0.95,
+     "price": 0.9495,
      "token": "113940624503709874556750036558741595619222447795788756318692811060002676363038"
     },
     {
@@ -7870,7 +7870,7 @@
     {
      "name": "Alma Adams",
      "party": "D",
-     "price": 0.9885,
+     "price": 0.989,
      "token": "3008282733970547582075230146454767759658704171610998639610683599327599719311"
     },
     {
@@ -7889,7 +7889,7 @@
    "name": "NC-13",
    "slug": "nc-13-house-election-winner",
    "url": "https://polymarket.com/event/nc-13-house-election-winner",
-   "volume": 629733,
+   "volume": 630233,
    "candidates": [
     {
      "name": "Brad Knott",
@@ -7948,7 +7948,7 @@
     {
      "name": "Trygve Hammer",
      "party": "D",
-     "price": 0.0235,
+     "price": 0.023,
      "token": "23483157017798588775735750991679428198564229552058344222060297102839938783156"
     }
    ]
@@ -7996,7 +7996,7 @@
     {
      "name": "Brinker Harding",
      "party": "R",
-     "price": 0.07,
+     "price": 0.0715,
      "token": "9261962954796206285247745021195981577055668829876152281558354142057545087402"
     }
    ]
@@ -8014,13 +8014,13 @@
     {
      "name": "Adrian Smith",
      "party": "R",
-     "price": 0.992,
+     "price": 0.9935,
      "token": "91300017102252744648942921538936973840299076121429315651396774465959092826144"
     },
     {
      "name": "Becky Stille",
      "party": "D",
-     "price": 0.0105,
+     "price": 0.0065,
      "token": "5570822247376295603014164207044373022051471887632063214135825998829458085246"
     }
    ]
@@ -8038,7 +8038,7 @@
     {
      "name": "Stefany Shaheen",
      "party": "D",
-     "price": 0.9325,
+     "price": 0.9295,
      "token": "15841973896294397863780283211777886833063131427675236235397936182214462263761"
     },
     {
@@ -8068,7 +8068,7 @@
     {
      "name": "Lily Tang Williams",
      "party": "R",
-     "price": 0.0455,
+     "price": 0.046,
      "token": "91783184225800819063545582637690334690222380930400386245370482223420263581013"
     }
    ]
@@ -8086,7 +8086,7 @@
     {
      "name": "Donald Norcross",
      "party": "D",
-     "price": 0.968,
+     "price": 0.9695,
      "token": "66910558779219006206770908766364359071732162502612882262317389798854215930602"
     },
     {
@@ -8105,7 +8105,7 @@
    "name": "NJ-02",
    "slug": "nj-02-house-election-winner",
    "url": "https://polymarket.com/event/nj-02-house-election-winner",
-   "volume": 232527,
+   "volume": 233091,
    "candidates": [
     {
      "name": "Jeff Van Drew",
@@ -8134,7 +8134,7 @@
     {
      "name": "Herb Conaway",
      "party": "D",
-     "price": 0.9785,
+     "price": 0.9805,
      "token": "112951706778048700636729782483317428000692797687993445681224590472446620842296"
     },
     {
@@ -8164,7 +8164,7 @@
     {
      "name": "Rachel Peace",
      "party": "D",
-     "price": 0.042,
+     "price": 0.04,
      "token": "49967852954548322680350892386851690433988818586242970144505317661168573376821"
     }
    ]
@@ -8206,7 +8206,7 @@
     {
      "name": "Frank Pallone",
      "party": "D",
-     "price": 0.9785,
+     "price": 0.981,
      "token": "36668131845987595282388821422573112078954908371605862661434924543741058203721"
     },
     {
@@ -8260,7 +8260,7 @@
     {
      "name": "Republicanos",
      "party": "R",
-     "price": 0.023,
+     "price": 0.0195,
      "token": "106419043046627887529162041967976436906643697378692037356915234271157990209240"
     }
    ]
@@ -8278,13 +8278,13 @@
     {
      "name": "Nellie Pou",
      "party": "D",
-     "price": 0.9735,
+     "price": 0.9725,
      "token": "64646801358204661091649152026679678477997607545079265541240545041704334470547"
     },
     {
      "name": "Rosie Pino",
      "party": "R",
-     "price": 0.025,
+     "price": 0.0265,
      "token": "3325118064962209195446696339107278355695236491776717137541091468933221289357"
     }
    ]
@@ -8308,7 +8308,7 @@
     {
      "name": "Carmen Bucco",
      "party": "R",
-     "price": 0.0145,
+     "price": 0.0135,
      "token": "49534473214898621189593210821535587185794625812419360796514353305440955727342"
     }
    ]
@@ -8321,7 +8321,7 @@
    "name": "NJ-11",
    "slug": "nj-11-house-election-winner",
    "url": "https://polymarket.com/event/nj-11-house-election-winner",
-   "volume": 47665,
+   "volume": 47815,
    "candidates": [
     {
      "name": "Analilia Mejia",
@@ -8332,7 +8332,7 @@
     {
      "name": "Joe Hathaway",
      "party": "R",
-     "price": 0.0065,
+     "price": 0.007,
      "token": "57185750121735069758159401731615828838115070091354734184263829382916542229865"
     }
    ]
@@ -8350,7 +8350,7 @@
     {
      "name": "Adam Hamawy",
      "party": "D",
-     "price": 0.974,
+     "price": 0.9735,
      "token": "58000982583426728440915996215221700481980011336202402650943195558769098868507"
     },
     {
@@ -8369,18 +8369,18 @@
    "name": "NM-01",
    "slug": "nm-01-house-election-winner",
    "url": "https://polymarket.com/event/nm-01-house-election-winner",
-   "volume": 46235,
+   "volume": 46255,
    "candidates": [
     {
      "name": "Melanie Stansbury",
      "party": "D",
-     "price": 0.981,
+     "price": 0.9815,
      "token": "103627772838339662115007104998105488180859638902084753531433802954338472722701"
     },
     {
      "name": "Didi Okpareke",
      "party": "R",
-     "price": 0.021,
+     "price": 0.02,
      "token": "79375297406693186586972606449423536722162631962849208873011542778923457725926"
     }
    ]
@@ -8404,7 +8404,7 @@
     {
      "name": "Greg Cunningham",
      "party": "R",
-     "price": 0.076,
+     "price": 0.0765,
      "token": "77320842766979471265762138049280991870991701889662105106888907934759808866571"
     }
    ]
@@ -8422,7 +8422,7 @@
     {
      "name": "Teresa Leger Fernández",
      "party": "D",
-     "price": 0.973,
+     "price": 0.9685,
      "token": "94992452609050966943721991581397107807343809893433204139817351833928588943607"
     },
     {
@@ -8452,7 +8452,7 @@
     {
      "name": "Carrie Buck",
      "party": "R",
-     "price": 0.046,
+     "price": 0.0465,
      "token": "100936365235088365887390148339025781650492541691117144201293268974573722080526"
     }
    ]
@@ -8500,7 +8500,7 @@
     {
      "name": "Martin O'Donnell",
      "party": "R",
-     "price": 0.054,
+     "price": 0.0555,
      "token": "7275730603617871588534663876651872166581062015670196758763187649903218276156"
     }
    ]
@@ -8518,13 +8518,13 @@
     {
      "name": "Steven Horsford",
      "party": "D",
-     "price": 0.9885,
+     "price": 0.99,
      "token": "37734744071084495350871177726856765634134461816186018873587394886278296213428"
     },
     {
      "name": "Cody Whipple",
      "party": "R",
-     "price": 0.01,
+     "price": 0.0105,
      "token": "110184858398203436514748286171816462546856175682017113222545028056837820065060"
     }
    ]
@@ -8561,18 +8561,18 @@
    "name": "NY-02",
    "slug": "ny-02-house-election-winner",
    "url": "https://polymarket.com/event/ny-02-house-election-winner",
-   "volume": 25498,
+   "volume": 29356,
    "candidates": [
     {
      "name": "Andrew Garbarino",
      "party": "R",
-     "price": 0.88,
+     "price": 0.875,
      "token": "30262233103742413016273744865726694634847925546317079132006147490239167102562"
     },
     {
      "name": "Patrick Halpin",
      "party": "D",
-     "price": 0.125,
+     "price": 0.13,
      "token": "18612426815406140990356257545169737946172106654982190154364255976893470207558"
     }
    ]
@@ -8710,7 +8710,7 @@
     {
      "name": "Hakeem Jeffries",
      "party": "D",
-     "price": 0.982,
+     "price": 0.9835,
      "token": "42274770460511659150920678880850985616325205502152351471786259796459061334005"
     },
     {
@@ -8740,7 +8740,7 @@
     {
      "name": "Joel Anabilah-Azumah",
      "party": "R",
-     "price": 0.017,
+     "price": 0.0175,
      "token": "101557783717893606154860793159924013856615988441654954487589512195254537635180"
     }
    ]
@@ -8758,13 +8758,13 @@
     {
      "name": "Brad Lander",
      "party": "D",
-     "price": 0.983,
+     "price": 0.9835,
      "token": "40551662302341149720524248881213118786348993427629837349734227102926308422827"
     },
     {
      "name": "Jennifer Moore",
      "party": "R",
-     "price": 0.013,
+     "price": 0.0125,
      "token": "86116647462741320148125945838888571757749273633154874294732391581253492264286"
     }
    ]
@@ -8806,13 +8806,13 @@
     {
      "name": "Micah Lasher",
      "party": "D",
-     "price": 0.9875,
+     "price": 0.977,
      "token": "80123861280593523349003925562335362827374437707457599709946838452951278450607"
     },
     {
      "name": "Caroline Shinkle",
      "party": "R",
-     "price": 0.019,
+     "price": 0.0215,
      "token": "44262423082481446871648821912647238868231938786905511089990497040043275894554"
     }
    ]
@@ -8998,7 +8998,7 @@
     {
      "name": "Paul Tonko",
      "party": "D",
-     "price": 0.987,
+     "price": 0.9855,
      "token": "15137065584300864618420301222057757271709492946731143799161383334762538171288"
     },
     {
@@ -9041,7 +9041,7 @@
    "name": "NY-22",
    "slug": "ny-22-house-election-winner",
    "url": "https://polymarket.com/event/ny-22-house-election-winner",
-   "volume": 41166,
+   "volume": 41186,
    "candidates": [
     {
      "name": "John Mannion",
@@ -9076,7 +9076,7 @@
     {
      "name": "Aaron Gies",
      "party": "D",
-     "price": 0.013,
+     "price": 0.0135,
      "token": "50084186332939640384370333511423316450530233697293837216311187397691679396358"
     }
    ]
@@ -9094,13 +9094,13 @@
     {
      "name": "Claudia Tenney",
      "party": "R",
-     "price": 0.9745,
+     "price": 0.969,
      "token": "67197000782518359564731667100463466561799056708968939451266159373977195674861"
     },
     {
      "name": "Alissa Ellman",
      "party": "D",
-     "price": 0.0255,
+     "price": 0.0275,
      "token": "28105609770194458157217094220844842119342519062391417918481291091142131152917"
     }
    ]
@@ -9118,7 +9118,7 @@
     {
      "name": "Joseph Morelle",
      "party": "D",
-     "price": 0.9795,
+     "price": 0.9805,
      "token": "58842700213480486890966662762623339854329167534648664735573431236489716645747"
     },
     {
@@ -9166,13 +9166,13 @@
     {
      "name": "Greg Landsman",
      "party": "D",
-     "price": 0.949,
+     "price": 0.9475,
      "token": "54683918395285218242154486097975094247311771681306620842955201199347227560316"
     },
     {
      "name": "Eric Conroy",
      "party": "R",
-     "price": 0.053,
+     "price": 0.052,
      "token": "32029516186842610332933023008740419615480522784728557304551577868071690659263"
     }
    ]
@@ -9262,13 +9262,13 @@
     {
      "name": "Bob Latta",
      "party": "R",
-     "price": 0.9705,
+     "price": 0.968,
      "token": "90548730335693316560617616081348165677380076132933269105553637807854203109889"
     },
     {
      "name": "Brian Shaver",
      "party": "D",
-     "price": 0.028,
+     "price": 0.0275,
      "token": "22617294133154545295037184241896270671838168006451150951797075818224698810566"
     }
    ]
@@ -9305,7 +9305,7 @@
    "name": "OH-07",
    "slug": "oh-07-house-election-winner",
    "url": "https://polymarket.com/event/oh-07-house-election-winner",
-   "volume": 150683,
+   "volume": 151049,
    "candidates": [
     {
      "name": "Brian Poindexter",
@@ -9406,7 +9406,7 @@
     {
      "name": "Shontel Brown",
      "party": "D",
-     "price": 0.9835,
+     "price": 0.9885,
      "token": "9824134701107267653478103482589361429432834754456953117368895920539470980711"
     },
     {
@@ -9425,12 +9425,12 @@
    "name": "OH-12",
    "slug": "oh-12-house-election-winner",
    "url": "https://polymarket.com/event/oh-12-house-election-winner",
-   "volume": 40593,
+   "volume": 40632,
    "candidates": [
     {
      "name": "Troy Balderson",
      "party": "R",
-     "price": 0.98,
+     "price": 0.978,
      "token": "10466652511123371806606985540578039877522948062655540674322898188960460447001"
     },
     {
@@ -9460,7 +9460,7 @@
     {
      "name": "Carey Coleman",
      "party": "R",
-     "price": 0.022,
+     "price": 0.0225,
      "token": "76419687999676909141959965537125542123428095649759940585169549698779656868744"
     }
    ]
@@ -9478,13 +9478,13 @@
     {
      "name": "David Joyce",
      "party": "R",
-     "price": 0.9605,
+     "price": 0.958,
      "token": "22049437407887741672091484705034292401034026874412788793210477138405544013229"
     },
     {
      "name": "Maria Jukic",
      "party": "D",
-     "price": 0.0385,
+     "price": 0.039,
      "token": "22776018498215855873262234018751148496156750463256982486999952250281718086478"
     }
    ]
@@ -9580,7 +9580,7 @@
     {
      "name": "Suzie Byrd",
      "party": "D",
-     "price": 0.0115,
+     "price": 0.011,
      "token": "31456346085785232861443410529757894055007921026690074849954540332488970259141"
     }
    ]
@@ -9598,13 +9598,13 @@
     {
      "name": "Tom Cole",
      "party": "R",
-     "price": 0.9755,
+     "price": 0.9745,
      "token": "42679641551258944346695652252632357381313178760042829579374413535358675749688"
     },
     {
      "name": "Mitchell Jacob",
      "party": "D",
-     "price": 0.015,
+     "price": 0.0165,
      "token": "55134330829841600712047776095803414261779817576518762142712090272037925900038"
     }
    ]
@@ -9670,13 +9670,13 @@
     {
      "name": "Cliff Bentz",
      "party": "R",
-     "price": 0.9675,
+     "price": 0.97,
      "token": "112934924216839053968221578189247213423666104291814331220140183112237533463897"
     },
     {
      "name": "Chris Beck",
      "party": "D",
-     "price": 0.031,
+     "price": 0.028,
      "token": "61661111399655227164248130843337645710308887575736809796663210190608700332886"
     }
    ]
@@ -9694,13 +9694,13 @@
     {
      "name": "Maxine Dexter",
      "party": "D",
-     "price": 0.9895,
+     "price": 0.991,
      "token": "59879419897719968550825751855915298643876980792988563486386178356914404374139"
     },
     {
      "name": "Loran Ayles",
      "party": "R",
-     "price": 0.011,
+     "price": 0.0105,
      "token": "73177091900842445337083168937406486467502060962664289072936626546279273959160"
     }
    ]
@@ -9718,13 +9718,13 @@
     {
      "name": "Val Hoyle",
      "party": "D",
-     "price": 0.975,
+     "price": 0.971,
      "token": "77665424332118427884444902210120941449082678784443230284265981523160668645737"
     },
     {
      "name": "Monique DeSpain",
      "party": "R",
-     "price": 0.0125,
+     "price": 0.013,
      "token": "69057892412985897571976378333583723069008517945231275677850514242117696786562"
     }
    ]
@@ -9748,7 +9748,7 @@
     {
      "name": "Patti Adair",
      "party": "R",
-     "price": 0.03,
+     "price": 0.0295,
      "token": "89399296058082802849637265880462852921510982613019570700598879554887149139762"
     }
    ]
@@ -9766,7 +9766,7 @@
     {
      "name": "Andrea Salinas",
      "party": "D",
-     "price": 0.982,
+     "price": 0.984,
      "token": "49401238578306726614650175147118260553531026149692918502692892182682967768192"
     },
     {
@@ -9820,7 +9820,7 @@
     {
      "name": "Jessica Arriaga",
      "party": "R",
-     "price": 0.013,
+     "price": 0.012,
      "token": "5702120826704236028666574829362012515262773629109318509418451182468136292386"
     }
    ]
@@ -9838,13 +9838,13 @@
     {
      "name": "Chris Rabb",
      "party": "D",
-     "price": 0.977,
+     "price": 0.978,
      "token": "93421711147940478385904957680567673594255928152148362808097066304593744238851"
     },
     {
      "name": "Republicanos",
      "party": "R",
-     "price": 0.017,
+     "price": 0.0185,
      "token": "14722963384536090452738924012855607066803972824556660380602136573129369602863"
     }
    ]
@@ -9862,13 +9862,13 @@
     {
      "name": "Madeleine Dean",
      "party": "D",
-     "price": 0.9755,
+     "price": 0.974,
      "token": "45016212564278950396482368180977199049829776570377366771879459820318001214835"
     },
     {
      "name": "Aurora Stuski",
      "party": "R",
-     "price": 0.0175,
+     "price": 0.0195,
      "token": "12381776638041651455084851236257118959748469074416993189775985679762908626148"
     }
    ]
@@ -9916,7 +9916,7 @@
     {
      "name": "Marty Young",
      "party": "R",
-     "price": 0.0115,
+     "price": 0.011,
      "token": "103216649439909747539634744833870771773796311223780039337207063004466684088373"
     }
    ]
@@ -9964,7 +9964,7 @@
     {
      "name": "Rob Bresnahan",
      "party": "R",
-     "price": 0.13,
+     "price": 0.125,
      "token": "57072421827554294140721361338343029545070199210958375988932007732626623305617"
     }
    ]
@@ -9982,13 +9982,13 @@
     {
      "name": "Dan Meuser",
      "party": "R",
-     "price": 0.9725,
+     "price": 0.976,
      "token": "93623375239380254527052331229401586532637435613551257682510121330589878960231"
     },
     {
      "name": "Rachel Wallace",
      "party": "D",
-     "price": 0.018,
+     "price": 0.0185,
      "token": "97812938692456679808746034145818517085521455414053194949349964189319622531898"
     }
    ]
@@ -10030,13 +10030,13 @@
     {
      "name": "Lloyd Smucker",
      "party": "R",
-     "price": 0.9625,
+     "price": 0.9655,
      "token": "49999320575960123602504540311656364314663744137796323995720360739522572397718"
     },
     {
      "name": "Nancy Mannion",
      "party": "D",
-     "price": 0.0355,
+     "price": 0.033,
      "token": "64033753879781292891004502990470649939895258908491332239281441614758347097840"
     }
    ]
@@ -10060,7 +10060,7 @@
     {
      "name": "James Hayes",
      "party": "R",
-     "price": 0.0175,
+     "price": 0.0165,
      "token": "61493003061442435980119343431077093593566868957444478537592526230913372112999"
     }
    ]
@@ -10078,7 +10078,7 @@
     {
      "name": "John Joyce",
      "party": "R",
-     "price": 0.9695,
+     "price": 0.974,
      "token": "99106239770261122404149850796505941542887985252699974499431003969563915409437"
     },
     {
@@ -10102,13 +10102,13 @@
     {
      "name": "Guy Reschenthaler",
      "party": "R",
-     "price": 0.98,
+     "price": 0.9785,
      "token": "75964251596460651153754398128482196593081588947622726776772172546086623122689"
     },
     {
      "name": "Alan Bradstock",
      "party": "D",
-     "price": 0.0195,
+     "price": 0.019,
      "token": "99812435088801422535655555993774789025373179257535038169653246751348776918066"
     }
    ]
@@ -10126,7 +10126,7 @@
     {
      "name": "Glenn Thompson",
      "party": "R",
-     "price": 0.9875,
+     "price": 0.9865,
      "token": "66651842382408982655874671572682954771625903570272496155121637911253362704144"
     },
     {
@@ -10174,7 +10174,7 @@
     {
      "name": "Chris Deluzio",
      "party": "D",
-     "price": 0.971,
+     "price": 0.9705,
      "token": "92766935796166214397022548007993643468606651430020985430987394684946156700742"
     },
     {
@@ -10228,7 +10228,7 @@
     {
      "name": "Victor Mellor",
      "party": "R",
-     "price": 0.028,
+     "price": 0.0295,
      "token": "77565803898363362816591017350372229299679538205929702813182540115234466298187"
     }
    ]
@@ -10241,7 +10241,7 @@
    "name": "SC-01",
    "slug": "sc-01-house-election-winner",
    "url": "https://polymarket.com/event/sc-01-house-election-winner",
-   "volume": 159354,
+   "volume": 159443,
    "candidates": [
     {
      "name": "Jenny Costa Honeycutt",
@@ -10265,7 +10265,7 @@
    "name": "SC-02",
    "slug": "sc-02-house-election-winner",
    "url": "https://polymarket.com/event/sc-02-house-election-winner",
-   "volume": 77544,
+   "volume": 78710,
    "candidates": [
     {
      "name": "Joe Wilson",
@@ -10276,7 +10276,7 @@
     {
      "name": "Zyon Khalifa",
      "party": "D",
-     "price": 0.0915,
+     "price": 0.093,
      "token": "98877200572721303777487863413665999592444033296149291765725536320760395147618"
     }
    ]
@@ -10300,7 +10300,7 @@
     {
      "name": "Eunice Lehmacher",
      "party": "D",
-     "price": 0.009,
+     "price": 0.0105,
      "token": "10492864506067148925034491451494292078961078230197816133300727354426417896248"
     }
    ]
@@ -10324,7 +10324,7 @@
     {
      "name": "Courtney McClain",
      "party": "D",
-     "price": 0.0325,
+     "price": 0.033,
      "token": "37527237658933698356045700215026959746358379876042971070301458333221306049121"
     }
    ]
@@ -10342,7 +10342,7 @@
     {
      "name": "Wes Climer",
      "party": "R",
-     "price": 0.935,
+     "price": 0.94,
      "token": "97127079206509961473599176623149486214338196386127682838342481115302311835755"
     },
     {
@@ -10366,13 +10366,13 @@
     {
      "name": "Jim Clyburn",
      "party": "D",
-     "price": 0.986,
+     "price": 0.987,
      "token": "70753123730892210723415329016409608870427936565895398629467654550008919293833"
     },
     {
      "name": "John Peterson",
      "party": "R",
-     "price": 0.0125,
+     "price": 0.0105,
      "token": "8283752152724906537299923228181268338769298641479310856166536750235769948079"
     }
    ]
@@ -10390,13 +10390,13 @@
     {
      "name": "Russell Fry",
      "party": "R",
-     "price": 0.96,
+     "price": 0.961,
      "token": "96580445079668683787368085070582364594702719841272426188104847420199646364705"
     },
     {
      "name": "John Vincent",
      "party": "D",
-     "price": 0.0365,
+     "price": 0.0385,
      "token": "66533200574784349380509162104467040229187348123731676518825142374740016683195"
     }
    ]
@@ -10414,13 +10414,13 @@
     {
      "name": "Marty Jackley",
      "party": "R",
-     "price": 0.978,
+     "price": 0.9805,
      "token": "32968110133578292263044342197530587529430477617843558882231048108713746760722"
     },
     {
      "name": "Nikki Gronli",
      "party": "D",
-     "price": 0.0185,
+     "price": 0.0115,
      "token": "112313709270246305656346787149655093220271804508619655360070081795700105897013"
     }
    ]
@@ -10462,13 +10462,13 @@
     {
      "name": "Tim Burchett",
      "party": "R",
-     "price": 0.9845,
+     "price": 0.9855,
      "token": "94155059755899124913554079227692507577527682724077363971689524301760558147676"
     },
     {
      "name": "Michaela Barnett",
      "party": "D",
-     "price": 0.014,
+     "price": 0.013,
      "token": "97783009740749517104804739735374598729817573752613703841572699497440267877745"
     }
    ]
@@ -10492,7 +10492,7 @@
     {
      "name": "Anna Golladay",
      "party": "D",
-     "price": 0.0165,
+     "price": 0.0155,
      "token": "69258123868580709643293200399955118148976821846736609777628331063136568669365"
     }
    ]
@@ -10510,7 +10510,7 @@
     {
      "name": "Scott DesJarlais",
      "party": "R",
-     "price": 0.9775,
+     "price": 0.9755,
      "token": "89912048965400574485239055076118317440818499337399813349793326068727444685375"
     },
     {
@@ -10534,13 +10534,13 @@
     {
      "name": "Charlie Hatcher",
      "party": "R",
-     "price": 0.935,
+     "price": 0.94,
      "token": "70611387410738959528084339484893630361746409691183277603893453160832832415748"
     },
     {
      "name": "Chaz Molder",
      "party": "D",
-     "price": 0.059,
+     "price": 0.061,
      "token": "21093900327085732156538279868500731871043932639237011371281062480462349465304"
     }
    ]
@@ -10558,13 +10558,13 @@
     {
      "name": "Johnny Garrett",
      "party": "R",
-     "price": 0.9615,
+     "price": 0.9635,
      "token": "100723481024949926814950844211723557015172851279204916742277606243338472844862"
     },
     {
      "name": "Mike Croley",
      "party": "D",
-     "price": 0.039,
+     "price": 0.038,
      "token": "94018945896709200690480993528432815932003490184132191875848767800569543041159"
     }
    ]
@@ -10582,13 +10582,13 @@
     {
      "name": "Matt Van Epps",
      "party": "R",
-     "price": 0.959,
+     "price": 0.9585,
      "token": "108435435156169780511802105123559082298215299373504251103377970956623189780379"
     },
     {
      "name": "Darden Copeland",
      "party": "D",
-     "price": 0.041,
+     "price": 0.044,
      "token": "65388880427163602882229538567622206362552800469128312771776276810183468857557"
     }
    ]
@@ -10606,13 +10606,13 @@
     {
      "name": "David Kustoff",
      "party": "R",
-     "price": 0.966,
+     "price": 0.9655,
      "token": "25602932808868867576569094361220693621759850047697168055766432566329365415917"
     },
     {
      "name": "Heidi Kuhn",
      "party": "D",
-     "price": 0.0355,
+     "price": 0.0365,
      "token": "79257962926505722161796152697606534627315120722574513312209505039586769246523"
     }
    ]
@@ -10654,7 +10654,7 @@
     {
      "name": "Nathaniel Moran",
      "party": "R",
-     "price": 0.981,
+     "price": 0.9805,
      "token": "79925970263561621628624491915611773703665237269523462229478806293334255185865"
     },
     {
@@ -10673,7 +10673,7 @@
    "name": "TX-02",
    "slug": "tx-02-house-election-winner",
    "url": "https://polymarket.com/event/tx-02-house-election-winner",
-   "volume": 35769,
+   "volume": 35774,
    "candidates": [
     {
      "name": "Steve Toth",
@@ -10708,7 +10708,7 @@
     {
      "name": "Evan Hunt",
      "party": "D",
-     "price": 0.0495,
+     "price": 0.0515,
      "token": "63807844561758261182017403367103061373816263316146253192270895821592469340722"
     }
    ]
@@ -10726,7 +10726,7 @@
     {
      "name": "Pat Fallon",
      "party": "R",
-     "price": 0.973,
+     "price": 0.976,
      "token": "99191934701178264053575235515836228615210495042696817144148145261389254003310"
     },
     {
@@ -10774,13 +10774,13 @@
     {
      "name": "Jake Ellzey",
      "party": "R",
-     "price": 0.988,
+     "price": 0.9855,
      "token": "35261608398567039616389973621725744491134249343354691383590559293801288808916"
     },
     {
      "name": "Danny Minton",
      "party": "D",
-     "price": 0.015,
+     "price": 0.0155,
      "token": "87752319436702589150542549585121976529985950174623503005919064541698331222191"
     }
    ]
@@ -10804,7 +10804,7 @@
     {
      "name": "Alexander Hale",
      "party": "R",
-     "price": 0.0155,
+     "price": 0.017,
      "token": "95492588617744560296244561833394875528542106861565937270516303134458736016311"
     }
    ]
@@ -10822,13 +10822,13 @@
     {
      "name": "Jessica Hart Steinmann",
      "party": "R",
-     "price": 0.988,
+     "price": 0.984,
      "token": "42402163084408180342807321393391898302438468255594234777897636339963706881420"
     },
     {
      "name": "Laura Jones",
      "party": "D",
-     "price": 0.0165,
+     "price": 0.019,
      "token": "31636603607578380759260713236020049124285763367172027481021062454924081363446"
     }
    ]
@@ -10841,7 +10841,7 @@
    "name": "TX-09",
    "slug": "tx-09-house-election-winner",
    "url": "https://polymarket.com/event/tx-09-house-election-winner",
-   "volume": 74921,
+   "volume": 74941,
    "candidates": [
     {
      "name": "Alex Mealer",
@@ -10870,7 +10870,7 @@
     {
      "name": "Chris Gober",
      "party": "R",
-     "price": 0.93,
+     "price": 0.925,
      "token": "64035689762837710867761939305525594848883389446873127621212024689466809937742"
     },
     {
@@ -10918,13 +10918,13 @@
     {
      "name": "Craig Goldman",
      "party": "R",
-     "price": 0.961,
+     "price": 0.9585,
      "token": "106776392059111626400786178628953874961286945147139048304059355608614389581132"
     },
     {
      "name": "Angela Rodriguez Prilliman",
      "party": "D",
-     "price": 0.0305,
+     "price": 0.0315,
      "token": "56473555804834200835990098337033655601703351737530901127413211668833208216129"
     }
    ]
@@ -10942,7 +10942,7 @@
     {
      "name": "Ronny Jackson",
      "party": "R",
-     "price": 0.982,
+     "price": 0.983,
      "token": "67199615424427852648013780697844310763231850593705292247416692144027791924240"
     },
     {
@@ -10966,13 +10966,13 @@
     {
      "name": "Randy Weber",
      "party": "R",
-     "price": 0.959,
+     "price": 0.955,
      "token": "27052834545351740270764280887834324017005641330864892075083845898693568080902"
     },
     {
      "name": "Thurman Bartie",
      "party": "D",
-     "price": 0.0405,
+     "price": 0.0415,
      "token": "7113167424439458933207663532829203984692042988126349297440065696989457006457"
     }
    ]
@@ -10985,7 +10985,7 @@
    "name": "TX-15",
    "slug": "tx-15-house-election-winner",
    "url": "https://polymarket.com/event/tx-15-house-election-winner",
-   "volume": 119461,
+   "volume": 119609,
    "candidates": [
     {
      "name": "Bobby Pulido",
@@ -11009,18 +11009,18 @@
    "name": "TX-16",
    "slug": "tx-16-house-election-winner",
    "url": "https://polymarket.com/event/tx-16-house-election-winner",
-   "volume": 28004,
+   "volume": 28049,
    "candidates": [
     {
      "name": "Veronica Escobar",
      "party": "D",
-     "price": 0.977,
+     "price": 0.978,
      "token": "2832333881571406231803058149042807066168211189690437337702444196744002504638"
     },
     {
      "name": "Adam Bauman",
      "party": "R",
-     "price": 0.0175,
+     "price": 0.015,
      "token": "35577064409063813708284419240566389413043086456734169641621246612177486250393"
     }
    ]
@@ -11038,13 +11038,13 @@
     {
      "name": "Pete Sessions",
      "party": "R",
-     "price": 0.963,
+     "price": 0.966,
      "token": "83424089236161705947921287068964787194810392753016212107020335855885981115582"
     },
     {
      "name": "Casey Shepard",
      "party": "D",
-     "price": 0.0295,
+     "price": 0.0305,
      "token": "54218389340905694880830395538184721609167200278791159119569362021010135149638"
     }
    ]
@@ -11062,7 +11062,7 @@
     {
      "name": "Christian Menefee",
      "party": "D",
-     "price": 0.9875,
+     "price": 0.988,
      "token": "99966949924222162720507977278878437898310303746351043945839836426130741910535"
     },
     {
@@ -11110,13 +11110,13 @@
     {
      "name": "Joaquin Castro",
      "party": "D",
-     "price": 0.981,
+     "price": 0.985,
      "token": "63479345802227890397338467678098574350295908498801301454970203473216463386116"
     },
     {
      "name": "Edgardo Rafael Baez",
      "party": "R",
-     "price": 0.017,
+     "price": 0.016,
      "token": "13586103928361599149102051566784661377124621629075954866092422394847815403034"
     }
    ]
@@ -11129,18 +11129,18 @@
    "name": "TX-21",
    "slug": "tx-21-house-election-winner",
    "url": "https://polymarket.com/event/tx-21-house-election-winner",
-   "volume": 85307,
+   "volume": 85389,
    "candidates": [
     {
      "name": "Mark Teixeira",
      "party": "R",
-     "price": 0.965,
+     "price": 0.9645,
      "token": "40451232845661870536997202596441192257954609381994182198371387175187339040183"
     },
     {
      "name": "Kristin Hook",
      "party": "D",
-     "price": 0.0275,
+     "price": 0.029,
      "token": "38112900453192789427947418584936127615002685419313159883361604678010779314946"
     }
    ]
@@ -11164,7 +11164,7 @@
     {
      "name": "Marquette Greene-Scott",
      "party": "D",
-     "price": 0.0415,
+     "price": 0.0455,
      "token": "54412897660120320858967375359770917609592504882961373351352842579347519773875"
     }
    ]
@@ -11212,7 +11212,7 @@
     {
      "name": "Kevin Burge",
      "party": "D",
-     "price": 0.0495,
+     "price": 0.052,
      "token": "41592911721476904100682003340590831626002929500468594537715023165541216069347"
     }
    ]
@@ -11225,18 +11225,18 @@
    "name": "TX-25",
    "slug": "tx-25-house-election-winner",
    "url": "https://polymarket.com/event/tx-25-house-election-winner",
-   "volume": 64624,
+   "volume": 64705,
    "candidates": [
     {
      "name": "Roger Williams",
      "party": "R",
-     "price": 0.962,
+     "price": 0.961,
      "token": "46735086596976748983478524207354590552091646740498655821934078262447171636845"
     },
     {
      "name": "Dione Sims",
      "party": "D",
-     "price": 0.036,
+     "price": 0.0385,
      "token": "20761178733613097504039460345700629294112350455175600852886848180561452023437"
     }
    ]
@@ -11254,7 +11254,7 @@
     {
      "name": "Brandon Gill",
      "party": "R",
-     "price": 0.9845,
+     "price": 0.9835,
      "token": "6313430895120244401027950861472377480960423973541524975676914054183454931999"
     },
     {
@@ -11278,13 +11278,13 @@
     {
      "name": "Michael Cloud",
      "party": "R",
-     "price": 0.9825,
+     "price": 0.979,
      "token": "11985454758641816517798661847526214801289468595404647886142716858015806077313"
     },
     {
      "name": "Tanya Lloyd",
      "party": "D",
-     "price": 0.0155,
+     "price": 0.018,
      "token": "5883386479369989620655348904577001132906759251788129434450345857580555035764"
     }
    ]
@@ -11321,12 +11321,12 @@
    "name": "TX-29",
    "slug": "tx-29-house-election-winner",
    "url": "https://polymarket.com/event/tx-29-house-election-winner",
-   "volume": 20659,
+   "volume": 20664,
    "candidates": [
     {
      "name": "Sylvia Garcia",
      "party": "D",
-     "price": 0.9755,
+     "price": 0.9765,
      "token": "4058455279680536486758069585290132835367289232413916329677379159217508755896"
     },
     {
@@ -11350,7 +11350,7 @@
     {
      "name": "Frederick Haynes III",
      "party": "D",
-     "price": 0.978,
+     "price": 0.979,
      "token": "110601347794427429280523581810798096897252116819735613546070346899034068929287"
     },
     {
@@ -11374,13 +11374,13 @@
     {
      "name": "John Carter",
      "party": "R",
-     "price": 0.94,
+     "price": 0.935,
      "token": "111324928603828804424107098707648604143021759890404592673036598638076199443376"
     },
     {
      "name": "Justin Early",
      "party": "D",
-     "price": 0.058,
+     "price": 0.06,
      "token": "19414224243118898738727588796572632606097679873511766779898053300187932342977"
     }
    ]
@@ -11398,13 +11398,13 @@
     {
      "name": "Jace Yarbrough",
      "party": "R",
-     "price": 0.87,
+     "price": 0.865,
      "token": "89973293189486756956794882000305756485925969393245738995452375053499323520911"
     },
     {
      "name": "Dan Barrios",
      "party": "D",
-     "price": 0.1295,
+     "price": 0.1305,
      "token": "97914684524869508391838473493038359705680146825553129245982853665873115044909"
     }
    ]
@@ -11417,7 +11417,7 @@
    "name": "TX-33",
    "slug": "tx-33-house-election-winner",
    "url": "https://polymarket.com/event/tx-33-house-election-winner",
-   "volume": 18606,
+   "volume": 18711,
    "candidates": [
     {
      "name": "Colin Allred",
@@ -11428,7 +11428,7 @@
     {
      "name": "Patrick Gillespie",
      "party": "R",
-     "price": 0.013,
+     "price": 0.0125,
      "token": "48258266071194287935863103898334928074064547689733217055085497310445260566257"
     }
    ]
@@ -11494,13 +11494,13 @@
     {
      "name": "Brian Babin",
      "party": "R",
-     "price": 0.9795,
+     "price": 0.979,
      "token": "28447198635554099262973905217726367470243680945205937032068258346722106906223"
     },
     {
      "name": "Rhonda Hart",
      "party": "D",
-     "price": 0.018,
+     "price": 0.017,
      "token": "81735412484732703874737418197932781265479610239070792909566095623877305534334"
     }
    ]
@@ -11524,7 +11524,7 @@
     {
      "name": "Lauren Peña",
      "party": "R",
-     "price": 0.0105,
+     "price": 0.019,
      "token": "102539465930094397154166714684622223283206547914280408899762471676331901776593"
     }
    ]
@@ -11542,13 +11542,13 @@
     {
      "name": "Jon Bonck",
      "party": "R",
-     "price": 0.967,
+     "price": 0.966,
      "token": "110137229004806237609154593822024557248404977425917344993683742611653821624039"
     },
     {
      "name": "Melissa McDonough",
      "party": "D",
-     "price": 0.023,
+     "price": 0.0265,
      "token": "102982519906757205981261242378095431065481967374538147477614341496556793550503"
     }
    ]
@@ -11566,7 +11566,7 @@
     {
      "name": "Ben McAdams",
      "party": "D",
-     "price": 0.984,
+     "price": 0.982,
      "token": "8269172801736629285390967158042572614824221441854000527215508853168947814184"
     },
     {
@@ -11596,7 +11596,7 @@
     {
      "name": "Peter Crosby",
      "party": "D",
-     "price": 0.051,
+     "price": 0.052,
      "token": "42200861349127624830531769887465625664332564761208067308674538299681162633408"
     }
    ]
@@ -11644,7 +11644,7 @@
     {
      "name": "Jonny Larsen",
      "party": "D",
-     "price": 0.0275,
+     "price": 0.0295,
      "token": "28270387959989668022231405446020224477406908624600312045728794415253516383687"
     }
    ]
@@ -11710,7 +11710,7 @@
     {
      "name": "Bobby Scott",
      "party": "D",
-     "price": 0.9885,
+     "price": 0.989,
      "token": "39284245494544182713187614931973488601405353114296052431124355858836092747402"
     },
     {
@@ -11734,7 +11734,7 @@
     {
      "name": "Jennifer McClellan",
      "party": "D",
-     "price": 0.982,
+     "price": 0.9835,
      "token": "21303389307648120852178492510542576784435249914960238002979748606597006664147"
     },
     {
@@ -11812,7 +11812,7 @@
     {
      "name": "Doug Ollivant",
      "party": "R",
-     "price": 0.0285,
+     "price": 0.028,
      "token": "13432621903631649165156306037190483686486704889711495381938238490251535633776"
     }
    ]
@@ -11849,7 +11849,7 @@
    "name": "VA-09",
    "slug": "va-09-house-election-winner",
    "url": "https://polymarket.com/event/va-09-house-election-winner",
-   "volume": 67181,
+   "volume": 67215,
    "candidates": [
     {
      "name": "Morgan Griffith",
@@ -11878,13 +11878,13 @@
     {
      "name": "Suhas Subramanyam",
      "party": "D",
-     "price": 0.9735,
+     "price": 0.971,
      "token": "6250391442247226330298525065064308908648402896185647255195896585309154272766"
     },
     {
      "name": "Dave Beckwith",
      "party": "R",
-     "price": 0.022,
+     "price": 0.021,
      "token": "34886074021784978148445826858663770591873724645393953375361449162667734872103"
     }
    ]
@@ -11926,7 +11926,7 @@
     {
      "name": "Becca Balint",
      "party": "D",
-     "price": 0.9845,
+     "price": 0.985,
      "token": "99003252103406924833041951896456909431076148882648175007974268756129967907012"
     },
     {
@@ -11950,13 +11950,13 @@
     {
      "name": "Suzan DelBene",
      "party": "D",
-     "price": 0.9795,
+     "price": 0.9825,
      "token": "111117441620197417673139326795784077564345152759760709875281064838591433783854"
     },
     {
      "name": "Mary Silva",
      "party": "R",
-     "price": 0.016,
+     "price": 0.0155,
      "token": "13336384856929306893643705400509499402017351411932920349191149860865568640385"
     }
    ]
@@ -11974,13 +11974,13 @@
     {
      "name": "Rick Larsen",
      "party": "D",
-     "price": 0.984,
+     "price": 0.9845,
      "token": "89022443090357848103252782438511586783925479158002758982878059554764423272380"
     },
     {
      "name": "Edwin Feller",
      "party": "R",
-     "price": 0.014,
+     "price": 0.012,
      "token": "47302482618859195349350864869219454026785539311936615630935393266192368728392"
     }
    ]
@@ -12022,7 +12022,7 @@
     {
      "name": "Amanda McKinney",
      "party": "R",
-     "price": 0.925,
+     "price": 0.92,
      "token": "47439174463482721229034772614568373644882067237418093196025863212785197691496"
     },
     {
@@ -12046,7 +12046,7 @@
     {
      "name": "Michael Baumgartner",
      "party": "R",
-     "price": 0.85,
+     "price": 0.845,
      "token": "12878429260753247352026278325109483585609907770776797419559616986827249571851"
     },
     {
@@ -12076,7 +12076,7 @@
     {
      "name": "Teresa Fox",
      "party": "R",
-     "price": 0.007,
+     "price": 0.008,
      "token": "60731871527049090912714294172508325144290350426631637465083828577047839321909"
     }
    ]
@@ -12094,13 +12094,13 @@
     {
      "name": "Pramila Jayapal",
      "party": "D",
-     "price": 0.993,
+     "price": 0.9935,
      "token": "79632077047509349433502706377724631239383759300168940766273178524946967927205"
     },
     {
      "name": "Nirav Sheth",
      "party": "R",
-     "price": 0.008,
+     "price": 0.006,
      "token": "101036296930946097886034361719550154375008872259701822300611206322206349933546"
     }
    ]
@@ -12118,13 +12118,13 @@
     {
      "name": "Kim Schrier",
      "party": "D",
-     "price": 0.98,
+     "price": 0.9745,
      "token": "25606522774893959736045763151595381737278418490862594684827826612970734165778"
     },
     {
      "name": "Spencer Meline",
      "party": "R",
-     "price": 0.015,
+     "price": 0.0255,
      "token": "106118271685589326812636160176961007010878728261891952476506984528476028145249"
     }
    ]
@@ -12142,7 +12142,7 @@
     {
      "name": "Adam Smith",
      "party": "D",
-     "price": 0.9815,
+     "price": 0.982,
      "token": "100915211264017756382304419427741694023744457913007819695581126685463480101308"
     },
     {
@@ -12172,7 +12172,7 @@
     {
      "name": "Chris Chung",
      "party": "R",
-     "price": 0.0085,
+     "price": 0.008,
      "token": "20616237522864302969704224789965973845136652723336007843171965043543983578317"
     }
    ]
@@ -12257,18 +12257,18 @@
    "name": "WI-04",
    "slug": "wi-04-house-election-winner",
    "url": "https://polymarket.com/event/wi-04-house-election-winner",
-   "volume": 37768,
+   "volume": 37796,
    "candidates": [
     {
      "name": "Gwen Moore",
      "party": "D",
-     "price": 0.9885,
+     "price": 0.9895,
      "token": "57037062729098974416650166727488514169535242958694750344721551137413848735145"
     },
     {
      "name": "Tim Rogers",
      "party": "R",
-     "price": 0.014,
+     "price": 0.013,
      "token": "64293948979338761894226006941039391115807324962460860391776063274192450747438"
     }
    ]
@@ -12286,13 +12286,13 @@
     {
      "name": "Scott Fitzgerald",
      "party": "R",
-     "price": 0.975,
+     "price": 0.9715,
      "token": "107324058587376226924658921859711450619864380500287145854978058911138428223231"
     },
     {
      "name": "Andrew Beck",
      "party": "D",
-     "price": 0.015,
+     "price": 0.0195,
      "token": "88871790889454731577782299128773617066698246220177751187887182363840265197383"
     }
    ]
@@ -12305,18 +12305,18 @@
    "name": "WI-06",
    "slug": "wi-06-house-election-winner",
    "url": "https://polymarket.com/event/wi-06-house-election-winner",
-   "volume": 49405,
+   "volume": 49549,
    "candidates": [
     {
      "name": "Glenn Grothman",
      "party": "R",
-     "price": 0.93,
+     "price": 0.935,
      "token": "7741070577683585704352463133430103626716949314240091001063049081898297959951"
     },
     {
      "name": "Brad Smith",
      "party": "D",
-     "price": 0.0665,
+     "price": 0.0625,
      "token": "43256671112233245379784232025012200507455241657170615109955281998049804130930"
     }
    ]
@@ -12382,7 +12382,7 @@
     {
      "name": "Carol Miller",
      "party": "R",
-     "price": 0.9815,
+     "price": 0.981,
      "token": "20889438589110658904217984279666938917029953957771513083955400629266966406870"
     },
     {
@@ -12430,13 +12430,13 @@
     {
      "name": "Chuck Gray",
      "party": "R",
-     "price": 0.971,
+     "price": 0.969,
      "token": "68169744186307070777878221352188445913193374514779295839873553147197667141671"
     },
     {
      "name": "Lisa Kinney",
      "party": "D",
-     "price": 0.0285,
+     "price": 0.028,
      "token": "47761933994861370231586413192491785371403976777265517955550091767964514957573"
     }
    ]
