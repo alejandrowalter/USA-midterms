@@ -7,8 +7,8 @@
   "house": "https://static01.nyt.com/elections-assets/pages/data/2026-11-03/results-house.json",
   "governor": "https://static01.nyt.com/elections-assets/pages/data/2026-11-03/results-governor.json"
  },
- "fetched_at_iso": "2026-11-03T09:21:35-05:00",
- "fetched_at_bogota": "2026-11-03 09:21",
+ "fetched_at_iso": "2026-11-03T09:29:47-05:00",
+ "fetched_at_bogota": "2026-11-03 09:29",
  "senate": {
   "total": 100,
   "open_seats": 35,
@@ -137,7 +137,7 @@
     {
      "id": "sullivan-dani",
      "name": "Daniel Sullivan",
-     "party": "R",
+     "party": "O",
      "incumbent": false,
      "votes": 0,
      "leader": false,
@@ -323,7 +323,7 @@
     },
     {
      "id": "katz-m",
-     "name": "Michael Katz",
+     "name": "Mike Katz",
      "party": "R",
      "incumbent": false,
      "votes": 0,
@@ -336,7 +336,7 @@
   "senate:FL": {
    "key": "senate:FL",
    "nyt_id": "FL-S_W-S-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -816,7 +816,7 @@
   "senate:MI": {
    "key": "senate:MI",
    "nyt_id": "MI-G-S-2026-11-03",
-   "rating": "tossup",
+   "rating": "lean-dem",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -1062,7 +1062,7 @@
   "senate:NE": {
    "key": "senate:NE",
    "nyt_id": "NE-G-S-2026-11-03",
-   "rating": "likely-rep",
+   "rating": "lean-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -1255,7 +1255,7 @@
    "candidates": [
     {
      "id": "lujan-b",
-     "name": "Ben Lujan",
+     "name": "Ben Luján",
      "party": "D",
      "incumbent": true,
      "votes": 0,
@@ -1540,7 +1540,7 @@
    "candidates": [
     {
      "id": "reed-j",
-     "name": "John Reed",
+     "name": "Jack Reed",
      "party": "D",
      "incumbent": true,
      "votes": 0,
@@ -2064,7 +2064,7 @@
   "gov:AZ": {
    "key": "gov:AZ",
    "nyt_id": "AZ-G-G-2026-11-03",
-   "rating": "lean-dem",
+   "rating": "likely-dem",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -2727,6 +2727,16 @@
    "called_by": [],
    "candidates": [
     {
+     "id": "charles-r",
+     "name": "Bobby Charles",
+     "party": "R",
+     "incumbent": false,
+     "votes": 0,
+     "leader": false,
+     "winner": false,
+     "runoff": false
+    },
+    {
      "id": "pingree-h",
      "name": "Hannah Pingree",
      "party": "D",
@@ -2740,16 +2750,6 @@
      "id": "bennett-r",
      "name": "Rick Bennett",
      "party": "O",
-     "incumbent": false,
-     "votes": 0,
-     "leader": false,
-     "winner": false,
-     "runoff": false
-    },
-    {
-     "id": "charles-r",
-     "name": "Robert Charles",
-     "party": "R",
      "incumbent": false,
      "votes": 0,
      "leader": false,
@@ -3180,7 +3180,7 @@
     },
     {
      "id": "hull-g",
-     "name": "Greggory Hull",
+     "name": "Gregg Hull",
      "party": "R",
      "incumbent": false,
      "votes": 0,
@@ -3902,7 +3902,7 @@
   "gov:WI": {
    "key": "gov:WI",
    "nyt_id": "WI-G-G-2026-11-03",
-   "rating": "tossup",
+   "rating": "lean-dem",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -7163,7 +7163,7 @@
   "house:CO-05": {
    "key": "house:CO-05",
    "nyt_id": "CO-G-H-5-2026-11-03",
-   "rating": "lean-rep",
+   "rating": "tossup",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -7820,7 +7820,7 @@
   "house:FL-04": {
    "key": "house:FL-04",
    "nyt_id": "FL-G-H-4-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -7967,7 +7967,7 @@
   "house:FL-07": {
    "key": "house:FL-07",
    "nyt_id": "FL-G-H-7-2026-11-03",
-   "rating": "likely-rep",
+   "rating": "lean-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -8055,7 +8055,7 @@
   "house:FL-09": {
    "key": "house:FL-09",
    "nyt_id": "FL-G-H-9-2026-11-03",
-   "rating": "likely-rep",
+   "rating": "lean-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -10576,7 +10576,7 @@
   "house:IN-05": {
    "key": "house:IN-05",
    "nyt_id": "IN-G-H-5-2026-11-03",
-   "rating": "likely-rep",
+   "rating": "lean-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -12026,7 +12026,7 @@
    "candidates": [
     {
      "id": "dunlap-m",
-     "name": "Matthew Dunlap",
+     "name": "Matt Dunlap",
      "party": "D",
      "incumbent": false,
      "votes": 0,
@@ -12114,7 +12114,7 @@
     },
     {
      "id": "olszewski-j",
-     "name": "John Olszewski",
+     "name": "Johnny Olszewski",
      "party": "D",
      "incumbent": true,
      "votes": 0,
@@ -13231,7 +13231,7 @@
     },
     {
      "id": "smith-t",
-     "name": "Thomas Smith",
+     "name": "Tom Smith",
      "party": "R",
      "incumbent": false,
      "votes": 0,
@@ -15137,7 +15137,7 @@
   "house:NJ-02": {
    "key": "house:NJ-02",
    "nyt_id": "NJ-G-H-2-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -17073,7 +17073,7 @@
   "house:NC-05": {
    "key": "house:NC-05",
    "nyt_id": "NC-G-H-5-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -17161,7 +17161,7 @@
   "house:NC-07": {
    "key": "house:NC-07",
    "nyt_id": "NC-G-H-7-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -17259,7 +17259,7 @@
   "house:NC-09": {
    "key": "house:NC-09",
    "nyt_id": "NC-G-H-9-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -17484,7 +17484,7 @@
   "house:NC-14": {
    "key": "house:NC-14",
    "nyt_id": "NC-G-H-14-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -17924,7 +17924,7 @@
   "house:OH-09": {
    "key": "house:OH-09",
    "nyt_id": "OH-G-H-9-2026-11-03",
-   "rating": "tossup",
+   "rating": "lean-dem",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -18716,7 +18716,7 @@
   "house:PA-01": {
    "key": "house:PA-01",
    "nyt_id": "PA-G-H-1-2026-11-03",
-   "rating": "lean-rep",
+   "rating": "tossup",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -18989,7 +18989,7 @@
   "house:PA-08": {
    "key": "house:PA-08",
    "nyt_id": "PA-G-H-8-2026-11-03",
-   "rating": "tossup",
+   "rating": "lean-dem",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -19467,7 +19467,7 @@
   "house:SC-01": {
    "key": "house:SC-01",
    "nyt_id": "SC-G-H-1-2026-11-03",
-   "rating": "lean-rep",
+   "rating": "tossup",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -20391,7 +20391,7 @@
   "house:TN-09": {
    "key": "house:TN-09",
    "nyt_id": "TN-G-H-9-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -22563,7 +22563,7 @@
   "house:VA-05": {
    "key": "house:VA-05",
    "nyt_id": "VA-G-H-5-2026-11-03",
-   "rating": "likely-rep",
+   "rating": "lean-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -23082,7 +23082,7 @@
   "house:WA-05": {
    "key": "house:WA-05",
    "nyt_id": "WA-G-H-5-2026-11-03",
-   "rating": "solid-rep",
+   "rating": "likely-rep",
    "call_status": "too_early",
    "status": "sin_votos",
    "certified": false,
@@ -23852,7 +23852,8 @@
   "CO": {
    "solid-dem": 4,
    "likely-rep": 1,
-   "lean-rep": 2,
+   "lean-rep": 1,
+   "tossup": 1,
    "lean-dem": 1
   },
   "CT": {
@@ -23862,10 +23863,10 @@
    "solid-dem": 1
   },
   "FL": {
-   "solid-rep": 16,
-   "likely-rep": 3,
+   "solid-rep": 15,
+   "likely-rep": 2,
+   "lean-rep": 4,
    "solid-dem": 4,
-   "lean-rep": 2,
    "tossup": 2,
    "lean-dem": 1
   },
@@ -23891,7 +23892,7 @@
   "IN": {
    "likely-dem": 1,
    "solid-rep": 6,
-   "likely-rep": 1,
+   "lean-rep": 1,
    "solid-dem": 1
   },
   "KS": {
@@ -23947,8 +23948,8 @@
   "NC": {
    "tossup": 1,
    "solid-dem": 3,
-   "likely-rep": 2,
-   "solid-rep": 7,
+   "likely-rep": 6,
+   "solid-rep": 3,
    "lean-dem": 1
   },
   "ND": {
@@ -23965,7 +23966,8 @@
   },
   "NJ": {
    "solid-dem": 8,
-   "solid-rep": 2,
+   "likely-rep": 1,
+   "solid-rep": 1,
    "lean-dem": 1,
    "likely-dem": 1
   },
@@ -23988,7 +23990,8 @@
    "likely-dem": 2,
    "solid-rep": 7,
    "solid-dem": 2,
-   "tossup": 2,
+   "tossup": 1,
+   "lean-dem": 1,
    "lean-rep": 2
   },
   "OK": {
@@ -23999,17 +24002,16 @@
    "solid-rep": 1
   },
   "PA": {
-   "lean-rep": 1,
-   "solid-dem": 7,
-   "lean-dem": 2,
    "tossup": 1,
+   "solid-dem": 7,
+   "lean-dem": 3,
    "solid-rep": 6
   },
   "RI": {
    "solid-dem": 2
   },
   "SC": {
-   "lean-rep": 1,
+   "tossup": 1,
    "solid-rep": 5,
    "solid-dem": 1
   },
@@ -24017,7 +24019,8 @@
    "solid-rep": 1
   },
   "TN": {
-   "solid-rep": 9
+   "solid-rep": 8,
+   "likely-rep": 1
   },
   "TX": {
    "solid-rep": 24,
@@ -24036,7 +24039,7 @@
    "tossup": 1,
    "lean-dem": 1,
    "solid-dem": 5,
-   "likely-rep": 1,
+   "lean-rep": 1,
    "solid-rep": 2,
    "likely-dem": 1
   },
@@ -24046,7 +24049,8 @@
   "WA": {
    "solid-dem": 7,
    "lean-dem": 1,
-   "solid-rep": 2
+   "solid-rep": 1,
+   "likely-rep": 1
   },
   "WI": {
    "lean-rep": 1,
